@@ -32,9 +32,9 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		border-radius: 50%;
-		background: radial-gradient(circle at center, #00ff88 0%, #004422 80%);
+		background: radial-gradient(circle at center, #00ff88 10%, #004422 80%);
 		filter: blur(80px);
-		opacity: 0.3;
+		opacity: 0.1;
 		z-index: -1;
 		transition: transform 0.2s ease-out;
 		will-change: transform;
