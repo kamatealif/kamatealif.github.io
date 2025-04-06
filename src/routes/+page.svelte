@@ -10,7 +10,20 @@
 <AnimatedPattern />
 
 <Header />
-<Hero />
-<About />
-<Projects />
+<main>
+	<Hero />
+	<About />
+	<Projects />
+</main>
 <Footer />
+
+<style>
+	main {
+		max-width: 760px;
+		margin: 0 auto;
+		padding: 2rem;
+	}
+	:global(body) {
+		font-family: 'Roboto', sans-serif;
+	}
+</style>

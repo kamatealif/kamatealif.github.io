@@ -34,5 +34,8 @@
 		"tailwindcss": "^4.0.0",
 		"typescript": "^5.0.0",
 		"vite": "^6.2.5"
+	},
+	"dependencies": {
+		"typewriter-effect": "^2.21.0"
 	}
 }
