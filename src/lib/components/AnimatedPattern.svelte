@@ -1,48 +1,42 @@
 <script>
-	const rows = 25;
-	const cols = 50;
-	const grid = Array.from({ length: rows * cols }, (_, i) => i);
+	let x = 0;
+	let y = 0;
+
+	// Update the position of the ball based on mouse movement
+	function handleMouseMove(event) {
+		x = event.clientX - window.innerWidth / 2; // Calculate offset from center
+		y = event.clientY - window.innerHeight / 2; // Calculate offset from center
+	}
 </script>
 
-<div class="pattern-container">
-	{#each grid as i}
-		<div class="dot" style="animation-delay: {(i % 10) * 0.15}s"></div>
-	{/each}
-</div>
+<div
+	class="cursor-ball"
+	style="transform: translate(calc(-50% + {x / 20}px), calc(-50% + {y / 20}px));"
+></div>
+
+<!-- Attach mousemove event to the document -->
+<svelte:window on:mousemove={handleMouseMove} />
 
 <style>
-	.pattern-container {
+	/* Fullscreen container to track mouse movement */
+	:global(body) {
+		margin: 0;
+		overflow: hidden;
+	}
+
+	.cursor-ball {
+		width: 600px;
+		height: 600px;
 		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100vw;
-		height: 100vh;
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(16px, 1fr));
-		grid-auto-rows: 16px;
-		z-index: -2;
-		opacity: 0.07;
-		pointer-events: none;
-	}
-
-	.dot {
-		width: 6px;
-		height: 6px;
-		margin: auto;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		border-radius: 50%;
-		background: #00ff88;
-		animation: pulse 3s infinite ease-in-out;
-	}
-
-	@keyframes pulse {
-		0%,
-		100% {
-			transform: scale(1);
-			opacity: 0.4;
-		}
-		50% {
-			transform: scale(1.6);
-			opacity: 1;
-		}
+		background: radial-gradient(circle at center, #00ff88 0%, #004422 80%);
+		filter: blur(80px);
+		opacity: 0.3;
+		z-index: -1;
+		transition: transform 0.2s ease-out;
+		will-change: transform;
 	}
 </style>
