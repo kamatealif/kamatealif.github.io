@@ -19,11 +19,6 @@
 
 <style>
 	/* Fullscreen container to track mouse movement */
-	:global(body) {
-		margin: 0;
-		/* overflow: hidden; */
-	}
-
 	.cursor-ball {
 		width: 600px;
 		height: 600px;

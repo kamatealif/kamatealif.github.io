@@ -6,7 +6,13 @@
 
 	onMount(() => {
 		const typewriter = new Typewriter(typewriterElement, {
-			strings: ['A Data Scientist', 'A Software Engineer', 'A Web Developer'],
+			strings: [
+				'A Data Scientist',
+				'A Software Engineer',
+				'A Web Developer',
+				'A Farmer',
+				'An AI Enthusiast'
+			],
 			autoStart: true,
 			loop: true
 		});
@@ -25,6 +31,7 @@
 		font-weight: normal;
 	}
 	section {
+		margin-block: 5rem;
 		text-align: start;
 		z-index: 1;
 		position: relative;

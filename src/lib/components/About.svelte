@@ -24,7 +24,7 @@
 	.glassmorphism {
 		padding: 0.5rem 1rem;
 		border-radius: 10px;
-		background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+		background: rgba(255, 255, 255, 0.05); /* Semi-transparent white */
 		backdrop-filter: blur(10px); /* Blur effect */
 		-webkit-backdrop-filter: blur(10px); /* Safari support */
 		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
@@ -43,6 +43,8 @@
 	p {
 		font-size: 1rem;
 		line-height: 1.6;
+		margin-bottom: 1rem;
+		margin-left: 1rem;
 	}
 
 	@media (max-width: 768px) {
