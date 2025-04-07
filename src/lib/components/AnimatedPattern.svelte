@@ -21,7 +21,7 @@
 	/* Fullscreen container to track mouse movement */
 	:global(body) {
 		margin: 0;
-		overflow: hidden;
+		/* overflow: hidden; */
 	}
 
 	.cursor-ball {

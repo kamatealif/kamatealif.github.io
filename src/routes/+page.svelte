@@ -22,6 +22,7 @@
 		max-width: 760px;
 		margin: 0 auto;
 		padding: 2rem;
+		overflow-y: auto;
 	}
 	:global(body) {
 		font-family: 'Roboto', sans-serif;

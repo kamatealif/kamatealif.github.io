@@ -46,4 +46,15 @@
 		font-size: 1.2rem;
 		color: #ccc;
 	}
+	@media (max-width: 768px) {
+		h1 {
+			font-size: 2rem;
+		}
+		h1 span {
+			font-size: 1.5rem;
+		}
+		p {
+			font-size: 1rem;
+		}
+	}
 </style>
