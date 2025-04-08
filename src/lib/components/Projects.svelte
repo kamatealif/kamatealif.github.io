@@ -15,6 +15,11 @@
 			title: 'Project 3',
 			description: 'This is a description of project 3.',
 			link: 'https://example.com/project3'
+		},
+		{
+			title: 'Project 3',
+			description: 'This is a description of project 3.',
+			link: 'https://example.com/project3'
 		}
 	];
 </script>
