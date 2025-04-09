@@ -50,8 +50,13 @@
 		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 		border: 1px solid rgba(255, 255, 255, 0.2);
 		padding: 20px;
-		margin-bottom: 20px;
+		/* margin-bottom: 20px; */
 		color: aliceblue;
+	}
+	.item:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+		transition: transform 0.3s ease;
 	}
 	.mobile-only {
 		display: block;
@@ -84,10 +89,10 @@
 		grid-column: 2 / span 2;
 		grid-row: 3;
 	}
-	@media (min-width: 768px) {
+	@media (max-width: 768px) {
 		.grid {
-			grid-template-columns: repeat(3, 1fr);
-			grid-template-rows: repeat(3, 1fr);
+			display: flex;
+			flex-direction: column;
 			gap: 8px;
 		}
 		.mobile-only {
