@@ -31,8 +31,13 @@
 		font-weight: normal;
 	}
 	section {
-		margin-block: 5rem;
-		text-align: start;
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: start;
+		margin-top: -5rem;
 		z-index: 1;
 		position: relative;
 	}

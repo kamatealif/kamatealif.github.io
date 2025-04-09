@@ -20,9 +20,12 @@
 <style>
 	section {
 		margin: 2rem 0;
+		width: 100%;
+		height: 100vh;
 	}
 	.glassmorphism {
 		padding: 0.5rem 1rem;
+		height: auto;
 		border-radius: 10px;
 		background: rgba(255, 255, 255, 0.05); /* Semi-transparent white */
 		backdrop-filter: blur(10px); /* Blur effect */
