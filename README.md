@@ -1,38 +1,42 @@
-# sv
+# Hi there, I'm Alif Kamate 👋
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Welcome to my portfolio! I'm a **Data Scientist**, **Software Engineer**, and **Web Developer** passionate about solving real-world problems with technology. I specialize in **data science**, **neural networks**, and **web development** to create impactful solutions.
 
-## Creating a project
+---
 
-If you're seeing this, you've probably already done this step. Congrats!
+## About Me
 
-```bash
-# create a new project in the current directory
-npx sv create
+- 🌱 Exploring **AI-driven web applications** and **data visualization**.
+- 💡 Blending **agriculture** and **technology** to create innovative solutions.
+- 🔭 Working on **predictive modeling**, **interactive dashboards**, and **web-based tools**.
+- 📫 Reach me at: [kamatealif@gmail.com](mailto:kamatealif@gmail.com)
 
-# create a new project in my-app
-npx sv create my-app
-```
+---
 
-## Developing
+## Featured Projects
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- **[Crop Yield Predictor](https://github.com/kamatealif/crop-yield-predictor)**: Predicts crop yields using machine learning. Built with Python, Pandas, and TensorFlow.
+- **[Interactive Farming Dashboard](https://github.com/kamatealif/farming-dashboard)**: Visualizes farming data with Svelte and D3.js.
+- **[Weather Forecasting App](https://github.com/kamatealif/weather-forecasting-app)**: Provides real-time weather forecasts using React and Node.js.
 
-```bash
-npm run dev
+---
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## Tech Stack
 
-## Building
+- **Languages**: ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white) ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black) ![HTML](https://img.shields.io/badge/-HTML-E34F26?style=flat&logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/-CSS-1572B6?style=flat&logo=css3&logoColor=white)
+- **Frameworks**: ![Svelte](https://img.shields.io/badge/-Svelte-FF3E00?style=flat&logo=svelte&logoColor=white) ![React](https://img.shields.io/badge/-React-61DAFB?style=flat&logo=react&logoColor=black) ![TensorFlow](https://img.shields.io/badge/-TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)
+- **Tools**: ![Git](https://img.shields.io/badge/-Git-F05032?style=flat&logo=git&logoColor=white) ![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white) ![VS Code](https://img.shields.io/badge/-VS%20Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white) ![Jupyter](https://img.shields.io/badge/-Jupyter-F37626?style=flat&logo=jupyter&logoColor=white)
+- **Databases**: ![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat&logo=mysql&logoColor=white) ![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)
 
-To create a production version of your app:
+---
 
-```bash
-npm run build
-```
+## Contact
 
-You can preview the production build with `npm run preview`.
+- 📧 Email: [kamatealif@gmail.com](mailto:alipkamate83@@gmail.com)
+- 🌍 Portfolio: [kamatealif.github.io](https://kamatealif.github.io)
+- 🐦 Twitter: [@kamatealif](https://twitter.com/kamatealif)
+- 💼 LinkedIn: [linkedin.com/in/kamatealif](https://www.linkedin.com/in/alip-kamate-722917261/)
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+---
+
+> "Let's connect tech with the soil — one model, one pixel, one farm at a time."
