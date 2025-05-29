@@ -1,7 +1,6 @@
 # Hi there, I'm Alif Kamate 👋
 
-Welcome to my portfolio! I'm a **Data Scientist**, **Software Engineer**, and **Web Developer** passionate about solving real-world problems with technology. I specialize in **data science**, **neural networks**, and **web development** to create impactful solutions.
-
+I'm primarily a Data Scientist, driven by a passion for solving real-world problems with technology. My core expertise lies in data science, including neural networks, where I extract insights and build intelligent systems. While web development is a hobby, I often leverage these skills to deliver data-driven solutions through engaging and functional web applications.
 ---
 
 ## About Me
@@ -37,6 +36,3 @@ Welcome to my portfolio! I'm a **Data Scientist**, **Software Engineer**, and **
 - 🐦 Twitter: [@kamatealif](https://twitter.com/kamatealif)
 - 💼 LinkedIn: [linkedin.com/in/kamatealif](https://www.linkedin.com/in/alip-kamate-722917261/)
 
----
-
-> "Let's connect tech with the soil — one model, one pixel, one farm at a time."
