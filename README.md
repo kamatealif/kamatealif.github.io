@@ -8,7 +8,7 @@ I'm primarily a Data Scientist, driven by a passion for solving real-world probl
 - 🌱 Exploring **AI-driven web applications** and **data visualization**.
 - 💡 Blending **agriculture** and **technology** to create innovative solutions.
 - 🔭 Working on **predictive modeling**, **interactive dashboards**, and **web-based tools**.
-- 📫 Reach me at: [kamatealif@gmail.com](mailto:kamatealif@gmail.com)
+- 📫 Reach me at: [kamatealif@gmail.com](mailto:kamatealip1@gmail.com)
 
 ---
 
