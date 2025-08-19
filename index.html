@@ -21,7 +21,7 @@
 
     <meta name="theme-color" content="#0a0a0a" />
     <title>Alif Kamate - Data Scientist</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
   </head>
 
   <body>
@@ -37,7 +37,7 @@
           <p class="subtitle">
             Passionate about designing and deploying innovative AI and machine learning solutions for complex problems.
           </p>
-          <a href="your-resume.pdf" download class="resume-button"> Download Resume </a>
+          <a href="sample-resume-datascience.pdf" class="resume-button" download>Download Resume</a>
         </div>
 
         <div class="card profile">
@@ -157,134 +157,210 @@
       </div>
     </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const starsContainer = document.getElementById('stars-container');
-        const body = document.body;
-        const totalStars = 1000;
-        const stars = [];
 
-        // Dynamically create and append all the star elements
-        for (let i = 0; i < totalStars; i++) {
-          const star = document.createElement('div');
-          star.className = 'star';
-          starsContainer.appendChild(star);
-          stars.push(star);
-        }
 
-        // Check for mobile or tablet device based on screen width
-        const isMobile = window.innerWidth <= 768;
 
-        if (isMobile) {
-          // For mobile and tablets, create a random blinking effect
-          setInterval(() => {
-            // Randomly select a star to blink
-            const randomStar = stars[Math.floor(Math.random() * stars.length)];
+ 
+<script>
+  
 
-            // Add the 'blinking' class which contains a CSS animation
-            randomStar.classList.add('blinking');
+  // ====================================
+  // js for star animation 
+  // ====================================
+  document.addEventListener('DOMContentLoaded', () => {
+    const starsContainer = document.getElementById('stars-container');
+    const body = document.body;
+    const totalStars = 1000;
+    const stars = [];
 
-            // Remove the class after a short delay to create the blink effect
-            setTimeout(() => {
-              randomStar.classList.remove('blinking');
-            }, 500); // The star blinks for 0.5 seconds
-          }, 100); // A new star is selected to blink every 0.1 seconds
-        } else {
-          // For desktop, keep the mouse hover effect
-          const getDistance = (x1, y1, x2, y2) => Math.hypot(x2 - x1, y2 - y1);
+    // Dynamically create and append all the star elements
+    for (let i = 0; i < totalStars; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      starsContainer.appendChild(star);
+      stars.push(star);
+    }
 
-          body.addEventListener('mousemove', (e) => {
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
+    // Check for mobile or tablet device based on screen width
+    const isMobile = window.innerWidth <= 768;
 
-            stars.forEach(star => {
-              const rect = star.getBoundingClientRect();
-              const starX = rect.left + rect.width / 2;
-              const starY = rect.top + rect.height / 2;
+    if (isMobile) {
+      // For mobile and tablets, create a random blinking effect
+      setInterval(() => {
+        // Randomly select a star to blink
+        const randomStar = stars[Math.floor(Math.random() * stars.length)];
 
-              const distance = getDistance(mouseX, mouseY, starX, starY);
+        // Add the 'blinking' class which contains a CSS animation
+        randomStar.classList.add('blinking');
 
-              const threshold = 80;
-              if (distance < threshold) {
-                const opacity = 1 - (distance / threshold);
-                star.style.opacity = opacity;
-                star.classList.add('glowing');
-              } else {
-                star.style.opacity = 1;
-                star.classList.remove('glowing');
-              }
-            });
-          });
+        // Remove the class after a short delay to create the blink effect
+        setTimeout(() => {
+          randomStar.classList.remove('blinking');
+        }, 500); // The star blinks for 0.5 seconds
+      }, 100); // A new star is selected to blink every 0.1 seconds
+    } else {
+      // For desktop, keep the mouse hover effect
+      const getDistance = (x1, y1, x2, y2) => Math.hypot(x2 - x1, y2 - y1);
 
-          body.addEventListener('mouseleave', () => {
-            stars.forEach(star => {
-              star.classList.remove('glowing');
-              star.style.opacity = 1;
-            });
-          });
-        }
-      });
-      
-      // Corrected JavaScript for the mouse follower
-      const follower = document.querySelector('.mouse-follower');
-      const cards = document.querySelectorAll('.card');
-      const contactItems = document.querySelectorAll('.contact-item');
-      const heroCard = document.getElementById('hero-card');
+      body.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
 
-      // Check if the device is a mobile or tablet
-      const isMobileOrTablet = window.innerWidth <= 1200;
+        stars.forEach(star => {
+          const rect = star.getBoundingClientRect();
+          const starX = rect.left + rect.width / 2;
+          const starY = rect.top + rect.height / 2;
 
-      if (!isMobileOrTablet) {
-        // Add mousemove event for the entire document
-        document.addEventListener('mousemove', (e) => {
-          // Set the position of the follower to the mouse coordinates
-          follower.style.left = `${e.clientX}px`;
-          follower.style.top = `${e.clientY}px`;
+          const distance = getDistance(mouseX, mouseY, starX, starY);
 
-          // Hide the follower on the hero section
-          const isHoveringHero = heroCard.contains(e.target);
-          if (isHoveringHero) {
-            follower.classList.remove('visible');
+          const threshold = 80;
+          if (distance < threshold) {
+            const opacity = 1 - (distance / threshold);
+            star.style.opacity = opacity;
+            star.classList.add('glowing');
           } else {
-            // Show the follower outside the hero section
-            follower.classList.add('visible');
+            star.style.opacity = 1;
+            star.classList.remove('glowing');
           }
         });
+      });
 
-        // Handle card hover effects
-        cards.forEach(card => {
-          // Exclude the hero section from the effect
-          if (card.id === 'hero-card') return;
-
-          card.addEventListener('mouseenter', () => {
-            follower.classList.add('on-card');
-          });
-
-          card.addEventListener('mouseleave', () => {
-            follower.classList.remove('on-card');
-          });
+      body.addEventListener('mouseleave', () => {
+        stars.forEach(star => {
+          star.classList.remove('glowing');
+          star.style.opacity = 1;
         });
+      });
+    }
+  });
+  
+  // Corrected JavaScript for the mouse follower
+  const follower = document.querySelector('.mouse-follower');
+  const cards = document.querySelectorAll('.card');
+  const contactItems = document.querySelectorAll('.contact-item');
+  const heroCard = document.getElementById('hero-card');
 
-        // Handle contact item hover effects
-        contactItems.forEach(item => {
-          item.addEventListener('mouseenter', () => {
-            follower.classList.add('on-contact-item');
-          });
+  // Check if the device is a mobile or tablet
+  const isMobileOrTablet = window.innerWidth <= 1200;
 
-          item.addEventListener('mouseleave', () => {
-            follower.classList.remove('on-contact-item');
-          });
-        });
+  if (!isMobileOrTablet) {
+    // Add mousemove event for the entire document
+    document.addEventListener('mousemove', (e) => {
+      // Set the position of the follower to the mouse coordinates
+      follower.style.left = `${e.clientX}px`;
+      follower.style.top = `${e.clientY}px`;
+
+      // Hide the follower on the hero section
+      const isHoveringHero = heroCard.contains(e.target);
+      if (isHoveringHero) {
+        follower.classList.remove('visible');
+      } else {
+        // Show the follower outside the hero section
+        follower.classList.add('visible');
       }
-    </script>
+    });
+
+    // Handle card hover effects
+    cards.forEach(card => {
+      // Exclude the hero section from the effect
+      if (card.id === 'hero-card') return;
+
+      card.addEventListener('mouseenter', () => {
+        follower.classList.add('on-card');
+      });
+
+      card.addEventListener('mouseleave', () => {
+        follower.classList.remove('on-card');
+      });
+    });
+
+    // Handle contact item hover effects
+    contactItems.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        follower.classList.add('on-contact-item');
+      });
+
+      item.addEventListener('mouseleave', () => {
+        follower.classList.remove('on-contact-item');
+      });
+    });
+  }
+</script>
 
 
+<!-- Mouse Follower HTML (single instance) -->
+<div class="mouse-follower" id="mouseFollower">
+  <div class="inner-follower" id="innerFollower"></div>
+</div>
+
+<script>
+  // Mouse Follower with Lagging Inner Circle (single implementation)
+const mouseFollower = document.getElementById('mouseFollower');
+const innerFollower = document.getElementById('innerFollower');
+let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+let followerX = mouseX, followerY = mouseY;
+let innerX = mouseX, innerY = mouseY;
 
 
-  <!-- Mouse Follower HTML (single instance) -->
-  <div class="mouse-follower" id="mouseFollower">
-    <div class="inner-follower" id="innerFollower"></div>
-  </div>
-  <script src="script.js"></script>
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  mouseFollower.classList.add('visible');
+});
+
+// Add hover effect for interactive elements
+const hoverSelectors = ['a', 'button', '.card', '.contact-item'];
+hoverSelectors.forEach(selector => {
+  document.querySelectorAll(selector).forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      mouseFollower.classList.add('hovering');
+    });
+    el.addEventListener('mouseleave', () => {
+      mouseFollower.classList.remove('hovering');
+    });
+  });
+});
+
+
+  // Simple follower: both rings and dot move together, no animation
+  // Add delay to the inner ring and more delay to the dot
+    let ringX = mouseX, ringY = mouseY;
+    let ringVX = 0, ringVY = 0;
+    let dotVX = 0, dotVY = 0;
+    function animateFollower() {
+      // Bouncy follower
+      followerX += (mouseX - followerX) * 0.35;
+      followerY += (mouseY - followerY) * 0.35;
+      mouseFollower.style.transform = `translate(${followerX - 18}px, ${followerY - 18}px)`;
+
+      // Bouncy inner ring
+      ringVX += (mouseX - ringX) * 0.18;
+      ringVX *= 0.65;
+      ringX += ringVX;
+      ringVY += (mouseY - ringY) * 0.18;
+      ringVY *= 0.65;
+      ringY += ringVY;
+      mouseFollower.style.setProperty('--inner-ring-x', `${ringX - followerX}px`);
+      mouseFollower.style.setProperty('--inner-ring-y', `${ringY - followerY}px`);
+
+      // Bouncy dot
+      dotVX += (mouseX - innerX) * 0.12;
+      dotVX *= 0.55;
+      innerX += dotVX;
+      dotVY += (mouseY - innerY) * 0.12;
+      dotVY *= 0.55;
+      innerY += dotVY;
+      innerFollower.style.transform = `translate(${innerX - followerX}px, ${innerY - followerY}px)`;
+
+      requestAnimationFrame(animateFollower);
+    }
+    animateFollower();
+
+document.addEventListener('mouseleave', () => {
+  mouseFollower.classList.remove('visible');
+});
+
+
+</script>
   </body>
 </html>
