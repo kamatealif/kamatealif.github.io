@@ -1,367 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alif Kamate | Data Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Switched to Phosphor Icons for a cleaner, thinner look -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <meta
-      name="description"
-      content="Alif Kamate's portfolio showcases expertise in data science, AI, and machine learning. Explore projects on intelligent systems and data-driven solutions."
-    />
-
-    <meta
-      name="keywords"
-      content="Alif Kamate, Data Scientist, Portfolio, AI, Machine Learning, Data Visualization, Python, NLP, Full Stack, Software Development"
-    />
-
-    <meta name="author" content="Alif Kamate" />
-
-    <meta name="theme-color" content="#0a0a0a" />
-    <title>Alif Kamate - Data Scientist</title>
-    <link rel="stylesheet" href="styles/styles.css" />
-  </head>
-
-  <body>
-
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="./assets/favicon_io/site.webmanifest">
     
-  <!-- Removed duplicate mouse follower -->
-    <div class="container">
-      <div class="grid">
-        <div class="card hero" id="hero-card">
-          <div class="stars-container" id="stars-container"></div>
-          <h1>Alif Kamate</h1>
-          <p class="tagline">Building intelligent systems with code and creativity.</p>
-          <p class="subtitle">
-            Passionate about designing and deploying innovative AI and machine learning solutions for complex problems.
-          </p>
-          <a href="resume.pdf" class="resume-button" download>Download Resume</a>
-        </div>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
 
-        <div class="card profile">
-          <div class="profile-avatar">👨‍💻</div>
-          <div class="profile-status">
-            <span class="status-dot"></span>
-            Open for AI & ML roles
-          </div>
-        </div>
+    <canvas id="network-canvas"></canvas>
 
-        <div class="card about">
-          <h2 class="card-title">🚀 About Me</h2>
-          <p>
-            I am a creative and driven data scientist specializing in building intelligent systems from the ground up. My
-            journey is rooted in a deep curiosity for how technology can transform ideas into reality, and I am dedicated to
-            creating impactful, data-driven solutions.
-          </p>
-        </div>
-
-        <div class="card focus">
-          <h2 class="card-title">🎯 Current Focus</h2>
-          <div class="focus-list">
-            <div class="focus-item">🔭 Contributing to open-source AI models and frameworks</div>
-            <div class="focus-item">🌱 Learning advanced deep learning architectures</div>
-            <div class="focus-item">⚡ Building dynamic web applications powered by data</div>
-          </div>
-        </div>
-
-        <div class="card skills">
-          <h2 class="card-title">🛠️ Core Skills</h2>
-          <div class="skills-grid">
-            <div class="skill-item">🐍 Python</div>
-            <div class="skill-item">🧠 ML/AI</div>
-            <div class="skill-item">📊 Data Viz</div>
-            <div class="skill-item">🤖 NLP</div>
-            <div class="skill-item">📈 Statistics</div>
-            <div class="skill-item">🌐 Web Dev</div>
-            <div class="skill-item">☁️ Cloud</div>
-            <div class="skill-item">💻 Full Stack</div>
-          </div>
-        </div>
-
-        <div class="card projects">
-          <h2 class="card-title">🚀 Featured Projects</h2>
-          <div class="project-card">
-            <h3 class="project-title">Advanced Neural Network Architectures</h3>
-            <p class="project-description">
-              A deep dive into building and optimizing custom neural networks for various applications.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">TensorFlow</span>
-              <span class="tech-tag">Keras</span>
-              <span class="tech-tag">Python</span>
-            </div>
-          </div>
-          <div class="project-card">
-            <h3 class="project-title">Generative AI Models</h3>
-            <p class="project-description">
-              A project exploring the capabilities of GANs and other generative models for content creation.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">PyTorch</span>
-              <span class="tech-tag">GANs</span>
-            </div>
-          </div>
-          <div class="project-card">
-            <h3 class="project-title">Interactive Data Dashboard</h3>
-            <p class="project-description">
-              A collection of interactive data visualizations showcasing my analytical skills.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">Jupyter</span>
-              <span class="tech-tag">Matplotlib</span>
-              <span class="tech-tag">Plotly</span>
-            </div>
-          </div>
-          <div class="project-card">
-            <h3 class="project-title">Modern Web Application</h3>
-            <p class="project-description">
-              A responsive web app designed to showcase modern front-end development techniques.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">React</span>
-              <span class="tech-tag">JavaScript</span>
-              <span class="tech-tag">CSS</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card contact">
-          <h2 class="card-title">📞 Get in Touch</h2>
-          <div class="contact-grid">
-            <a href="mailto:kamatealif@gmail.com" class="contact-item">
-              <span class="contact-icon">📧</span>
-              <span class="contact-label">Email</span>
-            </a>
-            <a href="https://github.com/kamatealif" target="_blank" class="contact-item">
-              <span class="contact-icon">🐙</span>
-              <span class="contact-label">GitHub</span>
-            </a>
-            <a href="https://www.linkedin.com/in/alip-kamate-722917261/" target="_blank" class="contact-item">
-              <span class="contact-icon">💼</span>
-              <span class="contact-label">LinkedIn</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="card learning">
-          <h2 class="card-title">📚 My Learning Journey</h2>
-          <div class="learning-content">
-            <div class="learning-text">
-              <p class="learning-title">Advancing in Generative AI</p>
-              <p class="learning-subtitle">Currently exploring the architectures of GANs and Transformers.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="audio-control" id="audio-btn">
+        <i class="ph ph-light ph-music-note"></i>
+        <span>Lofi Mode</span>
+        <audio id="bg-music" loop crossorigin="anonymous">
+            <source src="./assets/lofi.mp3" type="audio/mpeg">
+        </audio>
     </div>
 
+    <nav class="navbar">
+        <div class="logo">AK<span class="text-green">.</span></div>
+        
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#about" onclick="toggleMenu()"><span class="text-green mono">01.</span> About</a></li>
+            <li><a href="#skills" onclick="toggleMenu()"><span class="text-green mono">02.</span> Stats</a></li>
+            <li><a href="#projects" onclick="toggleMenu()"><span class="text-green mono">03.</span> Work</a></li>
+            <li><a href="#contact"><span class="text-green mono">04.</span> Contact Me</a></li>
+            <li><a href="/resume.html" class="btn-primary" style="padding: 0.4rem 1rem; font-size: 0.8rem;" onclick="toggleMenu()">Resume</a></li>
+        </ul>
+
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="ph ph-light ph-list" id="menu-icon"></i>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="mono text-green fade-up">Hi, my name is</p>
+            <h1 class="hero-name fade-up" style="transition-delay: 100ms;">Alif Kamate.</h1>
+            <h2 class="hero-subtitle fade-up" style="transition-delay: 200ms;">I build <span id="typing-text" style="color:white;"></span></h2>
+            <p class="hero-desc fade-up" style="transition-delay: 300ms;">
+                I am a Data Engineer passionate about designing scalable ETL pipelines and automating data workflows. I bridge the gap between raw chaotic data and actionable business insights.
+            </p>
+            <a href="./assets/resume.pdf" download="Alif_Kamate_Resume.pdf" class="btn-primary fade-up" style="transition-delay: 400ms;">
+                Download Resume <i class="ph ph-light ph-download-simple"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding">
+        <div class="container">
+            <h2 class="section-title fade-up"><span class="section-number">01.</span>About Me</h2>
+            
+            <div class="about-layout fade-up">
+                <div class="tab-menu">
+                    <button class="tab-btn active" onclick="openTab(event, 'story')">My Story</button>
+                    <button class="tab-btn" onclick="openTab(event, 'education')">Education</button>
+                    <button class="tab-btn" onclick="openTab(event, 'certs')">Certifications</button>
+                </div>
+
+                <div class="tab-content-wrapper">
+                    <div id="story" class="tab-content active">
+                        <h4>My Journey</h4>
+                        <p>
+                            I started my education in the BCA program at Kolhapur University. During my second year, I faced challenging financial conditions that required me to take a drop. However, I didn't let that time go to waste.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            During that gap, I immersed myself in exploring web technologies and completed a rigorous Data Science course, building several practical projects along the way. I realized that in today's world, data is everything. This insight inspired me to pivot into the Data Engineering field.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            Leveraging my foundation in data science, I am now self-taught and driven, focusing on building robust data architectures and improving my skills every day.
+                        </p>
+                    </div>
+
+                    <div id="education" class="tab-content">
+                        <h4>Bachelor of Computer Applications (BCA)</h4>
+                        <span>Kolhapur University | Currently Pursuing</span>
+                        <p>Relevant Coursework:</p>
+                        <ul>
+                            <li>Database Management Systems (DBMS)</li>
+                            <li>Data Structures & Algorithms in Python</li>
+                            <li>Cloud Computing (AWS/Azure)</li>
+                            <li>Big Data Analytics</li>
+                        </ul>
+                    </div>
+
+                    <div id="certs" class="tab-content">
+                        <h4>Professional Certificates</h4>
+                        <ul>
+                            <li><b>Data Engineer Bootcamp</b> - Udemy</li>
+                            <li><b>Python Programming Masterclass</b> - Udemy</li>
+                            <li><b>Data Science Professional Certificate</b> - Completed during academic gap</li>
+                            <li><b>SQL Advanced</b> - SQLNest Verified</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section-padding">
+        <div class="container">
+            <h2 class="section-title fade-up"><span class="section-number">02.</span>Skill Proficiency</h2>
+            
+            <div class="skills-wrapper">
+                <div class="skill-category fade-up">
+                    <h3><i class="ph ph-light ph-code"></i> Core Languages</h3>
+                    <div class="skill-item" data-level="9">
+                        <div class="skill-header"><span>Python</span> <span class="mono text-green">90%</span></div>
+                        <div class="cube-track"></div> 
+                    </div>
+                    <div class="skill-item" data-level="8">
+                        <div class="skill-header"><span>SQL (PostgreSQL/MySQL)</span> <span class="mono text-green">80%</span></div>
+                        <div class="cube-track"></div>
+                    </div>
+                    <div class="skill-item" data-level="6">
+                        <div class="skill-header"><span>Java</span> <span class="mono text-green">60%</span></div>
+                        <div class="cube-track"></div>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-up" style="transition-delay: 200ms;">
+                    <h3><i class="ph ph-light ph-hard-drives"></i> Big Data & ETL</h3>
+                    <div class="skill-item" data-level="7">
+                        <div class="skill-header"><span>Apache Spark</span> <span class="mono text-green">70%</span></div>
+                        <div class="cube-track"></div>
+                    </div>
+                    <div class="skill-item" data-level="8">
+                        <div class="skill-header"><span>Apache Airflow</span> <span class="mono text-green">80%</span></div>
+                        <div class="cube-track"></div>
+                    </div>
+                    <div class="skill-item" data-level="5">
+                        <div class="skill-header"><span>Kafka</span> <span class="mono text-green">50%</span></div>
+                        <div class="cube-track"></div>
+                    </div>
+                </div>
+
+                 <div class="skill-category fade-up" style="transition-delay: 400ms;">
+                    <h3><i class="ph ph-light ph-cloud"></i> Cloud & DevOps</h3>
+                    <div class="skill-item" data-level="7">
+                        <div class="skill-header"><span>AWS (S3, Glue, Redshift)</span> <span class="mono text-green">70%</span></div>
+                        <div class="cube-track"></div>
+                    </div>
+                    <div class="skill-item" data-level="6">
+                        <div class="skill-header"><span>Docker</span> <span class="mono text-green">60%</span></div>
+                        <div class="cube-track"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENTO GRID PROJECTS SECTION -->
+    <section id="projects" class="section-padding">
+        <div class="container">
+            <h2 class="section-title fade-up"><span class="section-number">03.</span>Featured Projects</h2>
+            
+            <div class="bento-grid">
+                <!-- Card 1: Span 2 (Left) -->
+                <div class="project-card span-2 fade-up">
+                    <div class="card-inner">
+                        <div class="project-top">
+                            <i class="ph ph-light ph-folder-open folder-ico"></i>
+                            <div class="project-links">
+                                <a href="#"><i class="ph ph-light ph-github-logo"></i></a>
+                                <a href="#"><i class="ph ph-light ph-arrow-square-out"></i></a>
+                            </div>
+                        </div>
+                        <h4>Real-Time Stock Analytics</h4>
+                        <p class="project-desc">
+                            An end-to-end streaming pipeline using <b>Kafka</b> to ingest stock API data. The data is processed in real-time with <b>Spark Streaming</b> and stored in <b>TimescaleDB</b> for visualization in Grafana. Designed for high-throughput and low-latency.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Kafka</span>
+                            <span class="tech-badge">Spark</span>
+                            <span class="tech-badge">Docker</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Single (Right Top) -->
+                <div class="project-card fade-up" style="transition-delay: 200ms;">
+                     <div class="card-inner">
+                        <div class="project-top">
+                            <i class="ph ph-light ph-folder-open folder-ico"></i>
+                            <div class="project-links">
+                                <a href="#"><i class="ph ph-light ph-github-logo"></i></a>
+                            </div>
+                        </div>
+                        <h4>ETL Orchestrator</h4>
+                        <p class="project-desc">
+                            Automated python workflows using <b>Airflow</b> to clean and load data into <b>AWS S3</b> daily.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Airflow</span>
+                            <span class="tech-badge">AWS</span>
+                            <span class="tech-badge">Pandas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Single (Left Bottom) -->
+                <div class="project-card fade-up" style="transition-delay: 300ms;">
+                     <div class="card-inner">
+                        <div class="project-top">
+                            <i class="ph ph-light ph-folder-open folder-ico"></i>
+                            <div class="project-links">
+                                <a href="#"><i class="ph ph-light ph-github-logo"></i></a>
+                            </div>
+                        </div>
+                        <h4>Warehouse Migration</h4>
+                        <p class="project-desc">
+                             Modeled a Star Schema and optimized SQL queries, improving report generation speed by 40%.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">SQL</span>
+                            <span class="tech-badge">dbt</span>
+                            <span class="tech-badge">Snowflake</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Span 2 (Right Bottom) - New Project -->
+                <div class="project-card span-2 fade-up" style="transition-delay: 400ms;">
+                     <div class="card-inner">
+                        <div class="project-top">
+                            <i class="ph ph-light ph-folder-open folder-ico"></i>
+                            <div class="project-links">
+                                <a href="#"><i class="ph ph-light ph-github-logo"></i></a>
+                            </div>
+                        </div>
+                        <h4>Serverless Data Lake</h4>
+                        <p class="project-desc">
+                             Built a cost-effective data lake using <b>AWS Glue</b> for ETL jobs and <b>Athena</b> for serverless querying. Implemented partitioning strategies on S3 to reduce query costs by 60%.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">AWS Glue</span>
+                            <span class="tech-badge">Athena</span>
+                            <span class="tech-badge">S3</span>
+                            <span class="tech-badge">Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 class="section-title fade-up" style="justify-content: center;"><span class="section-number">04.</span>What's Next?</h2>
+            <div class="contact-box fade-up">
+                <h3 style="font-size: 2rem; margin-bottom: 1rem;">Get In Touch</h3>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">
+                    I am currently looking for new opportunities as a Data Engineer. Whether you have a question or just want to say hi, my inbox is open!
+                </p>
+                <form id="contactForm" onsubmit="sendMailObfuscated(event)">
+                    <div class="input-row">
+                        <input type="text" id="name" placeholder="Name" required>
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                    <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                    <button class="btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="mono">Designed & Built by Alif Kamate</p>
+        <div style="margin-top: 10px; font-size: 1.2rem;">
+            <a href="https://github.com/kamatealif" style="color:#888; margin: 0 10px;"><i class="ph ph-light ph-github-logo"></i></a>
+            <a href="https://www.linkedin.com/in/alip-kamate-722917261/" style="color:#888; margin: 0 10px;"><i class="ph ph-light ph-linkedin-logo"></i></a>
+        </div>
+    </footer>
 
 
-
- 
-<script>
-  
-
-  // ====================================
-  // js for star animation 
-  // ====================================
-  document.addEventListener('DOMContentLoaded', () => {
-    const starsContainer = document.getElementById('stars-container');
-    const body = document.body;
-    const totalStars = 1000;
-    const stars = [];
-
-    // Dynamically create and append all the star elements
-    for (let i = 0; i < totalStars; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      starsContainer.appendChild(star);
-      stars.push(star);
-    }
-
-    // Check for mobile or tablet device based on screen width
-    const isMobile = window.innerWidth <= 768;
-
-    if (isMobile) {
-      // For mobile and tablets, create a random blinking effect
-      setInterval(() => {
-        // Randomly select a star to blink
-        const randomStar = stars[Math.floor(Math.random() * stars.length)];
-
-        // Add the 'blinking' class which contains a CSS animation
-        randomStar.classList.add('blinking');
-
-        // Remove the class after a short delay to create the blink effect
-        setTimeout(() => {
-          randomStar.classList.remove('blinking');
-        }, 500); // The star blinks for 0.5 seconds
-      }, 100); // A new star is selected to blink every 0.1 seconds
-    } else {
-      // For desktop, keep the mouse hover effect
-      const getDistance = (x1, y1, x2, y2) => Math.hypot(x2 - x1, y2 - y1);
-
-      body.addEventListener('mousemove', (e) => {
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-
-        stars.forEach(star => {
-          const rect = star.getBoundingClientRect();
-          const starX = rect.left + rect.width / 2;
-          const starY = rect.top + rect.height / 2;
-
-          const distance = getDistance(mouseX, mouseY, starX, starY);
-
-          const threshold = 80;
-          if (distance < threshold) {
-            const opacity = 1 - (distance / threshold);
-            star.style.opacity = opacity;
-            star.classList.add('glowing');
-          } else {
-            star.style.opacity = 1;
-            star.classList.remove('glowing');
-          }
-        });
-      });
-
-      body.addEventListener('mouseleave', () => {
-        stars.forEach(star => {
-          star.classList.remove('glowing');
-          star.style.opacity = 1;
-        });
-      });
-    }
-  });
-  
-  // Corrected JavaScript for the mouse follower
-  const follower = document.querySelector('.mouse-follower');
-  const cards = document.querySelectorAll('.card');
-  const contactItems = document.querySelectorAll('.contact-item');
-  const heroCard = document.getElementById('hero-card');
-
-  // Check if the device is a mobile or tablet
-  const isMobileOrTablet = window.innerWidth <= 1200;
-
-  if (!isMobileOrTablet) {
-    // Add mousemove event for the entire document
-    document.addEventListener('mousemove', (e) => {
-      // Set the position of the follower to the mouse coordinates
-      follower.style.left = `${e.clientX}px`;
-      follower.style.top = `${e.clientY}px`;
-
-      // Hide the follower on the hero section
-      const isHoveringHero = heroCard.contains(e.target);
-      if (isHoveringHero) {
-        follower.classList.remove('visible');
-      } else {
-        // Show the follower outside the hero section
-        follower.classList.add('visible');
-      }
-    });
-
-    // Handle card hover effects
-    cards.forEach(card => {
-      // Exclude the hero section from the effect
-      if (card.id === 'hero-card') return;
-
-      card.addEventListener('mouseenter', () => {
-        follower.classList.add('on-card');
-      });
-
-      card.addEventListener('mouseleave', () => {
-        follower.classList.remove('on-card');
-      });
-    });
-
-    // Handle contact item hover effects
-    contactItems.forEach(item => {
-      item.addEventListener('mouseenter', () => {
-        follower.classList.add('on-contact-item');
-      });
-
-      item.addEventListener('mouseleave', () => {
-        follower.classList.remove('on-contact-item');
-      });
-    });
-  }
-</script>
-
-
-<!-- Mouse Follower HTML (single instance) -->
-<div class="mouse-follower" id="mouseFollower">
-  <div class="inner-follower" id="innerFollower"></div>
-</div>
-
-<script>
-  // Mouse Follower with Lagging Inner Circle (single implementation)
-const mouseFollower = document.getElementById('mouseFollower');
-const innerFollower = document.getElementById('innerFollower');
-let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-let followerX = mouseX, followerY = mouseY;
-let innerX = mouseX, innerY = mouseY;
-
-
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  mouseFollower.classList.add('visible');
-});
-
-// Add hover effect for interactive elements
-const hoverSelectors = ['a', 'button', '.card', '.contact-item'];
-hoverSelectors.forEach(selector => {
-  document.querySelectorAll(selector).forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      mouseFollower.classList.add('hovering');
-    });
-    el.addEventListener('mouseleave', () => {
-      mouseFollower.classList.remove('hovering');
-    });
-  });
-});
-
-
-  // Simple follower: both rings and dot move together, no animation
-  // Add delay to the inner ring and more delay to the dot
-    let ringX = mouseX, ringY = mouseY;
-    let ringVX = 0, ringVY = 0;
-    let dotVX = 0, dotVY = 0;
-    function animateFollower() {
-      // Bouncy follower
-      followerX += (mouseX - followerX) * 0.35;
-      followerY += (mouseY - followerY) * 0.35;
-      mouseFollower.style.transform = `translate(${followerX - 18}px, ${followerY - 18}px)`;
-
-      // Bouncy inner ring
-      ringVX += (mouseX - ringX) * 0.18;
-      ringVX *= 0.65;
-      ringX += ringVX;
-      ringVY += (mouseY - ringY) * 0.18;
-      ringVY *= 0.65;
-      ringY += ringVY;
-      mouseFollower.style.setProperty('--inner-ring-x', `${ringX - followerX}px`);
-      mouseFollower.style.setProperty('--inner-ring-y', `${ringY - followerY}px`);
-
-      // Bouncy dot
-      dotVX += (mouseX - innerX) * 0.12;
-      dotVX *= 0.55;
-      innerX += dotVX;
-      dotVY += (mouseY - innerY) * 0.12;
-      dotVY *= 0.55;
-      innerY += dotVY;
-      innerFollower.style.transform = `translate(${innerX - followerX}px, ${innerY - followerY}px)`;
-
-      requestAnimationFrame(animateFollower);
-    }
-    animateFollower();
-
-document.addEventListener('mouseleave', () => {
-  mouseFollower.classList.remove('visible');
-});
-
-
-</script>
-  </body>
+    <script src="script.js"></script>
+</body>
 </html>
-

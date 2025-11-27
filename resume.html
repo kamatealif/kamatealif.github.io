@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | Alip Kamate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="./assets/favicon_io/site.webmanifest">
+
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+    <canvas id="network-canvas"></canvas>
+
+    <div class="resume-container">
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar">
+            <div class="profile-header">
+                <h1>Alip Kamate</h1>
+                <h2>Data Engineer</h2>
+                <div class="profile-summary">
+                    Specializing in scalable ETL pipelines, distributed processing, and real-time analytics infrastructure.
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <div class="sb-section-title"><i class="ph ph-address-book"></i> Contact</div>
+                <div class="contact-list">
+                    <a href="mailto:kamatealip1@gmail.com" class="contact-item">
+                        <i class="ph ph-envelope-simple"></i> kamatealip1@gmail.com
+                    </a>
+                    <span class="contact-item">
+                        <i class="ph ph-phone"></i> +91 7387705851
+                    </span>
+                    <span class="contact-item">
+                        <i class="ph ph-map-pin"></i> Jath, Sangli, MH
+                    </span>
+                    <a href="https://kamatealif.github.io/" target="_blank" class="contact-item">
+                        <i class="ph ph-globe"></i> kamatealif.github.io
+                    </a>
+                    <a href="https://www.linkedin.com/in/alip-kamate-722917261/" class="contact-item">
+                        <i class="ph ph-linkedin-logo"></i> linkedin.com/in/alip-kamate-722917261
+                    </a>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div>
+                <div class="sb-section-title"><i class="ph ph-graduation-cap"></i> Education</div>
+                
+                <div class="edu-item">
+                    <div class="edu-school">Shivaji University</div>
+                    <span class="edu-degree">Bachelor's Degree</span>
+                    <div class="edu-date">May 2021 - March 2025</div>
+                    <div style="font-size: 0.8rem; color: #888; margin-top: 4px;">Secured 80.87%</div>
+                </div>
+
+                <div class="edu-item">
+                    <div class="edu-school">Raje Ramrao College</div>
+                    <span class="edu-degree">HSC (Science)</span>
+                    <div class="edu-date">2020</div>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div>
+                <div class="sb-section-title"><i class="ph ph-code"></i> Skills</div>
+                <div class="skill-cloud">
+                    <span class="skill-pill">Python</span>
+                    <span class="skill-pill">SQL (Adv)</span>
+                    <span class="skill-pill">Apache Spark</span>
+                    <span class="skill-pill">Kafka</span>
+                    <span class="skill-pill">Airflow</span>
+                    <span class="skill-pill">AWS / GCP</span>
+                    <span class="skill-pill">PostgreSQL</span>
+                    <span class="skill-pill">Docker</span>
+                    <span class="skill-pill">DBT</span>
+                    <span class="skill-pill">Git</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- RIGHT MAIN CONTENT -->
+        <main class="main-content">
+            
+            <!-- Experience -->
+            <section class="main-section">
+                <h3 class="main-title"><i class="ph ph-briefcase"></i> Project Experience</h3>
+
+                <!-- Project 1 -->
+                <div class="job-item">
+                    <div class="job-header">
+                        <div class="job-role">Real-Time Cryptocurrency Market Analytics</div>
+                        <span class="job-type">Streaming Pipeline</span>
+                    </div>
+                    <div class="job-desc">
+                        Designed a high-throughput streaming system to analyze crypto market data in real-time. Implemented aggregation windows and alert triggers for market anomalies using WebSocket APIs.
+                    </div>
+                    <div class="tech-row">
+                        <span class="tech-item">Kafka</span>
+                        <span class="tech-item">Spark Structured Streaming</span>
+                        <span class="tech-item">Python</span>
+                        <span class="tech-item">PostgreSQL</span>
+                        <span class="tech-item">Airflow</span>
+                        <span class="tech-item">Docker</span>
+                        <span class="tech-item">Grafana</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="job-item">
+                    <div class="job-header">
+                        <div class="job-role">E-commerce Order Analytics Warehouse</div>
+                        <span class="job-type">Batch Processing</span>
+                    </div>
+                    <div class="job-desc">
+                        Built an end-to-end data warehouse solution. Performed data modeling, raw staging to data mart transformation, and cohort analysis for business intelligence dashboards.
+                    </div>
+                    <div class="tech-row">
+                        <span class="tech-item">Airflow</span>
+                        <span class="tech-item">Spark</span>
+                        <span class="tech-item">dbt</span>
+                        <span class="tech-item">PostgreSQL</span>
+                        <span class="tech-item">GCS</span>
+                        <span class="tech-item">Looker</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Awards -->
+            <section class="main-section">
+                <h3 class="main-title"><i class="ph ph-trophy"></i> Achievements</h3>
+                <div class="job-item" style="padding-left: 20px;">
+                    <div class="job-header">
+                        <div class="job-role" style="font-size: 1.05rem;">Hackathon Winner</div>
+                    </div>
+                    <div class="job-desc">
+                        Won first place in college hackathon for developing a rapid, high-impact technical solution under strict time constraints.
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- FLOATING ACTIONS -->
+    <div class="actions">
+        <a href="index.html" class="btn-action" title="Back to Portfolio">
+            <i class="ph ph-arrow-left"></i>
+        </a>
+        <button onclick="window.print()" class="btn-action" title="Print / Save PDF">
+            <i class="ph ph-printer"></i>
+        </button>
+    </div>
+
+    <script>
+        // --- BACKGROUND PARTICLES ---
+        const canvas = document.getElementById('network-canvas');
+        const ctx = canvas.getContext('2d');
+        let particlesArray;
+
+        function resizeCanvas(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+        resizeCanvas();
+
+        class Particle {
+            constructor(x, y, dx, dy, size) {
+                this.x=x; this.y=y; this.dx=dx; this.dy=dy; this.size=size;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+                ctx.fillStyle = '#006239';
+                ctx.fill();
+            }
+            update() {
+                if(this.x>canvas.width||this.x<0) this.dx = -this.dx;
+                if(this.y>canvas.height||this.y<0) this.dy = -this.dy;
+                this.x+=this.dx; this.y+=this.dy;
+                this.draw();
+            }
+        }
+        
+        function init(){
+            particlesArray = [];
+            const count = (canvas.width*canvas.height)/20000;
+            for(let i=0; i<count; i++){
+                let size = Math.random()*2+1;
+                let x = Math.random()*(innerWidth-size*2)+size;
+                let y = Math.random()*(innerHeight-size*2)+size;
+                let dx = (Math.random()*0.2)-0.1;
+                let dy = (Math.random()*0.2)-0.1;
+                particlesArray.push(new Particle(x,y,dx,dy,size));
+            }
+        }
+
+        function animate(){
+            requestAnimationFrame(animate);
+            ctx.clearRect(0,0,innerWidth,innerHeight);
+            for(let i=0; i<particlesArray.length; i++){
+                particlesArray[i].update();
+            }
+        }
+
+        window.addEventListener('resize', ()=>{resizeCanvas(); init();});
+        init(); animate();
+    </script>
+</body>
+</html>
