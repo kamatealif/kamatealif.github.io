@@ -1,219 +1,819 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Resume | Alip Kamate</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-        <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="./assets/favicon_io/site.webmanifest">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./assets/favicon_io/site.webmanifest" />
 
-    <link rel="stylesheet" href="style.css">
-    
-</head>
-<body>
+    <style>
+      /* --- THEME CONFIGURATION (Dark/Red) --- */
+      :root {
+        --bg-main: #171717; /* Deep Charcoal Background */
+        --bg-card: #1f1f1f; /* Lighter Card Background */
+        --primary: #9e2a2b; /* Muted Red base */
+        --primary-glow: #ff5c5c; /* Bright Red for Text/Glow on Dark */
 
+        --text-main: #ededed; /* White/Light Grey text */
+        --text-muted: #a1a1a1; /* Muted Grey */
+
+        --glass-border: rgba(255, 255, 255, 0.08); /* Subtle white border */
+        --glass-bg: rgba(31, 31, 31, 0.85); /* Dark Glass */
+
+        --font-mono: "Fira Code", monospace;
+        --font-sans: "Inter", sans-serif;
+      }
+
+      ::selection {
+        background: #9e2a2b;
+        color: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        font-family: var(--font-sans);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      /* --- BACKGROUND PARTICLES --- */
+      #network-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      /* --- AUDIO PLAYER BUTTON --- */
+      .audio-control {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        z-index: 1000;
+        background: rgba(31, 31, 31, 0.85); /* Dark glass */
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--glass-border);
+        padding: 10px 18px;
+        border-radius: 30px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        font-family: var(--font-mono);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+      .audio-control:hover {
+        border-color: var(--primary-glow);
+        color: var(--text-main);
+        transform: translateY(-2px);
+      }
+      .audio-control.playing {
+        border-color: var(--primary-glow);
+        color: var(--primary-glow);
+        box-shadow: 0 0 20px rgba(255, 92, 92, 0.2);
+      }
+      .audio-control.playing i {
+        animation: spin 3s linear infinite;
+      }
+      @keyframes spin {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* --- RESUME CONTAINER (Two Column Layout) --- */
+      .resume-container {
+        max-width: 950px;
+        margin: 4rem auto;
+        background: var(--glass-bg);
+        backdrop-filter: blur(30px);
+        border: 1px solid var(--glass-border);
+        border-radius: 12px;
+        display: grid;
+        grid-template-columns: 300px 1fr; /* 30% Sidebar | 70% Content */
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      /* --- LEFT SIDEBAR --- */
+      .sidebar {
+        background: rgba(0, 0, 0, 0.2); /* Dark tint */
+        padding: 3rem 2rem;
+        border-right: 1px solid var(--glass-border);
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+
+      /* Name & Header */
+      .profile-header h1 {
+        font-size: 2.8rem;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+        color: var(--text-main);
+        font-weight: 800;
+        letter-spacing: -1.5px;
+      }
+      .profile-header h2 {
+        font-family: var(--font-mono);
+        font-size: 1rem;
+        color: var(--primary-glow);
+        font-weight: 500;
+        opacity: 1;
+        margin-bottom: 1rem;
+      }
+      .profile-summary {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      /* Sidebar Sections */
+      .sb-section-title {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--text-muted);
+        margin-bottom: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+      }
+      .sb-section-title i {
+        font-size: 1.1rem;
+        color: var(--primary-glow);
+      }
+
+      /* Contact List */
+      .contact-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+      .contact-item:hover {
+        color: var(--primary-glow);
+      }
+      .contact-item i {
+        font-size: 1.1rem;
+        color: var(--primary-glow);
+        opacity: 0.8;
+      }
+
+      /* Education Items (Compact) */
+      .edu-item {
+        margin-bottom: 1.5rem;
+      }
+      .edu-school {
+        font-weight: 700;
+        color: var(--text-main);
+        font-size: 0.95rem;
+        line-height: 1.2;
+      }
+      .edu-degree {
+        font-size: 0.85rem;
+        color: var(--primary-glow);
+        margin-bottom: 4px;
+        display: block;
+      }
+      .edu-date {
+        font-size: 0.75rem;
+        font-family: var(--font-mono);
+        color: var(--text-muted);
+      }
+
+      /* Skills (Tag Cloud) */
+      .skill-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .skill-pill {
+        font-size: 0.8rem;
+        padding: 4px 10px;
+        border: 1px solid var(--glass-border);
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text-muted);
+        font-family: var(--font-sans);
+        font-weight: 500;
+      }
+
+      /* --- RIGHT MAIN CONTENT --- */
+      .main-content {
+        padding: 4rem 3.5rem;
+      }
+
+      .main-section {
+        margin-bottom: 3rem;
+      }
+
+      .main-title {
+        font-size: 1.2rem;
+        color: var(--text-main);
+        border-bottom: 1px solid var(--glass-border);
+        padding-bottom: 0.8rem;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+      }
+      .main-title i {
+        color: var(--primary-glow);
+        font-size: 1.3rem;
+      }
+
+      /* Project/Job Blocks */
+      .job-item {
+        margin-bottom: 3rem;
+        position: relative;
+        padding-left: 1.5rem;
+      }
+
+      .job-item::before {
+        /* Timeline Line */
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        bottom: -3rem;
+        width: 1px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .job-item:last-child::before {
+        display: none;
+      }
+
+      .job-item::after {
+        /* Timeline Dot */
+        content: "";
+        position: absolute;
+        left: -3px;
+        top: 8px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--primary-glow);
+        box-shadow: 0 0 10px rgba(255, 92, 92, 0.4);
+      }
+
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 0.5rem;
+      }
+      .job-role {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text-main);
+      }
+      .job-type {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--primary-glow);
+        background: rgba(158, 42, 43, 0.15);
+        padding: 2px 8px;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 92, 92, 0.2);
+      }
+
+      .job-desc {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+        line-height: 1.7;
+      }
+
+      .tech-row {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+      .tech-item {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 2px 6px;
+        border-radius: 3px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: var(--text-main);
+      }
+
+      /* --- ACTIONS --- */
+      .actions {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .btn-action {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: 0.3s;
+        text-decoration: none;
+        font-size: 1.2rem;
+      }
+      .btn-action:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 20px rgba(255, 92, 92, 0.4);
+      }
+
+      /* --- PRINT --- */
+      @media print {
+        body {
+          background: white;
+          color: black;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        #network-canvas,
+        .actions,
+        .audio-control {
+          display: none;
+        }
+        .resume-container {
+          margin: 0;
+          box-shadow: none;
+          border: none;
+          width: 100%;
+          max-width: none;
+          background: white;
+          color: black;
+          grid-template-columns: 280px 1fr;
+        }
+        .sidebar {
+          background: #f8f9fa !important;
+          border-right: 1px solid #eee;
+          padding: 2rem;
+        }
+        .main-content {
+          padding: 2rem;
+        }
+        .profile-header h1,
+        .edu-school,
+        .job-role,
+        .main-title {
+          color: #000;
+        }
+        .main-title {
+          border-bottom-color: #ddd;
+        }
+        .profile-header h2,
+        .edu-degree,
+        .sb-section-title i,
+        .main-title i,
+        .contact-item i,
+        .job-type {
+          color: #9e2a2b;
+        }
+        .contact-item,
+        .edu-date,
+        .job-desc,
+        .tech-item,
+        .skill-pill {
+          color: #444;
+        }
+        .skill-pill,
+        .tech-item {
+          border-color: #ddd;
+          background: white !important;
+        }
+        .job-item::before {
+          background: #ddd;
+        }
+        .job-item::after {
+          background: #9e2a2b !important;
+          box-shadow: none;
+        }
+        .job-type {
+          background: #fdf2f2 !important;
+          border-color: #fbd5d5;
+        }
+      }
+
+      @media (max-width: 850px) {
+        .resume-container {
+          grid-template-columns: 1fr;
+          margin: 0;
+          border-radius: 0;
+          border: none;
+        }
+        .sidebar {
+          border-right: none;
+          border-bottom: 1px solid var(--glass-border);
+          padding: 2rem;
+        }
+        .main-content {
+          padding: 2rem;
+        }
+        .audio-control {
+          bottom: 20px;
+          left: 20px;
+          font-size: 0.75rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
     <canvas id="network-canvas"></canvas>
 
+    <!-- LOFI AUDIO CONTROL -->
+    <div class="audio-control" id="audio-btn">
+      <i class="ph ph-light ph-music-note"></i>
+      <span>Lofi Mode</span>
+      <audio id="bg-music" loop crossorigin="anonymous">
+        <source src="./assets/lofi.mp3" type="audio/mpeg" />
+      </audio>
+    </div>
+
     <div class="resume-container">
-        <!-- LEFT SIDEBAR -->
-        <aside class="sidebar">
-            <div class="profile-header">
-                <h1>Alip Kamate</h1>
-                <h2>Data Engineer</h2>
-                <div class="profile-summary">
-                    Specializing in scalable ETL pipelines, distributed processing, and real-time analytics infrastructure.
-                </div>
+      <!-- LEFT SIDEBAR -->
+      <aside class="sidebar">
+        <div class="profile-header">
+          <h1>Alip Kamate</h1>
+          <h2>Data Scientist</h2>
+          <div class="profile-summary">
+            Data Scientist specializing in predictive modeling, deep learning
+            architectures, and computer vision. Passionate about translating
+            complex data into actionable AI solutions.
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <div class="sb-section-title">
+            <i class="ph ph-light ph-address-book"></i> Contact
+          </div>
+          <div class="contact-list">
+            <a href="mailto:kamatealip1@gmail.com" class="contact-item">
+              <i class="ph ph-light ph-envelope-simple"></i>
+              kamatealip1@gmail.com
+            </a>
+            <span class="contact-item">
+              <i class="ph ph-light ph-phone"></i> +91 7387705851
+            </span>
+            <span class="contact-item">
+              <i class="ph ph-light ph-map-pin"></i> Jath, Sangli, MH
+            </span>
+            <a
+              href="https://kamatealif.github.io/"
+              target="_blank"
+              class="contact-item"
+            >
+              <i class="ph ph-light ph-globe"></i> kamatealif.github.io
+            </a>
+            <a
+              href="https://www.linkedin.com/in/alip-kamate-722917261/"
+              class="contact-item"
+            >
+              <i class="ph ph-light ph-linkedin-logo"></i>
+              linkedin.com/in/alip-kamate
+            </a>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div>
+          <div class="sb-section-title">
+            <i class="ph ph-light ph-graduation-cap"></i> Education
+          </div>
+
+          <div class="edu-item">
+            <div class="edu-school">Shivaji University</div>
+            <span class="edu-degree">Bachelor's Degree</span>
+            <div class="edu-date">May 2021 - March 2025</div>
+            <div style="font-size: 0.8rem; color: #888; margin-top: 4px">
+              Secured 80.87%
             </div>
+          </div>
 
-            <!-- Contact -->
-            <div>
-                <div class="sb-section-title"><i class="ph ph-address-book"></i> Contact</div>
-                <div class="contact-list">
-                    <a href="mailto:kamatealip1@gmail.com" class="contact-item">
-                        <i class="ph ph-envelope-simple"></i> kamatealip1@gmail.com
-                    </a>
-                    <span class="contact-item">
-                        <i class="ph ph-phone"></i> +91 7387705851
-                    </span>
-                    <span class="contact-item">
-                        <i class="ph ph-map-pin"></i> Jath, Sangli, MH
-                    </span>
-                    <a href="https://kamatealif.github.io/" target="_blank" class="contact-item">
-                        <i class="ph ph-globe"></i> kamatealif.github.io
-                    </a>
-                    <a href="https://www.linkedin.com/in/alip-kamate-722917261/" class="contact-item">
-                        <i class="ph ph-linkedin-logo"></i> linkedin.com/in/alip-kamate-722917261
-                    </a>
-                </div>
+          <div class="edu-item">
+            <div class="edu-school">Raje Ramrao College</div>
+            <span class="edu-degree">HSC (Science)</span>
+            <div class="edu-date">2020</div>
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div>
+          <div class="sb-section-title">
+            <i class="ph ph-light ph-code"></i> Skills
+          </div>
+          <div class="skill-cloud">
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">R</span>
+            <span class="skill-pill">TensorFlow</span>
+            <span class="skill-pill">PyTorch</span>
+            <span class="skill-pill">Scikit-Learn</span>
+            <span class="skill-pill">SQL</span>
+            <span class="skill-pill">Pandas</span>
+            <span class="skill-pill">NumPy</span>
+            <span class="skill-pill">Git</span>
+            <span class="skill-pill">FastAPI</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- RIGHT MAIN CONTENT -->
+      <main class="main-content">
+        <!-- Experience -->
+        <section class="main-section">
+          <h3 class="main-title">
+            <i class="ph ph-light ph-briefcase"></i> Project Experience
+          </h3>
+
+          <!-- Project 1 -->
+          <div class="job-item">
+            <div class="job-header">
+              <div class="job-role">Customer Churn Prediction Engine</div>
+              <span class="job-type">Predictive Analytics</span>
             </div>
-
-            <!-- Education -->
-            <div>
-                <div class="sb-section-title"><i class="ph ph-graduation-cap"></i> Education</div>
-                
-                <div class="edu-item">
-                    <div class="edu-school">Shivaji University</div>
-                    <span class="edu-degree">Bachelor's Degree</span>
-                    <div class="edu-date">May 2021 - March 2025</div>
-                    <div style="font-size: 0.8rem; color: #888; margin-top: 4px;">Secured 80.87%</div>
-                </div>
-
-                <div class="edu-item">
-                    <div class="edu-school">Raje Ramrao College</div>
-                    <span class="edu-degree">HSC (Science)</span>
-                    <div class="edu-date">2020</div>
-                </div>
+            <div class="job-desc">
+              Built a robust predictive system to identify at-risk customers.
+              Utilized ensemble methods including Random Forest and XGBoost on a
+              dataset of over 1 million user records to forecast churn
+              probability with high accuracy.
             </div>
-
-            <!-- Skills -->
-            <div>
-                <div class="sb-section-title"><i class="ph ph-code"></i> Skills</div>
-                <div class="skill-cloud">
-                    <span class="skill-pill">Python</span>
-                    <span class="skill-pill">SQL (Adv)</span>
-                    <span class="skill-pill">Apache Spark</span>
-                    <span class="skill-pill">Kafka</span>
-                    <span class="skill-pill">Airflow</span>
-                    <span class="skill-pill">AWS / GCP</span>
-                    <span class="skill-pill">PostgreSQL</span>
-                    <span class="skill-pill">Docker</span>
-                    <span class="skill-pill">DBT</span>
-                    <span class="skill-pill">Git</span>
-                </div>
+            <div class="tech-row">
+              <span class="tech-item">Python</span>
+              <span class="tech-item">Scikit-Learn</span>
+              <span class="tech-item">XGBoost</span>
+              <span class="tech-item">Pandas</span>
+              <span class="tech-item">Streamlit</span>
             </div>
-        </aside>
+          </div>
 
-        <!-- RIGHT MAIN CONTENT -->
-        <main class="main-content">
-            
-            <!-- Experience -->
-            <section class="main-section">
-                <h3 class="main-title"><i class="ph ph-briefcase"></i> Project Experience</h3>
+          <!-- Project 2 -->
+          <div class="job-item">
+            <div class="job-header">
+              <div class="job-role">Medical Image Classifier</div>
+              <span class="job-type">Computer Vision</span>
+            </div>
+            <div class="job-desc">
+              Developed a Deep Learning model using Convolutional Neural
+              Networks (CNNs) to detect anomalies in X-ray images. Achieved 94%
+              accuracy and deployed the model as a RESTful API service for
+              real-time inference.
+            </div>
+            <div class="tech-row">
+              <span class="tech-item">PyTorch</span>
+              <span class="tech-item">CNN</span>
+              <span class="tech-item">FastAPI</span>
+              <span class="tech-item">Docker</span>
+              <span class="tech-item">OpenCV</span>
+            </div>
+          </div>
+        </section>
 
-                <!-- Project 1 -->
-                <div class="job-item">
-                    <div class="job-header">
-                        <div class="job-role">Real-Time Cryptocurrency Market Analytics</div>
-                        <span class="job-type">Streaming Pipeline</span>
-                    </div>
-                    <div class="job-desc">
-                        Designed a high-throughput streaming system to analyze crypto market data in real-time. Implemented aggregation windows and alert triggers for market anomalies using WebSocket APIs.
-                    </div>
-                    <div class="tech-row">
-                        <span class="tech-item">Kafka</span>
-                        <span class="tech-item">Spark Structured Streaming</span>
-                        <span class="tech-item">Python</span>
-                        <span class="tech-item">PostgreSQL</span>
-                        <span class="tech-item">Airflow</span>
-                        <span class="tech-item">Docker</span>
-                        <span class="tech-item">Grafana</span>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="job-item">
-                    <div class="job-header">
-                        <div class="job-role">E-commerce Order Analytics Warehouse</div>
-                        <span class="job-type">Batch Processing</span>
-                    </div>
-                    <div class="job-desc">
-                        Built an end-to-end data warehouse solution. Performed data modeling, raw staging to data mart transformation, and cohort analysis for business intelligence dashboards.
-                    </div>
-                    <div class="tech-row">
-                        <span class="tech-item">Airflow</span>
-                        <span class="tech-item">Spark</span>
-                        <span class="tech-item">dbt</span>
-                        <span class="tech-item">PostgreSQL</span>
-                        <span class="tech-item">GCS</span>
-                        <span class="tech-item">Looker</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Awards -->
-            <section class="main-section">
-                <h3 class="main-title"><i class="ph ph-trophy"></i> Achievements</h3>
-                <div class="job-item" style="padding-left: 20px;">
-                    <div class="job-header">
-                        <div class="job-role" style="font-size: 1.05rem;">Hackathon Winner</div>
-                    </div>
-                    <div class="job-desc">
-                        Won first place in college hackathon for developing a rapid, high-impact technical solution under strict time constraints.
-                    </div>
-                </div>
-            </section>
-
-        </main>
+        <!-- Awards -->
+        <section class="main-section">
+          <h3 class="main-title">
+            <i class="ph ph-light ph-trophy"></i> Achievements
+          </h3>
+          <div class="job-item" style="padding-left: 1.5rem">
+            <div class="job-header">
+              <div class="job-role" style="font-size: 1.05rem">
+                Hackathon Winner
+              </div>
+            </div>
+            <div class="job-desc">
+              Won first place in college hackathon for developing a rapid,
+              high-impact technical solution under strict time constraints.
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
 
     <!-- FLOATING ACTIONS -->
     <div class="actions">
-        <a href="index.html" class="btn-action" title="Back to Portfolio">
-            <i class="ph ph-arrow-left"></i>
-        </a>
-        <button onclick="window.print()" class="btn-action" title="Print / Save PDF">
-            <i class="ph ph-printer"></i>
-        </button>
+      <a href="index.html" class="btn-action" title="Back to Portfolio">
+        <i class="ph ph-light ph-arrow-left"></i>
+      </a>
     </div>
 
     <script>
-        // --- BACKGROUND PARTICLES ---
-        const canvas = document.getElementById('network-canvas');
-        const ctx = canvas.getContext('2d');
-        let particlesArray;
+      // --- AUDIO PLAYER LOGIC ---
+      const audioBtn = document.getElementById("audio-btn");
+      const audio = document.getElementById("bg-music");
+      let isPlaying = false;
 
-        function resizeCanvas(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+      // Setup Audio Context for Visualizer
+      let audioContext, analyser, source, dataArray;
+
+      function setupAudioContext() {
+        if (audioContext) return;
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        analyser = audioContext.createAnalyser();
+        source = audioContext.createMediaElementSource(audio);
+        source.connect(analyser);
+        analyser.connect(audioContext.destination);
+        analyser.fftSize = 64;
+        dataArray = new Uint8Array(analyser.frequencyBinCount);
+      }
+
+      function updateUIPlaying() {
+        audioBtn.classList.add("playing");
+        audioBtn.querySelector("i").className = "ph ph-light ph-disc";
+        audioBtn.querySelector("span").textContent = "Vibing...";
+        isPlaying = true;
+        setupAudioContext();
+      }
+
+      window.addEventListener("load", () => {
+        audio.volume = 0.3;
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then((_) => {
+              updateUIPlaying();
+            })
+            .catch(() => {
+              document.addEventListener(
+                "click",
+                () => {
+                  if (!isPlaying) {
+                    audio.play();
+                    updateUIPlaying();
+                  }
+                },
+                { once: true }
+              );
+            });
+        }
+      });
+
+      audioBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (isPlaying) {
+          audio.pause();
+          audioBtn.classList.remove("playing");
+          audioBtn.querySelector("i").className = "ph ph-light ph-music-note";
+          audioBtn.querySelector("span").textContent = "Lofi Mode";
+        } else {
+          audio.play();
+          updateUIPlaying();
+        }
+        isPlaying = !isPlaying;
+      });
+
+      // --- BACKGROUND PARTICLES ---
+      const canvas = document.getElementById("network-canvas");
+      const ctx = canvas.getContext("2d");
+      let particlesArray;
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+
+      class Particle {
+        constructor(x, y, dx, dy, size) {
+          this.x = x;
+          this.y = y;
+          this.dx = dx;
+          this.dy = dy;
+          this.size = size;
+        }
+        draw(scale) {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size * scale, 0, Math.PI * 2);
+          ctx.fillStyle = "#FF5C5C"; /* Bright Red for Dark Theme */
+          ctx.fill();
+        }
+        update(frequencyData) {
+          if (this.x > canvas.width || this.x < 0) this.dx = -this.dx;
+          if (this.y > canvas.height || this.y < 0) this.dy = -this.dy;
+
+          let speedScale = 1;
+          let sizeScale = 1.5;
+          let jitterX = 0;
+          let jitterY = 0;
+
+          if (frequencyData) {
+            const average =
+              frequencyData.reduce((a, b) => a + b) / frequencyData.length;
+            const intensity = average / 255;
+
+            speedScale = 1 + intensity * 8;
+            sizeScale = 1.5 - intensity;
+
+            if (intensity > 0.2) {
+              const jitterAmount = intensity * 8;
+              jitterX = (Math.random() - 0.5) * jitterAmount;
+              jitterY = (Math.random() - 0.5) * jitterAmount;
+            }
+          }
+
+          this.x += this.dx * speedScale + jitterX;
+          this.y += this.dy * speedScale + jitterY;
+
+          this.draw(sizeScale);
+        }
+      }
+
+      function init() {
+        particlesArray = [];
+        const count = (canvas.width * canvas.height) / 20000;
+        for (let i = 0; i < count; i++) {
+          let size = Math.random() * 2 + 1;
+          let x = Math.random() * (innerWidth - size * 2) + size;
+          let y = Math.random() * (innerHeight - size * 2) + size;
+          let dx = Math.random() * 0.2 - 0.1;
+          let dy = Math.random() * 0.2 - 0.1;
+          particlesArray.push(new Particle(x, y, dx, dy, size));
+        }
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+        if (analyser && isPlaying) {
+          analyser.getByteFrequencyData(dataArray);
+        } else {
+          dataArray = null;
+        }
+
+        for (let i = 0; i < particlesArray.length; i++) {
+          particlesArray[i].update(dataArray);
+        }
+      }
+
+      window.addEventListener("resize", () => {
         resizeCanvas();
-
-        class Particle {
-            constructor(x, y, dx, dy, size) {
-                this.x=x; this.y=y; this.dx=dx; this.dy=dy; this.size=size;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
-                ctx.fillStyle = '#006239';
-                ctx.fill();
-            }
-            update() {
-                if(this.x>canvas.width||this.x<0) this.dx = -this.dx;
-                if(this.y>canvas.height||this.y<0) this.dy = -this.dy;
-                this.x+=this.dx; this.y+=this.dy;
-                this.draw();
-            }
-        }
-        
-        function init(){
-            particlesArray = [];
-            const count = (canvas.width*canvas.height)/20000;
-            for(let i=0; i<count; i++){
-                let size = Math.random()*2+1;
-                let x = Math.random()*(innerWidth-size*2)+size;
-                let y = Math.random()*(innerHeight-size*2)+size;
-                let dx = (Math.random()*0.2)-0.1;
-                let dy = (Math.random()*0.2)-0.1;
-                particlesArray.push(new Particle(x,y,dx,dy,size));
-            }
-        }
-
-        function animate(){
-            requestAnimationFrame(animate);
-            ctx.clearRect(0,0,innerWidth,innerHeight);
-            for(let i=0; i<particlesArray.length; i++){
-                particlesArray[i].update();
-            }
-        }
-
-        window.addEventListener('resize', ()=>{resizeCanvas(); init();});
-        init(); animate();
+        init();
+      });
+      init();
+      animate();
     </script>
-</body>
+  </body>
 </html>

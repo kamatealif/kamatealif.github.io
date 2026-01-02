@@ -1,293 +1,1313 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alif Kamate | Data Engineer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Switched to Phosphor Icons for a cleaner, thinner look -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alif Kamate | Data Scientist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Phosphor Icons (Thin/Light) -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="./assets/favicon_io/site.webmanifest">
-    
-    <link rel="stylesheet" href="style.css">
-   
-</head>
-<body>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./assets/favicon_io/site.webmanifest" />
 
+    <style>
+      /* --- THEME CONFIGURATION (Dark/Red) --- */
+      :root {
+        --bg-main: #171717; /* Deep Charcoal Background */
+        --bg-card: #1f1f1f; /* Lighter Card Background */
+        --primary: #9e2a2b; /* Muted Red base */
+        --primary-glow: #ff5c5c; /* Bright Red for Text/Glow on Dark */
+
+        --text-main: #ededed; /* White/Light Grey text */
+        --text-muted: #a1a1a1; /* Muted Grey */
+
+        --glass-border: rgba(255, 255, 255, 0.08); /* Subtle white border */
+        --glass-bg: rgba(31, 31, 31, 0.85); /* Dark Glass */
+
+        --font-mono: "Fira Code", monospace;
+        --font-sans: "Inter", sans-serif;
+      }
+
+      ::selection {
+        background: #9e2a2b;
+        color: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        font-family: var(--font-sans);
+        line-height: 1.6;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* --- BACKGROUND PARTICLES --- */
+      #network-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      /* --- AUDIO PLAYER BUTTON --- */
+      .audio-control {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        z-index: 1000;
+        background: rgba(31, 31, 31, 0.85); /* Dark glass */
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--glass-border);
+        padding: 10px 18px;
+        border-radius: 30px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        font-family: var(--font-mono);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+      .audio-control:hover {
+        border-color: var(--primary-glow);
+        color: var(--text-main);
+        transform: translateY(-2px);
+      }
+      .audio-control.playing {
+        border-color: var(--primary-glow);
+        color: var(--primary-glow);
+        box-shadow: 0 0 20px rgba(255, 92, 92, 0.2);
+      }
+      .audio-control.playing i {
+        animation: spin 3s linear infinite;
+      }
+      @keyframes spin {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* --- TYPOGRAPHY --- */
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: var(--text-main);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+      .mono {
+        font-family: var(--font-mono);
+      }
+      .text-accent {
+        color: var(--primary-glow);
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: 3rem;
+        white-space: nowrap;
+        position: relative;
+        color: var(--text-main);
+      }
+      .section-title::after {
+        content: "";
+        display: block;
+        height: 1px;
+        width: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--glass-border) 0%,
+          transparent 100%
+        );
+        margin-left: 20px;
+      }
+      .section-number {
+        color: var(--primary-glow);
+        font-family: var(--font-mono);
+        font-size: 1.1rem;
+        margin-right: 12px;
+      }
+
+      /* --- NAVBAR --- */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(23, 23, 23, 0.85); /* Dark glass */
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--glass-border);
+        z-index: 1000;
+      }
+      .logo {
+        font-weight: 800;
+        font-size: 1.2rem;
+        letter-spacing: -0.5px;
+        color: var(--text-main);
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--primary-glow);
+      }
+
+      /* Hamburger Menu */
+      .hamburger {
+        display: none;
+        cursor: pointer;
+        color: var(--primary-glow);
+        font-size: 1.8rem;
+        z-index: 1001;
+      }
+
+      /* --- HERO --- */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 0 10%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      .hero-name {
+        font-size: 4.5rem;
+        line-height: 1.1;
+        margin: 10px 0;
+        background: linear-gradient(180deg, #fff 0%, #aaa 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 800;
+        letter-spacing: -2px;
+      }
+      .hero-subtitle {
+        font-size: 2.2rem;
+        color: var(--text-muted);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+      .hero-desc {
+        max-width: 550px;
+        font-size: 1.1rem;
+        color: var(--text-muted);
+        margin-bottom: 2.5rem;
+        line-height: 1.7;
+      }
+
+      /* Glossy Button */
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        padding: 0.8rem 2rem;
+        background: var(--primary);
+        cursor: pointer;
+        color: white;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 15px rgba(158, 42, 43, 0.2);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        position: relative;
+        overflow: hidden;
+        font-family: var(--font-sans);
+      }
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 92, 92, 0.4);
+      }
+      .btn-primary::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transform: skewX(-20deg);
+        transition: 0.5s;
+      }
+      .btn-primary:hover::after {
+        left: 150%;
+        transition: 0.7s;
+      }
+
+      /* --- SECTIONS --- */
+      .section-padding {
+        padding: 6rem 10%;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      /* About Tabs */
+      .about-layout {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 3rem;
+        align-items: start;
+      }
+      .tab-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        border-left: 2px solid var(--glass-border);
+      }
+      .tab-btn {
+        background: transparent;
+        border: none;
+        padding: 1rem 1.5rem;
+        text-align: left;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        border-left: 2px solid transparent;
+        margin-left: -2px;
+      }
+      .tab-btn:hover {
+        color: var(--text-main);
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .tab-btn.active {
+        color: var(--primary-glow);
+        border-left-color: var(--primary-glow);
+        background: linear-gradient(90deg, rgba(158, 42, 43, 0.2), transparent);
+      }
+
+      .tab-content {
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      .tab-content h4 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--text-main);
+      }
+      .tab-content span {
+        color: var(--primary-glow);
+        font-size: 0.9rem;
+        display: block;
+        margin-bottom: 1rem;
+        font-family: var(--font-mono);
+      }
+      .tab-content p {
+        color: var(--text-muted);
+        line-height: 1.7;
+        margin-bottom: 1rem;
+      }
+      .tab-content ul {
+        list-style: none;
+        margin-top: 1rem;
+      }
+      .tab-content li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 10px;
+        color: var(--text-muted);
+      }
+      .tab-content li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: var(--primary-glow);
+      }
+
+      /* --- SKILLS --- */
+      .skills-wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+      .skill-category {
+        margin-bottom: 2rem;
+      }
+      .skill-category h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-main);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+      }
+      .skill-category h3 i {
+        color: var(--primary-glow);
+        font-size: 1.2rem;
+      }
+
+      .skill-item {
+        margin-bottom: 1.2rem;
+      }
+      .skill-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 6px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-main);
+      }
+
+      .cube-track {
+        display: flex;
+        gap: 6px;
+      }
+      .cube {
+        width: 100%;
+        height: 10px;
+        background: #2a2a2a; /* Dark track */
+        border-radius: 2px;
+        transition: all 0.4s ease;
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .cube.active {
+        background: var(--primary);
+        box-shadow: 0 0 8px rgba(255, 92, 92, 0.4);
+        border-color: var(--primary-glow);
+        transform: scale(1.1);
+      }
+      .cube.active.settled {
+        transform: scale(1);
+        box-shadow: none;
+      }
+
+      /* --- BENTO GRID PROJECTS (Simple Hover) --- */
+      .bento-grid {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: 1fr;
+      }
+
+      @media (min-width: 900px) {
+        .bento-grid {
+          grid-template-columns: repeat(3, 1fr);
+          grid-auto-rows: minmax(340px, auto);
+        }
+        .span-2 {
+          grid-column: span 2;
+        }
+      }
+
+      .project-card {
+        background: var(--bg-card);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        padding: 2rem;
+        transition: transform 0.3s ease, border-color 0.3s ease,
+          box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--primary-glow);
+        box-shadow: 0 10px 20px -5px rgba(158, 42, 43, 0.3);
+      }
+
+      .card-inner {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .project-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+      }
+      .folder-ico {
+        font-size: 2rem;
+        color: var(--primary-glow);
+        opacity: 0.8;
+      }
+
+      .project-links a {
+        color: var(--text-main);
+        font-size: 1.3rem;
+        margin-left: 10px;
+        transition: 0.3s;
+        opacity: 0.7;
+      }
+      .project-links a:hover {
+        color: var(--primary-glow);
+        opacity: 1;
+      }
+
+      .project-card h4 {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+        font-weight: 600;
+        color: var(--text-main);
+      }
+      .project-desc {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+        flex-grow: 1;
+      }
+
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: auto;
+      }
+      .tech-badge {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--primary-glow);
+        background: rgba(158, 42, 43, 0.15);
+        padding: 4px 10px;
+        border-radius: 20px;
+        border: 1px solid rgba(158, 42, 43, 0.2);
+      }
+
+      /* --- CONTACT --- */
+      .contact-box {
+        background: var(--bg-card);
+        border: 1px solid var(--glass-border);
+        border-radius: 12px;
+        padding: 3rem;
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+      .input-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      input,
+      textarea {
+        width: 100%;
+        background: #121212;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 12px;
+        color: var(--text-main);
+        border-radius: 6px;
+        font-family: var(--font-sans);
+        transition: 0.3s;
+      }
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--primary-glow);
+        box-shadow: 0 0 0 2px rgba(158, 42, 43, 0.2);
+      }
+      textarea {
+        margin-bottom: 1.5rem;
+        resize: vertical;
+      }
+
+      /* --- FOOTER --- */
+      footer {
+        padding: 2rem;
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        background: var(--bg-main);
+      }
+
+      .fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: 0.8s ease;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 768px) {
+        .hero-name {
+          font-size: 3rem;
+        }
+        .about-layout {
+          grid-template-columns: 1fr;
+        }
+        .tab-menu {
+          flex-direction: row;
+          border-left: none;
+          border-bottom: 2px solid var(--glass-border);
+          overflow-x: auto;
+        }
+        .tab-btn {
+          border-left: none;
+          border-bottom: 2px solid transparent;
+        }
+        .tab-btn.active {
+          border-bottom-color: var(--primary-glow);
+          background: none;
+        }
+        .input-row {
+          grid-template-columns: 1fr;
+        }
+
+        /* Mobile Nav */
+        .hamburger {
+          display: block;
+        }
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 70%;
+          height: 100vh;
+          background: rgba(23, 23, 23, 0.98);
+          backdrop-filter: blur(15px);
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          transition: 0.4s ease;
+          border-left: 1px solid var(--glass-border);
+          gap: 2rem;
+        }
+        .nav-links.active {
+          right: 0;
+        }
+        .audio-control {
+          bottom: 20px;
+          left: 20px;
+          font-size: 0.75rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
     <canvas id="network-canvas"></canvas>
 
     <div class="audio-control" id="audio-btn">
-        <i class="ph ph-light ph-music-note"></i>
-        <span>Lofi Mode</span>
-        <audio id="bg-music" loop crossorigin="anonymous">
-            <source src="./assets/lofi.mp3" type="audio/mpeg">
-        </audio>
+      <i class="ph ph-light ph-music-note"></i>
+      <span>Lofi Mode</span>
+      <audio id="bg-music" loop crossorigin="anonymous">
+        <source src="./assets/lofi.mp3" type="audio/mpeg" />
+      </audio>
     </div>
 
     <nav class="navbar">
-        <div class="logo">AK<span class="text-green">.</span></div>
-        
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#about" onclick="toggleMenu()"><span class="text-green mono">01.</span> About</a></li>
-            <li><a href="#skills" onclick="toggleMenu()"><span class="text-green mono">02.</span> Stats</a></li>
-            <li><a href="#projects" onclick="toggleMenu()"><span class="text-green mono">03.</span> Work</a></li>
-            <li><a href="#contact"><span class="text-green mono">04.</span> Contact Me</a></li>
-            <li><a href="/resume.html" class="btn-primary" style="padding: 0.4rem 1rem; font-size: 0.8rem;" onclick="toggleMenu()">Resume</a></li>
-        </ul>
+      <div class="logo">AK<span class="text-accent">.</span></div>
 
-        <div class="hamburger" onclick="toggleMenu()">
-            <i class="ph ph-light ph-list" id="menu-icon"></i>
-        </div>
+      <ul class="nav-links" id="nav-links">
+        <li>
+          <a href="#about" onclick="toggleMenu()"
+            ><span class="text-accent mono">01.</span> About</a
+          >
+        </li>
+        <li>
+          <a href="#skills" onclick="toggleMenu()"
+            ><span class="text-accent mono">02.</span> Stats</a
+          >
+        </li>
+        <li>
+          <a href="#projects" onclick="toggleMenu()"
+            ><span class="text-accent mono">03.</span> Work</a
+          >
+        </li>
+        <li>
+          <a href="resume.html"
+            ><span class="text-accent mono">04.</span> Resume</a
+          >
+        </li>
+        <li>
+          <a
+            href="#contact"
+            class="btn-primary"
+            style="padding: 0.4rem 1rem; font-size: 0.8rem"
+            onclick="toggleMenu()"
+            >Hire Me</a
+          >
+        </li>
+      </ul>
+
+      <div class="hamburger" onclick="toggleMenu()">
+        <i class="ph ph-light ph-list" id="menu-icon"></i>
+      </div>
     </nav>
 
     <section class="hero">
-        <div class="hero-content">
-            <p class="mono text-green fade-up">Hi, my name is</p>
-            <h1 class="hero-name fade-up" style="transition-delay: 100ms;">Alif Kamate.</h1>
-            <h2 class="hero-subtitle fade-up" style="transition-delay: 200ms;">I build <span id="typing-text" style="color:white;"></span></h2>
-            <p class="hero-desc fade-up" style="transition-delay: 300ms;">
-                I am a Data Engineer passionate about designing scalable ETL pipelines and automating data workflows. I bridge the gap between raw chaotic data and actionable business insights.
-            </p>
-            <a href="./assets/resume.pdf" download="Alif_Kamate_Resume.pdf" class="btn-primary fade-up" style="transition-delay: 400ms;">
-                Download Resume <i class="ph ph-light ph-download-simple"></i>
-            </a>
-        </div>
+      <div class="hero-content">
+        <p class="mono text-accent fade-up">Hi, my name is</p>
+        <h1 class="hero-name fade-up" style="transition-delay: 100ms">
+          Alif Kamate.
+        </h1>
+        <h2 class="hero-subtitle fade-up" style="transition-delay: 200ms">
+          I build
+          <span id="typing-text" style="color: var(--primary-glow)"></span>
+        </h2>
+        <p class="hero-desc fade-up" style="transition-delay: 300ms">
+          I am a Data Scientist & AI Enthusiast passionate about building
+          predictive models and AI solutions. I bridge the gap between complex
+          data and actionable business insights using Deep Learning and Computer
+          Vision.
+        </p>
+        <a
+          href="./assets/resume.pdf"
+          download="Alif_Kamate_Resume.pdf"
+          class="btn-primary fade-up"
+          style="transition-delay: 400ms"
+        >
+          Download Resume <i class="ph ph-light ph-download-simple"></i>
+        </a>
+      </div>
     </section>
 
     <section id="about" class="section-padding">
-        <div class="container">
-            <h2 class="section-title fade-up"><span class="section-number">01.</span>About Me</h2>
-            
-            <div class="about-layout fade-up">
-                <div class="tab-menu">
-                    <button class="tab-btn active" onclick="openTab(event, 'story')">My Story</button>
-                    <button class="tab-btn" onclick="openTab(event, 'education')">Education</button>
-                    <button class="tab-btn" onclick="openTab(event, 'certs')">Certifications</button>
-                </div>
+      <div class="container">
+        <h2 class="section-title fade-up">
+          <span class="section-number">01.</span>About Me
+        </h2>
 
-                <div class="tab-content-wrapper">
-                    <div id="story" class="tab-content active">
-                        <h4>My Journey</h4>
-                        <p>
-                            I started my education in the BCA program at Kolhapur University. During my second year, I faced challenging financial conditions that required me to take a drop. However, I didn't let that time go to waste.
-                        </p>
-                        <p style="margin-top: 1rem;">
-                            During that gap, I immersed myself in exploring web technologies and completed a rigorous Data Science course, building several practical projects along the way. I realized that in today's world, data is everything. This insight inspired me to pivot into the Data Engineering field.
-                        </p>
-                        <p style="margin-top: 1rem;">
-                            Leveraging my foundation in data science, I am now self-taught and driven, focusing on building robust data architectures and improving my skills every day.
-                        </p>
-                    </div>
+        <div class="about-layout fade-up">
+          <div class="tab-menu">
+            <button class="tab-btn active" onclick="openTab(event, 'story')">
+              My Story
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'education')">
+              Education
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'certs')">
+              Certifications
+            </button>
+          </div>
 
-                    <div id="education" class="tab-content">
-                        <h4>Bachelor of Computer Applications (BCA)</h4>
-                        <span>Kolhapur University | Currently Pursuing</span>
-                        <p>Relevant Coursework:</p>
-                        <ul>
-                            <li>Database Management Systems (DBMS)</li>
-                            <li>Data Structures & Algorithms in Python</li>
-                            <li>Cloud Computing (AWS/Azure)</li>
-                            <li>Big Data Analytics</li>
-                        </ul>
-                    </div>
-
-                    <div id="certs" class="tab-content">
-                        <h4>Professional Certificates</h4>
-                        <ul>
-                            <li><b>Data Engineer Bootcamp</b> - Udemy</li>
-                            <li><b>Python Programming Masterclass</b> - Udemy</li>
-                            <li><b>Data Science Professional Certificate</b> - Completed during academic gap</li>
-                            <li><b>SQL Advanced</b> - SQLNest Verified</li>
-                        </ul>
-                    </div>
-                </div>
+          <div class="tab-content-wrapper">
+            <div id="story" class="tab-content active">
+              <h4>My Journey</h4>
+              <p>
+                I started my education in the BCA program at Kolhapur
+                University. During my second year, I faced challenging financial
+                conditions that required me to take a drop. However, I didn't
+                let that time go to waste.
+              </p>
+              <p>
+                During that gap, I immersed myself in exploring web technologies
+                and completed a rigorous Data Science course, building several
+                practical projects along the way. I realized that in today's
+                world, data is everything. This insight inspired me to pivot
+                into the Data Science & AI field.
+              </p>
+              <p>
+                Leveraging my foundation in machine learning, I am now
+                self-taught and driven, focusing on building robust AI
+                architectures and improving my skills every day.
+              </p>
             </div>
+
+            <div id="education" class="tab-content">
+              <h4>Bachelor of Computer Applications (BCA)</h4>
+              <span>Kolhapur University | Currently Pursuing</span>
+              <p>Relevant Coursework:</p>
+              <ul>
+                <li>Machine Learning & AI</li>
+                <li>Data Structures & Algorithms in Python</li>
+                <li>Probability & Statistics</li>
+                <li>Database Management Systems</li>
+              </ul>
+            </div>
+
+            <div id="certs" class="tab-content">
+              <h4>Professional Certificates</h4>
+              <ul>
+                <li>
+                  <b>Data Science Professional Certificate</b> - Self-Paced
+                </li>
+                <li><b>Deep Learning Specialization</b> - Coursera</li>
+                <li><b>Python for Data Science</b> - Udemy</li>
+                <li><b>Advanced SQL for Data Science</b> - SQLNest</li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <section id="skills" class="section-padding">
-        <div class="container">
-            <h2 class="section-title fade-up"><span class="section-number">02.</span>Skill Proficiency</h2>
-            
-            <div class="skills-wrapper">
-                <div class="skill-category fade-up">
-                    <h3><i class="ph ph-light ph-code"></i> Core Languages</h3>
-                    <div class="skill-item" data-level="9">
-                        <div class="skill-header"><span>Python</span> <span class="mono text-green">90%</span></div>
-                        <div class="cube-track"></div> 
-                    </div>
-                    <div class="skill-item" data-level="8">
-                        <div class="skill-header"><span>SQL (PostgreSQL/MySQL)</span> <span class="mono text-green">80%</span></div>
-                        <div class="cube-track"></div>
-                    </div>
-                    <div class="skill-item" data-level="6">
-                        <div class="skill-header"><span>Java</span> <span class="mono text-green">60%</span></div>
-                        <div class="cube-track"></div>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title fade-up">
+          <span class="section-number">02.</span>Technical Arsenal
+        </h2>
 
-                <div class="skill-category fade-up" style="transition-delay: 200ms;">
-                    <h3><i class="ph ph-light ph-hard-drives"></i> Big Data & ETL</h3>
-                    <div class="skill-item" data-level="7">
-                        <div class="skill-header"><span>Apache Spark</span> <span class="mono text-green">70%</span></div>
-                        <div class="cube-track"></div>
-                    </div>
-                    <div class="skill-item" data-level="8">
-                        <div class="skill-header"><span>Apache Airflow</span> <span class="mono text-green">80%</span></div>
-                        <div class="cube-track"></div>
-                    </div>
-                    <div class="skill-item" data-level="5">
-                        <div class="skill-header"><span>Kafka</span> <span class="mono text-green">50%</span></div>
-                        <div class="cube-track"></div>
-                    </div>
-                </div>
-
-                 <div class="skill-category fade-up" style="transition-delay: 400ms;">
-                    <h3><i class="ph ph-light ph-cloud"></i> Cloud & DevOps</h3>
-                    <div class="skill-item" data-level="7">
-                        <div class="skill-header"><span>AWS (S3, Glue, Redshift)</span> <span class="mono text-green">70%</span></div>
-                        <div class="cube-track"></div>
-                    </div>
-                    <div class="skill-item" data-level="6">
-                        <div class="skill-header"><span>Docker</span> <span class="mono text-green">60%</span></div>
-                        <div class="cube-track"></div>
-                    </div>
-                </div>
+        <div class="skills-wrapper">
+          <div class="skill-category fade-up">
+            <h3><i class="ph ph-light ph-code"></i> Languages & Core</h3>
+            <div class="skill-item" data-level="9">
+              <div class="skill-header">
+                <span>Python</span> <span class="mono text-accent">90%</span>
+              </div>
+              <div class="cube-track"></div>
             </div>
+            <div class="skill-item" data-level="8">
+              <div class="skill-header">
+                <span>SQL</span> <span class="mono text-accent">85%</span>
+              </div>
+              <div class="cube-track"></div>
+            </div>
+            <div class="skill-item" data-level="6">
+              <div class="skill-header">
+                <span>R</span> <span class="mono text-accent">60%</span>
+              </div>
+              <div class="cube-track"></div>
+            </div>
+          </div>
+
+          <div class="skill-category fade-up" style="transition-delay: 200ms">
+            <h3><i class="ph ph-light ph-brain"></i> Machine Learning & AI</h3>
+            <div class="skill-item" data-level="8">
+              <div class="skill-header">
+                <span>TensorFlow / Keras</span>
+                <span class="mono text-accent">85%</span>
+              </div>
+              <div class="cube-track"></div>
+            </div>
+            <div class="skill-item" data-level="7">
+              <div class="skill-header">
+                <span>PyTorch</span> <span class="mono text-accent">75%</span>
+              </div>
+              <div class="cube-track"></div>
+            </div>
+            <div class="skill-item" data-level="9">
+              <div class="skill-header">
+                <span>Scikit-Learn</span>
+                <span class="mono text-accent">90%</span>
+              </div>
+              <div class="cube-track"></div>
+            </div>
+          </div>
+
+          <div class="skill-category fade-up" style="transition-delay: 400ms">
+            <h3>
+              <i class="ph ph-light ph-chart-bar"></i> Data & Visualization
+            </h3>
+            <div class="skill-item" data-level="9">
+              <div class="skill-header">
+                <span>Pandas & NumPy</span>
+                <span class="mono text-accent">95%</span>
+              </div>
+              <div class="cube-track"></div>
+            </div>
+            <div class="skill-item" data-level="8">
+              <div class="skill-header">
+                <span>Matplotlib / Seaborn</span>
+                <span class="mono text-accent">80%</span>
+              </div>
+              <div class="cube-track"></div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- BENTO GRID PROJECTS SECTION -->
     <section id="projects" class="section-padding">
-        <div class="container">
-            <h2 class="section-title fade-up"><span class="section-number">03.</span>Featured Projects</h2>
-            
-            <div class="bento-grid">
-                <!-- Card 1: Span 2 (Left) -->
-                <div class="project-card span-2 fade-up">
-                    <div class="card-inner">
-                        <div class="project-top">
-                            <i class="ph ph-light ph-folder-open folder-ico"></i>
-                            <div class="project-links">
-                                <a href="#"><i class="ph ph-light ph-github-logo"></i></a>
-                                <a href="#"><i class="ph ph-light ph-arrow-square-out"></i></a>
-                            </div>
-                        </div>
-                        <h4>Real-Time Stock Analytics</h4>
-                        <p class="project-desc">
-                            An end-to-end streaming pipeline using <b>Kafka</b> to ingest stock API data. The data is processed in real-time with <b>Spark Streaming</b> and stored in <b>TimescaleDB</b> for visualization in Grafana. Designed for high-throughput and low-latency.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Kafka</span>
-                            <span class="tech-badge">Spark</span>
-                            <span class="tech-badge">Docker</span>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title fade-up">
+          <span class="section-number">03.</span>Featured Projects
+        </h2>
 
-                <!-- Card 2: Single (Right Top) -->
-                <div class="project-card fade-up" style="transition-delay: 200ms;">
-                     <div class="card-inner">
-                        <div class="project-top">
-                            <i class="ph ph-light ph-folder-open folder-ico"></i>
-                            <div class="project-links">
-                                <a href="#"><i class="ph ph-light ph-github-logo"></i></a>
-                            </div>
-                        </div>
-                        <h4>ETL Orchestrator</h4>
-                        <p class="project-desc">
-                            Automated python workflows using <b>Airflow</b> to clean and load data into <b>AWS S3</b> daily.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">Airflow</span>
-                            <span class="tech-badge">AWS</span>
-                            <span class="tech-badge">Pandas</span>
-                        </div>
-                    </div>
+        <div class="bento-grid">
+          <!-- Card 1: Span 2 (Left) -->
+          <div class="project-card span-2 fade-up">
+            <div class="card-inner">
+              <div class="project-top">
+                <i class="ph ph-light ph-folder-open folder-ico"></i>
+                <div class="project-links">
+                  <a href="#"><i class="ph ph-light ph-github-logo"></i></a>
+                  <a href="#"
+                    ><i class="ph ph-light ph-arrow-square-out"></i
+                  ></a>
                 </div>
-
-                <!-- Card 3: Single (Left Bottom) -->
-                <div class="project-card fade-up" style="transition-delay: 300ms;">
-                     <div class="card-inner">
-                        <div class="project-top">
-                            <i class="ph ph-light ph-folder-open folder-ico"></i>
-                            <div class="project-links">
-                                <a href="#"><i class="ph ph-light ph-github-logo"></i></a>
-                            </div>
-                        </div>
-                        <h4>Warehouse Migration</h4>
-                        <p class="project-desc">
-                             Modeled a Star Schema and optimized SQL queries, improving report generation speed by 40%.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">SQL</span>
-                            <span class="tech-badge">dbt</span>
-                            <span class="tech-badge">Snowflake</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 4: Span 2 (Right Bottom) - New Project -->
-                <div class="project-card span-2 fade-up" style="transition-delay: 400ms;">
-                     <div class="card-inner">
-                        <div class="project-top">
-                            <i class="ph ph-light ph-folder-open folder-ico"></i>
-                            <div class="project-links">
-                                <a href="#"><i class="ph ph-light ph-github-logo"></i></a>
-                            </div>
-                        </div>
-                        <h4>Serverless Data Lake</h4>
-                        <p class="project-desc">
-                             Built a cost-effective data lake using <b>AWS Glue</b> for ETL jobs and <b>Athena</b> for serverless querying. Implemented partitioning strategies on S3 to reduce query costs by 60%.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">AWS Glue</span>
-                            <span class="tech-badge">Athena</span>
-                            <span class="tech-badge">S3</span>
-                            <span class="tech-badge">Python</span>
-                        </div>
-                    </div>
-                </div>
+              </div>
+              <h4>Customer Churn Prediction Engine</h4>
+              <p class="project-desc">
+                A predictive analytics system built to identify at-risk
+                customers. Utilized <b>Random Forest</b> and
+                <b>XGBoost</b> classifiers on a dataset of 1M+ users. Features
+                an interactive dashboard for marketing teams to view churn
+                probabilities in real-time.
+              </p>
+              <div class="tech-stack">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">Scikit-Learn</span>
+                <span class="tech-badge">XGBoost</span>
+                <span class="tech-badge">Streamlit</span>
+              </div>
             </div>
+          </div>
+
+          <!-- Card 2: Single (Right Top) -->
+          <div class="project-card fade-up" style="transition-delay: 200ms">
+            <div class="card-inner">
+              <div class="project-top">
+                <i class="ph ph-light ph-folder-open folder-ico"></i>
+                <div class="project-links">
+                  <a href="#"><i class="ph ph-light ph-github-logo"></i></a>
+                </div>
+              </div>
+              <h4>Medical Image Classifier</h4>
+              <p class="project-desc">
+                A CNN-based deep learning model to detect anomalies in X-ray
+                images with 94% accuracy. Built using <b>PyTorch</b> and
+                deployed as a REST API.
+              </p>
+              <div class="tech-stack">
+                <span class="tech-badge">PyTorch</span>
+                <span class="tech-badge">CNN</span>
+                <span class="tech-badge">FastAPI</span>
+                <span class="tech-badge">Docker</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Single (Left Bottom) -->
+          <div class="project-card fade-up" style="transition-delay: 300ms">
+            <div class="card-inner">
+              <div class="project-top">
+                <i class="ph ph-light ph-folder-open folder-ico"></i>
+                <div class="project-links">
+                  <a href="#"><i class="ph ph-light ph-github-logo"></i></a>
+                </div>
+              </div>
+              <h4>NLP Sentiment Dashboard</h4>
+              <p class="project-desc">
+                Analyzes social media sentiment for brand monitoring using
+                <b>Hugging Face Transformers</b> and visualizes trends over
+                time.
+              </p>
+              <div class="tech-stack">
+                <span class="tech-badge">NLP</span>
+                <span class="tech-badge">Transformers</span>
+                <span class="tech-badge">Dash</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Span 2 (Right Bottom) -->
+          <div
+            class="project-card span-2 fade-up"
+            style="transition-delay: 400ms"
+          >
+            <div class="card-inner">
+              <div class="project-top">
+                <i class="ph ph-light ph-folder-open folder-ico"></i>
+                <div class="project-links">
+                  <a href="#"><i class="ph ph-light ph-github-logo"></i></a>
+                </div>
+              </div>
+              <h4>Predictive Maintenance System</h4>
+              <p class="project-desc">
+                Developed an IoT data pipeline to predict machinery failures
+                before they happen. Processed sensor data using time-series
+                analysis (LSTM networks) to reduce downtime by 20%.
+              </p>
+              <div class="tech-stack">
+                <span class="tech-badge">TensorFlow</span>
+                <span class="tech-badge">LSTM</span>
+                <span class="tech-badge">IoT</span>
+                <span class="tech-badge">Python</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <section id="contact" class="section-padding">
-        <div class="container">
-            <h2 class="section-title fade-up" style="justify-content: center;"><span class="section-number">04.</span>What's Next?</h2>
-            <div class="contact-box fade-up">
-                <h3 style="font-size: 2rem; margin-bottom: 1rem;">Get In Touch</h3>
-                <p style="color: var(--text-muted); margin-bottom: 2rem;">
-                    I am currently looking for new opportunities as a Data Engineer. Whether you have a question or just want to say hi, my inbox is open!
-                </p>
-                <form id="contactForm" onsubmit="sendMailObfuscated(event)">
-                    <div class="input-row">
-                        <input type="text" id="name" placeholder="Name" required>
-                        <input type="email" id="email" placeholder="Email" required>
-                    </div>
-                    <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-                    <button class="btn-primary" style="width: 100%;">Send Message</button>
-                </form>
+      <div class="container">
+        <h2 class="section-title fade-up" style="justify-content: center">
+          <span class="section-number">04.</span>What's Next?
+        </h2>
+        <div class="contact-box fade-up">
+          <h3 style="font-size: 2rem; margin-bottom: 1rem">Get In Touch</h3>
+          <p style="color: var(--text-muted); margin-bottom: 2rem">
+            I am currently looking for new opportunities as a Data Scientist.
+            Whether you have a question or just want to say hi, my inbox is
+            open!
+          </p>
+          <form id="contactForm" onsubmit="sendMailObfuscated(event)">
+            <div class="input-row">
+              <input type="text" id="name" placeholder="Name" required />
+              <input type="email" id="email" placeholder="Email" required />
             </div>
+            <textarea
+              id="message"
+              rows="5"
+              placeholder="Your Message"
+              required
+            ></textarea>
+            <button class="btn-primary" style="width: 100%">
+              Send Message
+            </button>
+          </form>
         </div>
+      </div>
     </section>
 
     <footer>
-        <p class="mono">Designed & Built by Alif Kamate</p>
-        <div style="margin-top: 10px; font-size: 1.2rem;">
-            <a href="https://github.com/kamatealif" style="color:#888; margin: 0 10px;"><i class="ph ph-light ph-github-logo"></i></a>
-            <a href="https://www.linkedin.com/in/alip-kamate-722917261/" style="color:#888; margin: 0 10px;"><i class="ph ph-light ph-linkedin-logo"></i></a>
-        </div>
+      <p class="mono">Designed & Built by Alif Kamate</p>
+      <div style="margin-top: 10px; font-size: 1.2rem">
+        <a href="#" style="color: #888; margin: 0 10px"
+          ><i class="ph ph-light ph-github-logo"></i
+        ></a>
+        <a href="#" style="color: #888; margin: 0 10px"
+          ><i class="ph ph-light ph-linkedin-logo"></i
+        ></a>
+      </div>
     </footer>
 
+    <script>
+      // --- MOBILE MENU TOGGLE ---
+      const navLinks = document.getElementById("nav-links");
+      const menuIcon = document.getElementById("menu-icon");
+      let isMenuOpen = false;
 
-    <script src="script.js"></script>
-</body>
+      function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
+        if (isMenuOpen) {
+          navLinks.classList.add("active");
+          menuIcon.classList.remove("ph-list");
+          menuIcon.classList.add("ph-x");
+        } else {
+          navLinks.classList.remove("active");
+          menuIcon.classList.remove("ph-x");
+          menuIcon.classList.add("ph-list");
+        }
+      }
+
+      // --- 1. AUDIO AUTOPLAY & VISUALIZER ---
+      const audioBtn = document.getElementById("audio-btn");
+      const audio = document.getElementById("bg-music");
+      let isPlaying = false;
+
+      let audioContext, analyser, source, dataArray;
+
+      function setupAudioContext() {
+        if (audioContext) return;
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        analyser = audioContext.createAnalyser();
+        source = audioContext.createMediaElementSource(audio);
+        source.connect(analyser);
+        analyser.connect(audioContext.destination);
+        analyser.fftSize = 64;
+        dataArray = new Uint8Array(analyser.frequencyBinCount);
+      }
+
+      function updateUIPlaying() {
+        audioBtn.classList.add("playing");
+        audioBtn.querySelector("i").className = "ph ph-light ph-disc";
+        audioBtn.querySelector("span").textContent = "Vibing...";
+        isPlaying = true;
+        setupAudioContext();
+      }
+
+      window.addEventListener("load", () => {
+        audio.volume = 0.3;
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then((_) => {
+              updateUIPlaying();
+            })
+            .catch(() => {
+              document.addEventListener(
+                "click",
+                () => {
+                  if (!isPlaying) {
+                    audio.play();
+                    updateUIPlaying();
+                    if (audioContext && audioContext.state === "suspended")
+                      audioContext.resume();
+                  }
+                },
+                { once: true }
+              );
+            });
+        }
+      });
+
+      audioBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (isPlaying) {
+          audio.pause();
+          audioBtn.classList.remove("playing");
+          audioBtn.querySelector("i").className = "ph ph-light ph-music-note";
+          audioBtn.querySelector("span").textContent = "Lofi Mode";
+        } else {
+          audio.play();
+          updateUIPlaying();
+          if (audioContext && audioContext.state === "suspended")
+            audioContext.resume();
+        }
+        isPlaying = !isPlaying;
+      });
+
+      // --- 2. MUSIC-REACTIVE PARTICLES (JITTER + SCALE + SPEED) ---
+      const canvas = document.getElementById("network-canvas");
+      const ctx = canvas.getContext("2d");
+      let particlesArray;
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+
+      class Particle {
+        constructor(x, y, dx, dy, size) {
+          this.x = x;
+          this.y = y;
+          this.dx = dx;
+          this.dy = dy;
+          this.baseSize = size;
+          this.size = size;
+        }
+        draw(scale) {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size * scale, 0, Math.PI * 2);
+          ctx.fillStyle = "#FF5C5C"; /* Bright Red for Dark Theme */
+          ctx.fill();
+        }
+        update(frequencyData) {
+          if (this.x > canvas.width || this.x < 0) this.dx = -this.dx;
+          if (this.y > canvas.height || this.y < 0) this.dy = -this.dy;
+
+          let speedScale = 1;
+          let sizeScale = 1.5;
+          let jitterX = 0;
+          let jitterY = 0;
+
+          if (frequencyData) {
+            const average =
+              frequencyData.reduce((a, b) => a + b) / frequencyData.length;
+            const intensity = average / 255;
+
+            speedScale = 1 + intensity * 8;
+            sizeScale = 1.5 - intensity;
+
+            if (intensity > 0.2) {
+              const jitterAmount = intensity * 8;
+              jitterX = (Math.random() - 0.5) * jitterAmount;
+              jitterY = (Math.random() - 0.5) * jitterAmount;
+            }
+          }
+
+          this.x += this.dx * speedScale + jitterX;
+          this.y += this.dy * speedScale + jitterY;
+
+          this.draw(sizeScale);
+        }
+      }
+
+      function init() {
+        particlesArray = [];
+        const count = (canvas.width * canvas.height) / 15000;
+        for (let i = 0; i < count; i++) {
+          let size = Math.random() * 2 + 1;
+          let x = Math.random() * (innerWidth - size * 2) + size;
+          let y = Math.random() * (innerHeight - size * 2) + size;
+          let dx = Math.random() * 0.4 - 0.2;
+          let dy = Math.random() * 0.4 - 0.2;
+          particlesArray.push(new Particle(x, y, dx, dy, size));
+        }
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+        if (analyser && isPlaying) {
+          analyser.getByteFrequencyData(dataArray);
+        } else {
+          dataArray = null;
+        }
+
+        for (let i = 0; i < particlesArray.length; i++) {
+          particlesArray[i].update(dataArray);
+        }
+      }
+      window.addEventListener("resize", () => {
+        resizeCanvas();
+        init();
+      });
+      init();
+      animate();
+
+      // --- 3. TYPING ANIMATION ---
+      const textElement = document.getElementById("typing-text");
+      const phrases = [
+        "Machine Learning Models",
+        "Deep Learning Solutions",
+        "AI Architectures",
+      ];
+      let phraseIdx = 0,
+        charIdx = 0,
+        isDeleting = false;
+
+      function type() {
+        const currentPhrase = phrases[phraseIdx];
+        if (isDeleting) {
+          textElement.textContent = currentPhrase.substring(0, charIdx - 1);
+          charIdx--;
+        } else {
+          textElement.textContent = currentPhrase.substring(0, charIdx + 1);
+          charIdx++;
+        }
+        if (!isDeleting && charIdx === currentPhrase.length) {
+          isDeleting = true;
+          setTimeout(type, 2000);
+        } else if (isDeleting && charIdx === 0) {
+          isDeleting = false;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+          setTimeout(type, 500);
+        } else {
+          setTimeout(type, isDeleting ? 50 : 100);
+        }
+      }
+      type();
+
+      // --- 4. CUBICAL SKILLS ENGINE ---
+      document.querySelectorAll(".skill-item").forEach((item) => {
+        const track = item.querySelector(".cube-track");
+        const level = parseInt(item.getAttribute("data-level"));
+        for (let i = 1; i <= 10; i++) {
+          const cube = document.createElement("div");
+          cube.classList.add("cube");
+          if (i <= level) cube.classList.add("should-fill");
+          track.appendChild(cube);
+        }
+      });
+      const skillObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const cubes = entry.target.querySelectorAll(".cube.should-fill");
+              cubes.forEach((cube, index) => {
+                setTimeout(() => {
+                  cube.classList.add("active");
+                  setTimeout(() => cube.classList.add("settled"), 300);
+                }, index * 100);
+              });
+              skillObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+      document
+        .querySelectorAll(".skill-item")
+        .forEach((el) => skillObserver.observe(el));
+
+      // --- 5. TABS ---
+      window.openTab = function (evt, tabName) {
+        const tabContent = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabContent.length; i++) {
+          tabContent[i].classList.remove("active");
+        }
+        const tabBtn = document.getElementsByClassName("tab-btn");
+        for (let i = 0; i < tabBtn.length; i++) {
+          tabBtn[i].classList.remove("active");
+        }
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+      };
+
+      // --- 6. FADE ---
+      const fadeObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.1 }
+      );
+      document
+        .querySelectorAll(".fade-up")
+        .forEach((el) => fadeObserver.observe(el));
+
+      // --- 7. EMAIL ---
+      function sendMailObfuscated(e) {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
+        const recipient = atob("a2FtYXRlYWxpZjFAZ21haWwuY29t");
+        window.location.href = `mailto:${recipient}?subject=Portfolio Inquiry from ${name}&body=Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+      }
+    </script>
+  </body>
 </html>
