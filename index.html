@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -33,12 +33,12 @@
     <link rel="manifest" href="./assets/favicon_io/site.webmanifest" />
 
     <style>
-      /* --- THEME CONFIGURATION (Dark/Red) --- */
+      /* --- THEME CONFIGURATION (Dark/Green) --- */
       :root {
         --bg-main: #171717; /* Deep Charcoal Background */
         --bg-card: #1f1f1f; /* Lighter Card Background */
-        --primary: #9e2a2b; /* Muted Red base */
-        --primary-glow: #ff5c5c; /* Bright Red for Text/Glow on Dark */
+        --primary: #1f9d68; /* Deep green base */
+        --primary-glow: #3ecf8e; /* Supabase-like green glow */
 
         --text-main: #ededed; /* White/Light Grey text */
         --text-muted: #a1a1a1; /* Muted Grey */
@@ -51,7 +51,7 @@
       }
 
       ::selection {
-        background: #9e2a2b;
+        background: #1f9d68;
         color: #ffffff;
       }
 
@@ -115,7 +115,7 @@
       .audio-control.playing {
         border-color: var(--primary-glow);
         color: var(--primary-glow);
-        box-shadow: 0 0 20px rgba(255, 92, 92, 0.2);
+        box-shadow: 0 0 20px rgba(62, 207, 142, 0.2);
       }
       .audio-control.playing i {
         animation: spin 3s linear infinite;
@@ -262,7 +262,7 @@
         text-decoration: none;
         font-weight: 600;
         border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 4px 15px rgba(158, 42, 43, 0.2);
+        box-shadow: 0 4px 15px rgba(62, 207, 142, 0.2);
         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         position: relative;
         overflow: hidden;
@@ -270,7 +270,7 @@
       }
       .btn-primary:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(255, 92, 92, 0.4);
+        box-shadow: 0 8px 25px rgba(62, 207, 142, 0.4);
       }
       .btn-primary::after {
         content: "";
@@ -291,6 +291,20 @@
       .btn-primary:hover::after {
         left: 150%;
         transition: 0.7s;
+      }
+      .nav-hire-btn {
+        background: rgba(62, 207, 142, 0.15);
+        border: 1px solid rgba(62, 207, 142, 0.35);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+          0 6px 16px rgba(62, 207, 142, 0.2);
+      }
+      .nav-hire-btn:hover {
+        background: rgba(62, 207, 142, 0.24);
+        border-color: rgba(62, 207, 142, 0.55);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+          0 10px 24px rgba(62, 207, 142, 0.35);
       }
 
       /* --- SECTIONS --- */
@@ -335,7 +349,7 @@
       .tab-btn.active {
         color: var(--primary-glow);
         border-left-color: var(--primary-glow);
-        background: linear-gradient(90deg, rgba(158, 42, 43, 0.2), transparent);
+        background: linear-gradient(90deg, rgba(62, 207, 142, 0.2), transparent);
       }
 
       .tab-content {
@@ -430,7 +444,7 @@
       }
       .cube.active {
         background: var(--primary);
-        box-shadow: 0 0 8px rgba(255, 92, 92, 0.4);
+        box-shadow: 0 0 8px rgba(62, 207, 142, 0.4);
         border-color: var(--primary-glow);
         transform: scale(1.1);
       }
@@ -461,7 +475,9 @@
         border: 1px solid var(--glass-border);
         border-radius: 20px;
         padding: 2rem;
-        transition: transform 0.3s ease, border-color 0.3s ease,
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
           box-shadow 0.3s ease;
         display: flex;
         flex-direction: column;
@@ -473,7 +489,7 @@
       .project-card:hover {
         transform: translateY(-8px);
         border-color: var(--primary-glow);
-        box-shadow: 0 10px 20px -5px rgba(158, 42, 43, 0.3);
+        box-shadow: 0 10px 20px -5px rgba(62, 207, 142, 0.3);
       }
 
       .card-inner {
@@ -530,10 +546,22 @@
         font-family: var(--font-mono);
         font-size: 0.75rem;
         color: var(--primary-glow);
-        background: rgba(158, 42, 43, 0.15);
+        background: rgba(62, 207, 142, 0.12);
         padding: 4px 10px;
         border-radius: 20px;
-        border: 1px solid rgba(158, 42, 43, 0.2);
+        border: 1px solid rgba(62, 207, 142, 0.28);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06),
+          0 4px 12px rgba(62, 207, 142, 0.12);
+        transition: all 0.25s ease;
+      }
+      .tech-badge:hover {
+        background: rgba(62, 207, 142, 0.18);
+        border-color: rgba(62, 207, 142, 0.45);
+        transform: translateY(-1px);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+          0 6px 16px rgba(62, 207, 142, 0.2);
       }
 
       /* --- CONTACT --- */
@@ -568,7 +596,7 @@
       textarea:focus {
         outline: none;
         border-color: var(--primary-glow);
-        box-shadow: 0 0 0 2px rgba(158, 42, 43, 0.2);
+        box-shadow: 0 0 0 2px rgba(62, 207, 142, 0.2);
       }
       textarea {
         margin-bottom: 1.5rem;
@@ -687,7 +715,7 @@
         <li>
           <a
             href="#contact"
-            class="btn-primary"
+            class="btn-primary nav-hire-btn"
             style="padding: 0.4rem 1rem; font-size: 0.8rem"
             onclick="toggleMenu()"
             >Hire Me</a
@@ -888,24 +916,25 @@
                 <i class="ph ph-light ph-folder-open folder-ico"></i>
                 <div class="project-links">
                   <a href="#"><i class="ph ph-light ph-github-logo"></i></a>
-                  <a href="#"
+                  <a href="projects/book-recommendation/index.html"
                     ><i class="ph ph-light ph-arrow-square-out"></i
                   ></a>
                 </div>
               </div>
-              <h4>Customer Churn Prediction Engine</h4>
+              <h4>Book Recommendation System</h4>
               <p class="project-desc">
-                A predictive analytics system built to identify at-risk
-                customers. Utilized <b>Random Forest</b> and
-                <b>XGBoost</b> classifiers on a dataset of 1M+ users. Features
-                an interactive dashboard for marketing teams to view churn
-                probabilities in real-time.
+                Built a recommendation engine by scraping complete book data
+                from a book website using <b>Scrapy</b>, then transforming and
+                preparing the dataset with <b>Pandas</b>. Trained a
+                <b>TF-IDF</b>-based model and presented recommendations on the
+                frontend using <b>SvelteKit</b>.
               </p>
               <div class="tech-stack">
                 <span class="tech-badge">Python</span>
-                <span class="tech-badge">Scikit-Learn</span>
-                <span class="tech-badge">XGBoost</span>
-                <span class="tech-badge">Streamlit</span>
+                <span class="tech-badge">Scrapy</span>
+                <span class="tech-badge">Pandas</span>
+                <span class="tech-badge">TF-IDF</span>
+                <span class="tech-badge">SvelteKit</span>
               </div>
             </div>
           </div>
@@ -1021,10 +1050,14 @@
     <footer>
       <p class="mono">Designed & Built by Alif Kamate</p>
       <div style="margin-top: 10px; font-size: 1.2rem">
-        <a href="https://github.com/kamatealif/" style="color: #888; margin: 0 10px"
+        <a
+          href="https://github.com/kamatealif/"
+          style="color: #888; margin: 0 10px"
           ><i class="ph ph-light ph-github-logo"></i
         ></a>
-        <a href="https://www.linkedin.com/in/alip-kamate-722917261/" style="color: #888; margin: 0 10px"
+        <a
+          href="https://www.linkedin.com/in/alip-kamate-722917261/"
+          style="color: #888; margin: 0 10px"
           ><i class="ph ph-light ph-linkedin-logo"></i
         ></a>
       </div>
@@ -1094,7 +1127,7 @@
                       audioContext.resume();
                   }
                 },
-                { once: true }
+                { once: true },
               );
             });
         }
@@ -1116,10 +1149,12 @@
         isPlaying = !isPlaying;
       });
 
-      // --- 2. MUSIC-REACTIVE PARTICLES (JITTER + SCALE + SPEED) ---
+      // --- 2. SUBTLE MOVING TILE BORDERS ---
       const canvas = document.getElementById("network-canvas");
       const ctx = canvas.getContext("2d");
-      let particlesArray;
+      const tileSize = 48;
+      let offsetX = 0;
+      let offsetY = 0;
 
       function resizeCanvas() {
         canvas.width = window.innerWidth;
@@ -1127,85 +1162,45 @@
       }
       resizeCanvas();
 
-      class Particle {
-        constructor(x, y, dx, dy, size) {
-          this.x = x;
-          this.y = y;
-          this.dx = dx;
-          this.dy = dy;
-          this.baseSize = size;
-          this.size = size;
-        }
-        draw(scale) {
+      function getAudioIntensity() {
+        if (!analyser || !isPlaying || !dataArray) return 0;
+        analyser.getByteFrequencyData(dataArray);
+        const avg = dataArray.reduce((a, b) => a + b, 0) / dataArray.length;
+        return avg / 255;
+      }
+
+      function animateTiles(timestamp) {
+        const intensity = getAudioIntensity();
+        const speed = 0.08 + intensity * 0.18;
+        offsetX = (offsetX + speed) % tileSize;
+        offsetY = (offsetY + speed * 0.45) % tileSize;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const pulse = (Math.sin(timestamp * 0.0005) + 1) * 0.5;
+        const alpha = 0.04 + pulse * 0.02 + intensity * 0.02;
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = `rgba(62, 207, 142, ${alpha.toFixed(3)})`;
+
+        for (let x = -tileSize; x < canvas.width + tileSize; x += tileSize) {
+          const px = x + offsetX;
           ctx.beginPath();
-          ctx.arc(this.x, this.y, this.size * scale, 0, Math.PI * 2);
-          ctx.fillStyle = "#FF5C5C"; /* Bright Red for Dark Theme */
-          ctx.fill();
+          ctx.moveTo(px, 0);
+          ctx.lineTo(px, canvas.height);
+          ctx.stroke();
         }
-        update(frequencyData) {
-          if (this.x > canvas.width || this.x < 0) this.dx = -this.dx;
-          if (this.y > canvas.height || this.y < 0) this.dy = -this.dy;
-
-          let speedScale = 1;
-          let sizeScale = 1.5;
-          let jitterX = 0;
-          let jitterY = 0;
-
-          if (frequencyData) {
-            const average =
-              frequencyData.reduce((a, b) => a + b) / frequencyData.length;
-            const intensity = average / 255;
-
-            speedScale = 1 + intensity * 8;
-            sizeScale = 1.5 - intensity;
-
-            if (intensity > 0.2) {
-              const jitterAmount = intensity * 8;
-              jitterX = (Math.random() - 0.5) * jitterAmount;
-              jitterY = (Math.random() - 0.5) * jitterAmount;
-            }
-          }
-
-          this.x += this.dx * speedScale + jitterX;
-          this.y += this.dy * speedScale + jitterY;
-
-          this.draw(sizeScale);
+        for (let y = -tileSize; y < canvas.height + tileSize; y += tileSize) {
+          const py = y + offsetY;
+          ctx.beginPath();
+          ctx.moveTo(0, py);
+          ctx.lineTo(canvas.width, py);
+          ctx.stroke();
         }
+
+        requestAnimationFrame(animateTiles);
       }
 
-      function init() {
-        particlesArray = [];
-        const count = (canvas.width * canvas.height) / 15000;
-        for (let i = 0; i < count; i++) {
-          let size = Math.random() * 2 + 1;
-          let x = Math.random() * (innerWidth - size * 2) + size;
-          let y = Math.random() * (innerHeight - size * 2) + size;
-          let dx = Math.random() * 0.4 - 0.2;
-          let dy = Math.random() * 0.4 - 0.2;
-          particlesArray.push(new Particle(x, y, dx, dy, size));
-        }
-      }
-
-      function animate() {
-        requestAnimationFrame(animate);
-        ctx.clearRect(0, 0, innerWidth, innerHeight);
-
-        if (analyser && isPlaying) {
-          analyser.getByteFrequencyData(dataArray);
-        } else {
-          dataArray = null;
-        }
-
-        for (let i = 0; i < particlesArray.length; i++) {
-          particlesArray[i].update(dataArray);
-        }
-      }
-      window.addEventListener("resize", () => {
-        resizeCanvas();
-        init();
-      });
-      init();
-      animate();
+      window.addEventListener("resize", resizeCanvas);
+      animateTiles(0);
 
       // --- 3. TYPING ANIMATION ---
       const textElement = document.getElementById("typing-text");
@@ -1266,7 +1261,7 @@
             }
           });
         },
-        { threshold: 0.5 }
+        { threshold: 0.5 },
       );
       document
         .querySelectorAll(".skill-item")
@@ -1293,7 +1288,7 @@
             if (entry.isIntersecting) entry.target.classList.add("visible");
           });
         },
-        { threshold: 0.1 }
+        { threshold: 0.1 },
       );
       document
         .querySelectorAll(".fade-up")

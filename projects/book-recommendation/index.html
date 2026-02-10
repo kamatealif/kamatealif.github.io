@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Recommendation Engine | Alif Kamate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Phosphor Icons (Thin/Light) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../../assets/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../../assets/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../../assets/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../../assets/favicon_io/site.webmanifest" />
+
+    <style>
+      /* --- THEME CONFIGURATION (Dark/Green) --- */
+      :root {
+        --bg-main: #171717; /* Deep Charcoal Background */
+        --bg-card: #1f1f1f; /* Lighter Card Background */
+        --primary: #1f9d68; /* Deep green base */
+        --primary-glow: #3ecf8e; /* Supabase-like green glow */
+
+        --text-main: #ededed; /* White/Light Grey text */
+        --text-muted: #a1a1a1; /* Muted Grey */
+
+        --glass-border: rgba(255, 255, 255, 0.08); /* Subtle white border */
+        --glass-bg: rgba(31, 31, 31, 0.85); /* Dark Glass */
+
+        --font-mono: "Fira Code", monospace;
+        --font-sans: "Inter", sans-serif;
+      }
+
+      ::selection {
+        background: #1f9d68;
+        color: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        font-family: var(--font-sans);
+        line-height: 1.6;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* --- BACKGROUND PARTICLES --- */
+      #network-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      /* --- AUDIO PLAYER BUTTON --- */
+      .audio-control {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        z-index: 1000;
+        background: rgba(31, 31, 31, 0.85); /* Dark glass */
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--glass-border);
+        padding: 10px 18px;
+        border-radius: 30px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        font-family: var(--font-mono);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+      .audio-control:hover {
+        border-color: var(--primary-glow);
+        color: var(--text-main);
+        transform: translateY(-2px);
+      }
+      .audio-control.playing {
+        border-color: var(--primary-glow);
+        color: var(--primary-glow);
+        box-shadow: 0 0 20px rgba(62, 207, 142, 0.2);
+      }
+      .audio-control.playing i {
+        animation: spin 3s linear infinite;
+      }
+      @keyframes spin {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* --- TYPOGRAPHY --- */
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: var(--text-main);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+      .mono {
+        font-family: var(--font-mono);
+      }
+      .text-accent {
+        color: var(--primary-glow);
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: 3rem;
+        white-space: nowrap;
+        position: relative;
+        color: var(--text-main);
+      }
+      .section-title::after {
+        content: "";
+        display: block;
+        height: 1px;
+        width: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--glass-border) 0%,
+          transparent 100%
+        );
+        margin-left: 20px;
+      }
+      .section-number {
+        color: var(--primary-glow);
+        font-family: var(--font-mono);
+        font-size: 1.1rem;
+        margin-right: 12px;
+      }
+
+      /* --- NAVBAR --- */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(23, 23, 23, 0.85); /* Dark glass */
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--glass-border);
+        z-index: 1000;
+      }
+      .logo {
+        font-weight: 800;
+        font-size: 1.2rem;
+        letter-spacing: -0.5px;
+        color: var(--text-main);
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--primary-glow);
+      }
+
+      /* Hamburger Menu */
+      .hamburger {
+        display: none;
+        cursor: pointer;
+        color: var(--primary-glow);
+        font-size: 1.8rem;
+        z-index: 1001;
+      }
+
+      /* --- LAYOUT --- */
+      .section-padding {
+        padding: 6rem 10%;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      /* Project detail layout */
+      .project-header {
+        margin-top: 5rem;
+      }
+      .project-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+      .project-layout {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2.5rem;
+      }
+      .project-copy p {
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+      }
+      .project-copy ul {
+        list-style: none;
+        margin-top: 1rem;
+      }
+      .project-copy li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 10px;
+        color: var(--text-muted);
+      }
+      .project-copy li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: var(--primary-glow);
+      }
+      .project-sidebar h3 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tech-badge {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--primary-glow);
+        background: rgba(62, 207, 142, 0.12);
+        padding: 4px 10px;
+        border-radius: 20px;
+        border: 1px solid rgba(62, 207, 142, 0.28);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06),
+          0 4px 12px rgba(62, 207, 142, 0.12);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        padding: 0.8rem 2rem;
+        background: var(--primary);
+        cursor: pointer;
+        color: white;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 15px rgba(62, 207, 142, 0.2);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        position: relative;
+        overflow: hidden;
+        font-family: var(--font-sans);
+      }
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(62, 207, 142, 0.4);
+      }
+      .btn-primary::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transform: skewX(-20deg);
+        transition: 0.5s;
+      }
+      .btn-primary:hover::after {
+        left: 150%;
+        transition: 0.7s;
+      }
+
+      .fade-up {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.5s ease-out;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 900px) {
+        .nav-links {
+          position: fixed;
+          top: 70px;
+          right: -100%;
+          flex-direction: column;
+          background: rgba(23, 23, 23, 0.98);
+          padding: 2rem;
+          border-left: 1px solid var(--glass-border);
+          gap: 2rem;
+          height: calc(100vh - 70px);
+          width: 70%;
+          transition: right 0.3s ease;
+        }
+        .nav-links.active {
+          right: 0;
+        }
+        .hamburger {
+          display: block;
+        }
+        .audio-control {
+          bottom: 20px;
+          left: 20px;
+          font-size: 0.75rem;
+        }
+        .project-layout {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="network-canvas"></canvas>
+
+    <div class="audio-control" id="audio-btn">
+      <i class="ph ph-light ph-music-note"></i>
+      <span>Lofi Mode</span>
+      <audio id="bg-music" loop crossorigin="anonymous">
+        <source src="../../assets/lofi.mp3" type="audio/mpeg" />
+      </audio>
+    </div>
+
+    <nav class="navbar">
+      <div class="logo">AK<span class="text-accent">.</span></div>
+
+      <ul class="nav-links" id="nav-links">
+        <li>
+          <a href="/#about" onclick="toggleMenu()"
+            ><span class="text-accent mono">01.</span> About</a
+          >
+        </li>
+        <li>
+          <a href="/#skills" onclick="toggleMenu()"
+            ><span class="text-accent mono">02.</span> Stats</a
+          >
+        </li>
+        <li>
+          <a href="/#projects" onclick="toggleMenu()"
+            ><span class="text-accent mono">03.</span> Work</a
+          >
+        </li>
+        <li>
+          <a href="/resume.html"
+            ><span class="text-accent mono">04.</span> Resume</a
+          >
+        </li>
+        <li>
+          <a
+            href="/#contact"
+            class="btn-primary"
+            style="padding: 0.4rem 1rem; font-size: 0.8rem"
+            onclick="toggleMenu()"
+            >Hire Me</a
+          >
+        </li>
+      </ul>
+
+      <div class="hamburger" onclick="toggleMenu()">
+        <i class="ph ph-light ph-list" id="menu-icon"></i>
+      </div>
+    </nav>
+
+    <main class="section-padding">
+      <div class="container">
+        <header class="project-header fade-up">
+          <h2 class="section-title">
+            <span class="section-number">PRJ.</span>Book Recommendation Engine
+          </h2>
+          <div class="project-meta">
+            <span class="mono">End‑to‑end ML project</span>
+            <span class="mono">Content‑based recommendations with TF‑IDF</span>
+          </div>
+        </header>
+
+        <section class="project-layout fade-up">
+          <article class="project-copy">
+            <p>
+              This book recommendation system is built completely from scratch:
+              from scraping raw book data, to processing and vectorizing it, and
+              finally serving recommendations through a modern web interface.
+            </p>
+            <p>
+              The pipeline starts by scraping book information from the source
+              (titles, authors, descriptions, genres and other metadata). The
+              text data is then cleaned, normalized and transformed into
+              numerical vectors using <strong>TF‑IDF</strong>, so the model can
+              understand the similarity between different books.
+            </p>
+            <p>
+              On top of this vector space, the system retrieves the most similar
+              books for any given title or query, returning personalized
+              suggestions instantly. The entire flow&mdash;from scraping, data
+              processing and vector creation to the front‑end experience&mdash;is
+              designed and implemented by me.
+            </p>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem">Highlights</h3>
+            <ul>
+              <li>Custom web scraper to collect and refresh the book catalog.</li>
+              <li>
+                Clean preprocessing pipeline to handle messy real‑world text
+                data.
+              </li>
+              <li>
+                TF‑IDF based similarity search for fast, content‑based
+                recommendations.
+              </li>
+              <li>
+                Interactive Svelte front end for exploring and filtering
+                suggested books.
+              </li>
+            </ul>
+          </article>
+
+          <aside class="project-sidebar">
+            <h3>Tech Stack</h3>
+            <div class="tech-stack">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Pandas</span>
+              <span class="tech-badge">Scikit‑Learn</span>
+              <span class="tech-badge">TF‑IDF</span>
+              <span class="tech-badge">Svelte</span>
+              <span class="tech-badge">Web Scraping</span>
+            </div>
+
+            <h3 style="margin-top: 2rem">Next Steps</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem">
+              I will add more detailed sections here later, including model
+              evaluation, scalability considerations, and screenshots / GIFs of
+              the Svelte interface as the project evolves.
+            </p>
+
+            <a href="/#projects" class="btn-primary" style="margin-top: 1.5rem">
+              <i class="ph ph-light ph-arrow-left"></i> Back to Portfolio
+            </a>
+          </aside>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      // --- 0. MOBILE NAV ---
+      const navLinks = document.getElementById("nav-links");
+      const menuIcon = document.getElementById("menu-icon");
+      function toggleMenu() {
+        navLinks.classList.toggle("active");
+        if (menuIcon) {
+          menuIcon.classList.toggle("ph-list");
+          menuIcon.classList.toggle("ph-x");
+        }
+      }
+
+      // --- 1. AUDIO / LOFI MODE ---
+      const audioBtn = document.getElementById("audio-btn");
+      const audio = document.getElementById("bg-music");
+      let audioContext;
+      let analyser;
+      let dataArray;
+      let source;
+      let isPlaying = false;
+
+      function initAudioContext() {
+        if (!audioContext) {
+          audioContext = new (window.AudioContext || window.webkitAudioContext)();
+          analyser = audioContext.createAnalyser();
+          analyser.fftSize = 256;
+          const bufferLength = analyser.frequencyBinCount;
+          dataArray = new Uint8Array(bufferLength);
+
+          source = audioContext.createMediaElementSource(audio);
+          source.connect(analyser);
+          analyser.connect(audioContext.destination);
+        }
+      }
+
+      function updateUIPlaying() {
+        audioBtn.classList.add("playing");
+      }
+      function updateUIPaused() {
+        audioBtn.classList.remove("playing");
+      }
+
+      audioBtn.addEventListener("click", () => {
+        if (!audioContext) {
+          initAudioContext();
+        }
+        if (isPlaying) {
+          audio.pause();
+          updateUIPaused();
+        } else {
+          audio.play();
+          updateUIPlaying();
+          if (audioContext && audioContext.state === "suspended")
+            audioContext.resume();
+        }
+        isPlaying = !isPlaying;
+      });
+
+      // --- 2. SUBTLE MOVING TILE BORDERS ---
+      const canvas = document.getElementById("network-canvas");
+      const ctx = canvas.getContext("2d");
+      const tileSize = 48;
+      let offsetX = 0;
+      let offsetY = 0;
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+
+      function getAudioIntensity() {
+        if (!analyser || !isPlaying || !dataArray) return 0;
+        analyser.getByteFrequencyData(dataArray);
+        const avg = dataArray.reduce((a, b) => a + b, 0) / dataArray.length;
+        return avg / 255;
+      }
+
+      function animateTiles(timestamp) {
+        const intensity = getAudioIntensity();
+        const speed = 0.08 + intensity * 0.18;
+        offsetX = (offsetX + speed) % tileSize;
+        offsetY = (offsetY + speed * 0.45) % tileSize;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const pulse = (Math.sin(timestamp * 0.0005) + 1) * 0.5;
+        const alpha = 0.04 + pulse * 0.02 + intensity * 0.02;
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = `rgba(62, 207, 142, ${alpha.toFixed(3)})`;
+
+        for (let x = -tileSize; x < canvas.width + tileSize; x += tileSize) {
+          const px = x + offsetX;
+          ctx.beginPath();
+          ctx.moveTo(px, 0);
+          ctx.lineTo(px, canvas.height);
+          ctx.stroke();
+        }
+        for (let y = -tileSize; y < canvas.height + tileSize; y += tileSize) {
+          const py = y + offsetY;
+          ctx.beginPath();
+          ctx.moveTo(0, py);
+          ctx.lineTo(canvas.width, py);
+          ctx.stroke();
+        }
+
+        requestAnimationFrame(animateTiles);
+      }
+
+      window.addEventListener("resize", resizeCanvas);
+      animateTiles(0);
+
+      // --- 3. FADE-IN ---
+      const fadeObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document
+        .querySelectorAll(".fade-up")
+        .forEach((el) => fadeObserver.observe(el));
+    </script>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -33,12 +33,12 @@
     <link rel="manifest" href="./assets/favicon_io/site.webmanifest" />
 
     <style>
-      /* --- THEME CONFIGURATION (Dark/Red) --- */
+      /* --- THEME CONFIGURATION (Dark/Green) --- */
       :root {
         --bg-main: #171717; /* Deep Charcoal Background */
         --bg-card: #1f1f1f; /* Lighter Card Background */
-        --primary: #9e2a2b; /* Muted Red base */
-        --primary-glow: #ff5c5c; /* Bright Red for Text/Glow on Dark */
+        --primary: #1f9d68; /* Deep green base */
+        --primary-glow: #3ecf8e; /* Supabase-like green glow */
 
         --text-main: #ededed; /* White/Light Grey text */
         --text-muted: #a1a1a1; /* Muted Grey */
@@ -51,7 +51,7 @@
       }
 
       ::selection {
-        background: #9e2a2b;
+        background: #1f9d68;
         color: #ffffff;
       }
 
@@ -111,7 +111,7 @@
       .audio-control.playing {
         border-color: var(--primary-glow);
         color: var(--primary-glow);
-        box-shadow: 0 0 20px rgba(255, 92, 92, 0.2);
+        box-shadow: 0 0 20px rgba(62, 207, 142, 0.2);
       }
       .audio-control.playing i {
         animation: spin 3s linear infinite;
@@ -241,12 +241,24 @@
       .skill-pill {
         font-size: 0.8rem;
         padding: 4px 10px;
-        border: 1px solid var(--glass-border);
+        border: 1px solid rgba(62, 207, 142, 0.28);
         border-radius: 4px;
-        background: rgba(255, 255, 255, 0.03);
-        color: var(--text-muted);
+        background: rgba(62, 207, 142, 0.12);
+        color: var(--primary-glow);
         font-family: var(--font-sans);
         font-weight: 500;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06),
+          0 4px 12px rgba(62, 207, 142, 0.12);
+        transition: all 0.25s ease;
+      }
+      .skill-pill:hover {
+        background: rgba(62, 207, 142, 0.18);
+        border-color: rgba(62, 207, 142, 0.45);
+        transform: translateY(-1px);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+          0 6px 16px rgba(62, 207, 142, 0.2);
       }
 
       /* --- RIGHT MAIN CONTENT --- */
@@ -307,7 +319,7 @@
         height: 7px;
         border-radius: 50%;
         background: var(--primary-glow);
-        box-shadow: 0 0 10px rgba(255, 92, 92, 0.4);
+        box-shadow: 0 0 10px rgba(62, 207, 142, 0.4);
       }
 
       .job-header {
@@ -325,10 +337,14 @@
         font-family: var(--font-mono);
         font-size: 0.75rem;
         color: var(--primary-glow);
-        background: rgba(158, 42, 43, 0.15);
+        background: rgba(62, 207, 142, 0.12);
         padding: 2px 8px;
         border-radius: 4px;
-        border: 1px solid rgba(255, 92, 92, 0.2);
+        border: 1px solid rgba(62, 207, 142, 0.28);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06),
+          0 4px 12px rgba(62, 207, 142, 0.12);
       }
 
       .job-desc {
@@ -348,11 +364,23 @@
         align-items: center;
       }
       .tech-item {
-        background: rgba(255, 255, 255, 0.03);
+        background: rgba(62, 207, 142, 0.12);
         padding: 2px 6px;
         border-radius: 3px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        color: var(--text-main);
+        border: 1px solid rgba(62, 207, 142, 0.28);
+        color: var(--primary-glow);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06),
+          0 4px 12px rgba(62, 207, 142, 0.12);
+        transition: all 0.25s ease;
+      }
+      .tech-item:hover {
+        background: rgba(62, 207, 142, 0.18);
+        border-color: rgba(62, 207, 142, 0.45);
+        transform: translateY(-1px);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+          0 6px 16px rgba(62, 207, 142, 0.2);
       }
 
       /* --- ACTIONS --- */
@@ -382,7 +410,7 @@
       }
       .btn-action:hover {
         transform: translateY(-3px);
-        box-shadow: 0 0 20px rgba(255, 92, 92, 0.4);
+        box-shadow: 0 0 20px rgba(62, 207, 142, 0.4);
       }
 
       /* --- PRINT --- */
@@ -431,7 +459,7 @@
         .main-title i,
         .contact-item i,
         .job-type {
-          color: #9e2a2b;
+          color: #1f9d68;
         }
         .contact-item,
         .edu-date,
@@ -449,12 +477,12 @@
           background: #ddd;
         }
         .job-item::after {
-          background: #9e2a2b !important;
+          background: #1f9d68 !important;
           box-shadow: none;
         }
         .job-type {
-          background: #fdf2f2 !important;
-          border-color: #fbd5d5;
+          background: #ecfdf3 !important;
+          border-color: #a7f3d0;
         }
       }
 
@@ -704,7 +732,7 @@
                     updateUIPlaying();
                   }
                 },
-                { once: true }
+                { once: true },
               );
             });
         }
@@ -724,10 +752,12 @@
         isPlaying = !isPlaying;
       });
 
-      // --- BACKGROUND PARTICLES ---
+      // --- SUBTLE MOVING TILE BORDERS ---
       const canvas = document.getElementById("network-canvas");
       const ctx = canvas.getContext("2d");
-      let particlesArray;
+      const tileSize = 48;
+      let offsetX = 0;
+      let offsetY = 0;
 
       function resizeCanvas() {
         canvas.width = window.innerWidth;
@@ -735,85 +765,45 @@
       }
       resizeCanvas();
 
-      class Particle {
-        constructor(x, y, dx, dy, size) {
-          this.x = x;
-          this.y = y;
-          this.dx = dx;
-          this.dy = dy;
-          this.size = size;
-        }
-        draw(scale) {
+      function getAudioIntensity() {
+        if (!analyser || !isPlaying || !dataArray) return 0;
+        analyser.getByteFrequencyData(dataArray);
+        const avg = dataArray.reduce((a, b) => a + b, 0) / dataArray.length;
+        return avg / 255;
+      }
+
+      function animateTiles(timestamp) {
+        const intensity = getAudioIntensity();
+        const speed = 0.08 + intensity * 0.18;
+        offsetX = (offsetX + speed) % tileSize;
+        offsetY = (offsetY + speed * 0.45) % tileSize;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const pulse = (Math.sin(timestamp * 0.0005) + 1) * 0.5;
+        const alpha = 0.04 + pulse * 0.02 + intensity * 0.02;
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = `rgba(62, 207, 142, ${alpha.toFixed(3)})`;
+
+        for (let x = -tileSize; x < canvas.width + tileSize; x += tileSize) {
+          const px = x + offsetX;
           ctx.beginPath();
-          ctx.arc(this.x, this.y, this.size * scale, 0, Math.PI * 2);
-          ctx.fillStyle = "#FF5C5C"; /* Bright Red for Dark Theme */
-          ctx.fill();
+          ctx.moveTo(px, 0);
+          ctx.lineTo(px, canvas.height);
+          ctx.stroke();
         }
-        update(frequencyData) {
-          if (this.x > canvas.width || this.x < 0) this.dx = -this.dx;
-          if (this.y > canvas.height || this.y < 0) this.dy = -this.dy;
-
-          let speedScale = 1;
-          let sizeScale = 1.5;
-          let jitterX = 0;
-          let jitterY = 0;
-
-          if (frequencyData) {
-            const average =
-              frequencyData.reduce((a, b) => a + b) / frequencyData.length;
-            const intensity = average / 255;
-
-            speedScale = 1 + intensity * 8;
-            sizeScale = 1.5 - intensity;
-
-            if (intensity > 0.2) {
-              const jitterAmount = intensity * 8;
-              jitterX = (Math.random() - 0.5) * jitterAmount;
-              jitterY = (Math.random() - 0.5) * jitterAmount;
-            }
-          }
-
-          this.x += this.dx * speedScale + jitterX;
-          this.y += this.dy * speedScale + jitterY;
-
-          this.draw(sizeScale);
+        for (let y = -tileSize; y < canvas.height + tileSize; y += tileSize) {
+          const py = y + offsetY;
+          ctx.beginPath();
+          ctx.moveTo(0, py);
+          ctx.lineTo(canvas.width, py);
+          ctx.stroke();
         }
+
+        requestAnimationFrame(animateTiles);
       }
 
-      function init() {
-        particlesArray = [];
-        const count = (canvas.width * canvas.height) / 20000;
-        for (let i = 0; i < count; i++) {
-          let size = Math.random() * 2 + 1;
-          let x = Math.random() * (innerWidth - size * 2) + size;
-          let y = Math.random() * (innerHeight - size * 2) + size;
-          let dx = Math.random() * 0.2 - 0.1;
-          let dy = Math.random() * 0.2 - 0.1;
-          particlesArray.push(new Particle(x, y, dx, dy, size));
-        }
-      }
-
-      function animate() {
-        requestAnimationFrame(animate);
-        ctx.clearRect(0, 0, innerWidth, innerHeight);
-
-        if (analyser && isPlaying) {
-          analyser.getByteFrequencyData(dataArray);
-        } else {
-          dataArray = null;
-        }
-
-        for (let i = 0; i < particlesArray.length; i++) {
-          particlesArray[i].update(dataArray);
-        }
-      }
-
-      window.addEventListener("resize", () => {
-        resizeCanvas();
-        init();
-      });
-      init();
-      animate();
+      window.addEventListener("resize", resizeCanvas);
+      animateTiles(0);
     </script>
   </body>
 </html>
