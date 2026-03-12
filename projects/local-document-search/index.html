@@ -225,37 +225,55 @@
       }
       .project-layout {
         display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 2.5rem;
+        grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.9fr);
+        gap: 1.4rem;
       }
-      .project-copy p {
+      .project-copy {
+        display: grid;
+        gap: 1rem;
+      }
+      .case-card,
+      .sidebar-card {
+        padding: 1.35rem;
+        border-radius: 20px;
+        border: 1px solid var(--glass-border);
+        background: linear-gradient(180deg, rgba(31, 31, 31, 0.72), rgba(17, 17, 17, 0.94));
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+      }
+      .case-card h3,
+      .sidebar-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 0.85rem;
+      }
+      .case-card p {
         color: var(--text-muted);
-        margin-bottom: 1rem;
+        margin-bottom: 0.9rem;
+        line-height: 1.8;
       }
-      .project-copy ul {
+      .case-card ul,
+      .sidebar-list {
         list-style: none;
-        margin-top: 1rem;
-        margin-bottom: 2rem;
+        display: grid;
+        gap: 0.65rem;
       }
-      .project-copy li {
+      .case-card li,
+      .sidebar-list li {
         position: relative;
-        padding-left: 20px;
-        margin-bottom: 10px;
+        padding-left: 18px;
         color: var(--text-muted);
+        line-height: 1.65;
       }
-      .project-copy li::before {
+      .case-card li::before,
+      .sidebar-list li::before {
         content: "▹";
         position: absolute;
         left: 0;
         color: var(--primary-glow);
       }
-      .project-copy h3 {
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-      }
-      .project-sidebar h3 {
-        font-size: 1rem;
-        margin-bottom: 1rem;
+      .project-sidebar {
+        display: grid;
+        align-content: start;
+        gap: 1rem;
       }
       .tech-stack {
         display: flex;
@@ -275,16 +293,14 @@
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06),
           0 4px 12px rgba(62, 207, 142, 0.12);
       }
-      .info-card {
-        margin-top: 2rem;
-        padding: 1rem;
-        border-radius: 10px;
-        border: 1px solid var(--glass-border);
-        background: rgba(255, 255, 255, 0.02);
+      .project-meta-card strong {
+        color: var(--text-main);
       }
-      .info-card p {
+      .project-meta-card p,
+      .sidebar-card p {
         color: var(--text-muted);
         font-size: 0.9rem;
+        line-height: 1.7;
       }
 
       .btn-primary {
@@ -437,103 +453,104 @@
 
         <section class="project-layout fade-up">
           <article class="project-copy">
-            <p>
-              This project is focused on one practical problem: when documents
-              start piling up across folders, notes, and reference files, it
-              becomes slow to find the exact page or paragraph needed. The goal
-              of this engine is to make document searching feel instant while
-              keeping everything local on the machine.
-            </p>
-            <p>
-              The system scans local documents, extracts readable text, stores
-              useful metadata, and builds a searchable index. Once that index is
-              ready, a query can quickly return the most relevant files, along
-              with enough context to decide what to open and read next.
-            </p>
+            <section class="case-card">
+              <h3>Problem</h3>
+              <p>
+                When documents are spread across folders, notes, and reference
+                files, even simple searching becomes slow. I wanted a local tool
+                that could find the right document quickly and help me jump
+                straight into reading.
+              </p>
+            </section>
 
-            <h3>Why I built this project</h3>
-            <p>
-              The main reason for creating this local search engine was to
-              support a special offline study workflow. I wanted sessions where
-              I could move away from the rush of the internet, avoid the
-              constant pressure to move fast, and spend more time thinking about
-              how systems actually work.
-            </p>
-            <p>
-              Instead of immediately searching online for every answer, this
-              project helps me work through problems using my own notes,
-              documents, and mental model first. That slower process helps me
-              understand concepts better, solve problems more clearly, and
-              implement ideas with stronger reasoning.
-            </p>
+            <section class="case-card">
+              <h3>Why I built it</h3>
+              <p>
+                The main reason for building this project was to support offline
+                study sessions. I wanted to step away from the rush of the
+                internet, slow down, think properly, and solve problems by
+                working through my own notes and documents first.
+              </p>
+              <p>
+                That offline workflow helps me understand concepts more deeply
+                and implement them with better reasoning instead of depending on
+                constant external lookup.
+              </p>
+            </section>
 
-            <h3>What we are doing in this project</h3>
-            <p>
-              The first part of the work is building a clean ingestion
-              pipeline. Documents from local folders are processed so the system
-              can capture file names, paths, content, and supporting metadata.
-              That gives the search engine structure instead of treating every
-              file as a raw blob of text.
-            </p>
-            <p>
-              The second part is retrieval. Search terms are matched against the
-              indexed content so results can be ranked by relevance. The idea is
-              not only to show which file contains a word, but to surface the
-              best candidate quickly and make it easier to continue reading from
-              there.
-            </p>
-            <p>
-              The third part is the reading flow. Search is only useful if it
-              leads smoothly into consumption, so the interface is designed to
-              support quick previewing, file selection, and local reading
-              without leaving the working environment.
-            </p>
+            <section class="case-card">
+              <h3>How it works</h3>
+              <ul>
+                <li>Scan local folders and register documents into an index.</li>
+                <li>Extract readable text and useful metadata from the files.</li>
+                <li>Store structured entries for quick lookup and ranking.</li>
+                <li>Return relevant results with enough context to start reading fast.</li>
+                <li>Keep the full search and reading workflow on the local machine.</li>
+              </ul>
+            </section>
 
-            <h3>Why keep it local</h3>
-            <p>
-              Running the project locally makes the workflow faster for personal
-              notes and technical documents, and it keeps private material on
-              the machine instead of sending content to external services. That
-              local-first approach also makes the tool available offline and
-              easier to use as part of a day-to-day study or research setup.
-            </p>
+            <section class="case-card">
+              <h3>Key decisions</h3>
+              <ul>
+                <li>Kept the system local-first for privacy, speed, and focus.</li>
+                <li>Prioritized readable results over a complex search interface.</li>
+                <li>Designed it as a study tool, not only as a retrieval demo.</li>
+                <li>Focused on making result-to-reading flow feel immediate.</li>
+              </ul>
+            </section>
 
-            <h3>Core workflow</h3>
-            <ul>
-              <li>Scan folders and register local documents into an index.</li>
-              <li>Extract text and metadata so files become searchable.</li>
-              <li>Store structured entries for fast lookup and ranking.</li>
-              <li>Return relevant results with enough context for quick reading.</li>
-              <li>Keep the entire search and reading loop on the local machine.</li>
-            </ul>
+            <section class="case-card">
+              <h3>What I learned</h3>
+              <p>
+                This project taught me how much value there is in simple
+                retrieval systems when they are built around a real workflow.
+                Search quality is important, but so is the surrounding
+                experience: what gets indexed, how results are ranked, and how
+                quickly the user can move from query to understanding.
+              </p>
+            </section>
 
-            <h3>What makes the project useful</h3>
-            <p>
-              This is a small but very practical retrieval system. It applies
-              ideas from search, indexing, and information access to a real
-              daily problem: finding the right document fast. Instead of being a
-              generic demo, it is meant to improve how local knowledge is
-              searched, opened, and read.
-            </p>
-
-            <h3>Next improvements</h3>
-            <ul>
-              <li>Add richer ranking signals beyond simple keyword matching.</li>
-              <li>Support better previews for longer technical documents.</li>
-              <li>Improve filtering by file type, folder, and document tags.</li>
-              <li>Make incremental re-indexing faster as files change locally.</li>
-            </ul>
+            <section class="case-card">
+              <h3>What I'd improve next</h3>
+              <ul>
+                <li>Add richer ranking signals beyond straightforward keyword matching.</li>
+                <li>Support better previews for larger technical documents.</li>
+                <li>Introduce stronger filtering by folder, file type, and tags.</li>
+                <li>Make incremental re-indexing more efficient as files change.</li>
+              </ul>
+            </section>
           </article>
 
           <aside class="project-sidebar">
-            <h3>Tech Stack</h3>
-            <div class="tech-stack">
-              <span class="tech-badge">Python</span>
-              <span class="tech-badge">FastAPI</span>
-              <span class="tech-badge">SQLite</span>
-              <span class="tech-badge">Search Indexing</span>
-              <span class="tech-badge">Text Extraction</span>
-              <span class="tech-badge">Local Retrieval</span>
+            <div class="sidebar-card">
+              <h3>Tech Stack</h3>
+              <div class="tech-stack">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">FastAPI</span>
+                <span class="tech-badge">SQLite</span>
+                <span class="tech-badge">Search Indexing</span>
+                <span class="tech-badge">Text Extraction</span>
+                <span class="tech-badge">Local Retrieval</span>
+              </div>
+            </div>
+
+            <div class="sidebar-card project-meta-card">
+              <h3>Project Snapshot</h3>
+              <ul class="sidebar-list">
+                <li><strong>Main workflow:</strong> local indexing and ranked retrieval</li>
+                <li><strong>Use case:</strong> offline study and focused reading</li>
+                <li><strong>Data source:</strong> personal and local document files</li>
+                <li><strong>Primary goal:</strong> faster search-to-reading flow</li>
+              </ul>
+            </div>
+
+            <div class="sidebar-card">
+              <h3>Why it matters</h3>
+              <p>
+                It turns scattered local files into something closer to a
+                personal knowledge base, but without losing the quiet,
+                offline-first workflow that motivated the project.
+              </p>
             </div>
 
             <a
@@ -541,28 +558,11 @@
               class="btn-primary"
               target="_blank"
               rel="noreferrer"
-              style="margin-top: 1.5rem"
             >
               <i class="ph ph-light ph-github-logo"></i> View Repository
             </a>
 
-            <div class="info-card">
-              <h3>Project focus</h3>
-              <p>
-                Offline study, fast local document discovery, useful ranking,
-                and a smoother path from search result to actual reading.
-              </p>
-            </div>
-
-            <div class="info-card">
-              <h3>Why it matters</h3>
-              <p>
-                It turns scattered local files into something that behaves more
-                like a searchable personal knowledge base.
-              </p>
-            </div>
-
-            <a href="/#projects" class="btn-primary" style="margin-top: 1.5rem">
+            <a href="/#projects" class="btn-primary">
               <i class="ph ph-light ph-arrow-left"></i> Back to Portfolio
             </a>
           </aside>

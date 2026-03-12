@@ -68,6 +68,21 @@
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
+        background-image:
+          radial-gradient(circle at top right, rgba(62, 207, 142, 0.12), transparent 26%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 22%);
+      }
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        transform: scaleX(0);
+        transform-origin: left center;
+        background: linear-gradient(90deg, var(--primary), var(--primary-glow));
+        z-index: 1200;
+        box-shadow: 0 0 18px rgba(62, 207, 142, 0.35);
       }
 
       /* --- BACKGROUND PARTICLES --- */
@@ -124,21 +139,31 @@
 
       /* --- RESUME CONTAINER (Two Column Layout) --- */
       .resume-container {
-        max-width: 950px;
-        margin: 4rem auto;
+        position: relative;
+        max-width: 1020px;
+        margin: 5rem auto;
         background: var(--glass-bg);
         backdrop-filter: blur(30px);
         border: 1px solid var(--glass-border);
-        border-radius: 12px;
+        border-radius: 24px;
         display: grid;
         grid-template-columns: 300px 1fr; /* 30% Sidebar | 70% Content */
         overflow: hidden;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 26px 60px rgba(0, 0, 0, 0.34);
+      }
+      .resume-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--primary-glow));
       }
 
       /* --- LEFT SIDEBAR --- */
       .sidebar {
-        background: rgba(0, 0, 0, 0.2); /* Dark tint */
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.24), rgba(31, 31, 31, 0.08));
         padding: 3rem 2rem;
         border-right: 1px solid var(--glass-border);
         display: flex;
@@ -293,11 +318,17 @@
 
       /* --- RIGHT MAIN CONTENT --- */
       .main-content {
-        padding: 4rem 3.5rem;
+        padding: 3rem;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(0, 0, 0, 0.04));
       }
 
       .main-section {
-        margin-bottom: 3rem;
+        margin-bottom: 1.4rem;
+        padding: 1.5rem;
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.02);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
       }
 
       .main-title {
@@ -320,7 +351,7 @@
 
       /* Project/Job Blocks */
       .job-item {
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
         position: relative;
         padding-left: 1.5rem;
       }
@@ -426,14 +457,14 @@
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background: var(--primary);
+        background: linear-gradient(135deg, var(--primary), #166b49);
         color: white;
-        border: none;
+        border: 1px solid rgba(255, 255, 255, 0.1);
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.26);
         transition: 0.3s;
         text-decoration: none;
         font-size: 1.2rem;
@@ -453,7 +484,11 @@
         }
         #network-canvas,
         .actions,
-        .audio-control {
+        .audio-control,
+        .scroll-progress {
+          display: none;
+        }
+        .resume-container::before {
           display: none;
         }
         .resume-container {
@@ -473,6 +508,13 @@
         }
         .main-content {
           padding: 2rem;
+        }
+        .main-section {
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          padding: 0;
+          margin-bottom: 2rem;
         }
         .profile-header h1,
         .edu-school,
@@ -519,9 +561,8 @@
       @media (max-width: 850px) {
         .resume-container {
           grid-template-columns: 1fr;
-          margin: 0;
-          border-radius: 0;
-          border: none;
+          margin: 1rem;
+          border-radius: 20px;
         }
         .sidebar {
           border-right: none;
@@ -541,6 +582,7 @@
   </head>
   <body>
     <canvas id="network-canvas"></canvas>
+    <div class="scroll-progress" id="scroll-progress"></div>
 
     <!-- LOFI AUDIO CONTROL -->
     <div class="audio-control" id="audio-btn">
@@ -645,7 +687,7 @@
 
           <div class="edu-item">
             <div class="edu-school">Shivaji University</div>
-            <span class="edu-degree">Bachelor's Degree | Currently Pursuing</span>
+            <span class="edu-degree">Bachelor of Computer Applications (BCA) | Currently Pursuing</span>
             <div class="edu-date">May 2021 - Present</div>
           </div>
 
@@ -747,6 +789,7 @@
       // --- AUDIO PLAYER LOGIC ---
       const audioBtn = document.getElementById("audio-btn");
       const audio = document.getElementById("bg-music");
+      const progressBar = document.getElementById("scroll-progress");
       let isPlaying = false;
 
       // Setup Audio Context for Visualizer
@@ -859,7 +902,18 @@
       }
 
       window.addEventListener("resize", resizeCanvas);
+      window.addEventListener(
+        "scroll",
+        () => {
+          const total =
+            document.documentElement.scrollHeight - window.innerHeight;
+          const progress = total > 0 ? window.scrollY / total : 0;
+          progressBar.style.transform = `scaleX(${progress})`;
+        },
+        { passive: true },
+      );
       animateTiles(0);
+      progressBar.style.transform = "scaleX(0)";
     </script>
   </body>
 </html>

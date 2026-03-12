@@ -216,42 +216,117 @@
       }
 
       /* --- HERO --- */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        transform: scaleX(0);
+        transform-origin: left center;
+        background: linear-gradient(90deg, var(--primary), var(--primary-glow));
+        z-index: 1200;
+        box-shadow: 0 0 18px rgba(62, 207, 142, 0.35);
+      }
+
+      .nav-links a {
+        position: relative;
+        padding-bottom: 4px;
+      }
+      .nav-links a.active {
+        color: var(--text-main);
+      }
+      .nav-links a.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 100%;
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--primary), var(--primary-glow));
+      }
+
       .hero {
         min-height: 100vh;
-        display: flex;
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
         align-items: center;
-        padding: 0 10%;
+        gap: 3.5rem;
+        padding: 0 10% 4rem;
         max-width: 1400px;
         margin: 0 auto;
       }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
       .hero-name {
-        font-size: 4.5rem;
-        line-height: 1.1;
-        margin: 10px 0;
-        background: linear-gradient(180deg, #fff 0%, #aaa 100%);
+        font-size: clamp(3.6rem, 7vw, 5.3rem);
+        line-height: 1.02;
+        margin: 12px 0;
+        background: linear-gradient(180deg, #ffffff 0%, #b8b8b8 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-weight: 800;
-        letter-spacing: -2px;
+        letter-spacing: -2.5px;
       }
       .hero-subtitle {
-        font-size: 2.2rem;
-        color: var(--text-muted);
-        font-weight: 600;
-        margin-bottom: 1.5rem;
+        max-width: 16ch;
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        color: var(--text-main);
+        font-weight: 700;
+        line-height: 1.15;
+        margin-bottom: 1.1rem;
       }
       .hero-desc {
-        max-width: 550px;
-        font-size: 1.1rem;
+        max-width: 620px;
+        font-size: 1.05rem;
         color: var(--text-muted);
-        margin-bottom: 2.5rem;
-        line-height: 1.7;
+        margin-bottom: 1.8rem;
+        line-height: 1.8;
+      }
+      .signal-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-bottom: 1.8rem;
+      }
+      .signal-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        padding: 0.75rem 0.95rem;
+        border-radius: 16px;
+        border: 1px solid rgba(62, 207, 142, 0.2);
+        background: rgba(255, 255, 255, 0.02);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      }
+      .signal-chip i {
+        color: var(--primary-glow);
+        font-size: 1rem;
+      }
+      .signal-chip strong {
+        display: block;
+        color: var(--text-main);
+        font-size: 0.83rem;
+      }
+      .signal-chip span {
+        display: block;
+        font-size: 0.77rem;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+      }
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
       }
       .hero-shortcuts {
         display: flex;
         flex-wrap: wrap;
         gap: 0.8rem;
-        margin-top: 1.2rem;
+        margin-top: 1.35rem;
       }
       .shortcut-link {
         display: inline-flex;
@@ -279,32 +354,246 @@
         color: var(--primary-glow);
         font-size: 1rem;
       }
+      .hero-visual {
+        position: relative;
+        min-height: 520px;
+      }
+      .hero-visual::before {
+        content: "";
+        position: absolute;
+        inset: 2rem 0 auto auto;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(62, 207, 142, 0.22) 0%,
+          rgba(62, 207, 142, 0) 72%
+        );
+        filter: blur(6px);
+      }
+      .hero-panel {
+        position: absolute;
+        width: min(100%, 430px);
+        background: linear-gradient(180deg, rgba(31, 31, 31, 0.96), rgba(18, 18, 18, 0.94));
+        border: 1px solid var(--glass-border);
+        border-radius: 22px;
+        padding: 1.1rem;
+        box-shadow: 0 22px 44px rgba(0, 0, 0, 0.34);
+        overflow: hidden;
+      }
+      .hero-panel--book {
+        top: 2rem;
+        right: 0;
+      }
+      .hero-panel--search {
+        left: 0;
+        bottom: 1rem;
+        width: min(100%, 360px);
+      }
+      .panel-accent {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--primary-glow));
+      }
+      .panel-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+      }
+      .panel-title {
+        font-size: 0.92rem;
+        font-weight: 600;
+      }
+      .panel-label {
+        font-size: 0.74rem;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+      }
+      .panel-dots {
+        display: inline-flex;
+        gap: 6px;
+      }
+      .panel-dots span {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.18);
+      }
+      .panel-surface {
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 18px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+        padding: 1rem;
+      }
+      .book-network {
+        position: relative;
+        min-height: 170px;
+        margin-bottom: 1rem;
+        border-radius: 16px;
+        background:
+          radial-gradient(circle at 16% 18%, rgba(62, 207, 142, 0.16), transparent 34%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(10, 10, 10, 0.08));
+        overflow: hidden;
+      }
+      .book-node {
+        position: absolute;
+        padding: 0.35rem 0.6rem;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        color: var(--text-main);
+        background: rgba(62, 207, 142, 0.14);
+        border: 1px solid rgba(62, 207, 142, 0.25);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+      .book-node--center {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(62, 207, 142, 0.2);
+      }
+      .book-node--one {
+        left: 18%;
+        top: 18%;
+      }
+      .book-node--two {
+        right: 12%;
+        top: 16%;
+      }
+      .book-node--three {
+        left: 12%;
+        bottom: 18%;
+      }
+      .book-node--four {
+        right: 15%;
+        bottom: 14%;
+      }
+      .book-link {
+        position: absolute;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(62, 207, 142, 0.5), rgba(62, 207, 142, 0.05));
+        transform-origin: left center;
+      }
+      .book-link--one {
+        left: 28%;
+        top: 31%;
+        width: 112px;
+        transform: rotate(22deg);
+      }
+      .book-link--two {
+        left: 56%;
+        top: 34%;
+        width: 98px;
+        transform: rotate(-16deg);
+      }
+      .book-link--three {
+        left: 25%;
+        top: 63%;
+        width: 96px;
+        transform: rotate(-24deg);
+      }
+      .book-link--four {
+        left: 56%;
+        top: 63%;
+        width: 96px;
+        transform: rotate(24deg);
+      }
+      .recommend-list {
+        display: grid;
+        gap: 0.7rem;
+      }
+      .recommend-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0.7rem 0.8rem;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .recommend-card strong {
+        font-size: 0.88rem;
+      }
+      .recommend-card span {
+        color: var(--text-muted);
+        font-size: 0.72rem;
+        font-family: var(--font-mono);
+      }
+      .search-bar-visual {
+        padding: 0.8rem 1rem;
+        border-radius: 14px;
+        background: rgba(10, 10, 10, 0.55);
+        color: var(--primary-glow);
+        font-family: var(--font-mono);
+        font-size: 0.82rem;
+        margin-bottom: 0.9rem;
+        border: 1px solid rgba(62, 207, 142, 0.16);
+      }
+      .search-result-list {
+        display: grid;
+        gap: 0.75rem;
+      }
+      .search-result {
+        padding: 0.8rem;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .search-result strong {
+        display: block;
+        font-size: 0.86rem;
+        margin-bottom: 0.25rem;
+      }
+      .search-result p,
+      .search-result span {
+        color: var(--text-muted);
+        font-size: 0.75rem;
+      }
+      .search-result span {
+        font-family: var(--font-mono);
+      }
 
       /* Glossy Button */
-      .btn-primary {
+      .btn-primary,
+      .btn-secondary {
         display: inline-flex;
         align-items: center;
         gap: 10px;
         justify-content: center;
-        padding: 0.8rem 2rem;
-        background: var(--primary);
+        padding: 0.85rem 1.6rem;
         cursor: pointer;
         color: white;
-        border-radius: 6px;
+        border-radius: 999px;
         text-decoration: none;
         font-weight: 600;
         border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 4px 15px rgba(62, 207, 142, 0.2);
         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         position: relative;
         overflow: hidden;
         font-family: var(--font-sans);
       }
-      .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(62, 207, 142, 0.4);
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary), #166b49);
+        box-shadow: 0 4px 15px rgba(62, 207, 142, 0.2);
       }
-      .btn-primary::after {
+      .btn-secondary {
+        color: var(--text-main);
+        background: rgba(255, 255, 255, 0.03);
+        border-color: rgba(62, 207, 142, 0.18);
+      }
+      .btn-primary:hover,
+      .btn-secondary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 28px rgba(62, 207, 142, 0.24);
+      }
+      .btn-primary::after,
+      .btn-secondary::after {
         content: "";
         position: absolute;
         top: 0;
@@ -314,13 +603,14 @@
         background: linear-gradient(
           90deg,
           transparent,
-          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0.18),
           transparent
         );
         transform: skewX(-20deg);
         transition: 0.5s;
       }
-      .btn-primary:hover::after {
+      .btn-primary:hover::after,
+      .btn-secondary:hover::after {
         left: 150%;
         transition: 0.7s;
       }
@@ -332,58 +622,79 @@
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
           0 6px 16px rgba(62, 207, 142, 0.2);
       }
-      .nav-hire-btn:hover {
-        background: rgba(62, 207, 142, 0.24);
-        border-color: rgba(62, 207, 142, 0.55);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
-          0 10px 24px rgba(62, 207, 142, 0.35);
-      }
 
       /* --- SECTIONS --- */
       .section-padding {
-        padding: 6rem 10%;
+        padding: 5.5rem 10%;
+        position: relative;
+      }
+      .section-padding::before {
+        content: "";
+        position: absolute;
+        left: 10%;
+        right: 10%;
+        top: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
       }
       .container {
         max-width: 1100px;
         margin: 0 auto;
       }
+      .section-intro {
+        max-width: 680px;
+        color: var(--text-muted);
+        margin: -1.4rem 0 2.2rem;
+        line-height: 1.8;
+      }
 
       /* About Tabs */
       .about-layout {
         display: grid;
-        grid-template-columns: 1fr 2fr;
-        gap: 3rem;
+        grid-template-columns: 240px 1fr;
+        gap: 1.2rem;
         align-items: start;
+        padding: 1.5rem;
+        border-radius: 26px;
+        border: 1px solid var(--glass-border);
+        background: linear-gradient(180deg, rgba(31, 31, 31, 0.46), rgba(31, 31, 31, 0.2));
+        box-shadow: 0 18px 34px rgba(0, 0, 0, 0.18);
       }
       .tab-menu {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
-        border-left: 2px solid var(--glass-border);
+        gap: 0.65rem;
+        padding: 0.45rem;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.02);
       }
       .tab-btn {
         background: transparent;
         border: none;
-        padding: 1rem 1.5rem;
+        padding: 1rem 1.1rem;
         text-align: left;
         color: var(--text-muted);
         font-family: var(--font-mono);
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         cursor: pointer;
         transition: all 0.3s;
-        border-left: 2px solid transparent;
-        margin-left: -2px;
+        border-radius: 14px;
       }
       .tab-btn:hover {
         color: var(--text-main);
         background: rgba(255, 255, 255, 0.03);
       }
       .tab-btn.active {
-        color: var(--primary-glow);
-        border-left-color: var(--primary-glow);
-        background: linear-gradient(90deg, rgba(62, 207, 142, 0.2), transparent);
+        color: var(--text-main);
+        background: linear-gradient(90deg, rgba(62, 207, 142, 0.18), rgba(255, 255, 255, 0.03));
+        box-shadow: inset 0 0 0 1px rgba(62, 207, 142, 0.18);
       }
-
+      .tab-content-wrapper {
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 20px;
+        padding: 1.4rem 1.6rem;
+        min-height: 100%;
+      }
       .tab-content {
         display: none;
         animation: fadeIn 0.5s ease;
@@ -392,8 +703,8 @@
         display: block;
       }
       .tab-content h4 {
-        font-size: 1.3rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.35rem;
+        margin-bottom: 0.6rem;
         font-weight: 600;
         color: var(--text-main);
       }
@@ -406,7 +717,7 @@
       }
       .tab-content p {
         color: var(--text-muted);
-        line-height: 1.7;
+        line-height: 1.8;
         margin-bottom: 1rem;
       }
       .tab-content ul {
@@ -427,82 +738,111 @@
       }
 
       /* --- SKILLS --- */
+      #skills .container {
+        max-width: 1040px;
+      }
       .skills-wrapper {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
       }
       .skill-category {
-        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+        padding: 1.5rem;
+        border-radius: 24px;
+        border: 1px solid var(--glass-border);
+        background: linear-gradient(180deg, rgba(31, 31, 31, 0.7), rgba(18, 18, 18, 0.85));
+        box-shadow: 0 18px 34px rgba(0, 0, 0, 0.18);
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .skill-category:hover {
+        transform: translateY(-6px);
+        border-color: rgba(62, 207, 142, 0.26);
+        box-shadow: 0 20px 36px rgba(0, 0, 0, 0.24);
       }
       .skill-category h3 {
         font-size: 1.1rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.9rem;
         color: var(--text-main);
         display: flex;
         align-items: center;
         gap: 10px;
-        font-weight: 600;
+        font-weight: 700;
       }
       .skill-category h3 i {
         color: var(--primary-glow);
         font-size: 1.2rem;
       }
-
-      .skill-item {
-        margin-bottom: 1.2rem;
+      .skill-copy {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        line-height: 1.75;
+        margin-bottom: 1rem;
       }
-      .skill-header {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 6px;
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: var(--text-main);
+      .skill-points {
+        list-style: none;
+        display: grid;
+        gap: 0.55rem;
+        margin-bottom: 1rem;
       }
-
-      .cube-track {
-        display: flex;
-        gap: 6px;
-      }
-      .cube {
-        width: 100%;
-        height: 10px;
-        background: #2a2a2a; /* Dark track */
-        border-radius: 2px;
-        transition: all 0.4s ease;
+      .skill-points li {
         position: relative;
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding-left: 1rem;
+        color: var(--text-muted);
+        font-size: 0.9rem;
       }
-      .cube.active {
-        background: var(--primary);
-        box-shadow: 0 0 8px rgba(62, 207, 142, 0.4);
-        border-color: var(--primary-glow);
-        transform: scale(1.1);
+      .skill-points li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.55rem;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--primary-glow);
+        box-shadow: 0 0 10px rgba(62, 207, 142, 0.32);
       }
-      .cube.active.settled {
-        transform: scale(1);
-        box-shadow: none;
+      .skill-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: auto;
+      }
+      .skill-badges span {
+        font-family: var(--font-mono);
+        font-size: 0.74rem;
+        color: var(--primary-glow);
+        background: rgba(62, 207, 142, 0.12);
+        padding: 0.35rem 0.6rem;
+        border-radius: 999px;
+        border: 1px solid rgba(62, 207, 142, 0.22);
       }
 
-      /* --- BENTO GRID PROJECTS (Simple Hover) --- */
+      /* --- PROJECTS --- */
+      #projects .container {
+        padding: 2.2rem;
+        border-radius: 30px;
+        border: 1px solid var(--glass-border);
+        background:
+          radial-gradient(circle at top right, rgba(62, 207, 142, 0.12), transparent 30%),
+          linear-gradient(180deg, rgba(31, 31, 31, 0.84), rgba(14, 14, 14, 0.96));
+        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.22);
+      }
       .bento-grid {
         display: grid;
         gap: 1.5rem;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-
-      @media (min-width: 900px) {
-        .bento-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-      }
-
       .project-card {
-        background: var(--bg-card);
-        border: 1px solid var(--glass-border);
-        border-radius: 20px;
-        padding: 2rem;
+        position: relative;
+        background: linear-gradient(180deg, rgba(31, 31, 31, 0.92), rgba(16, 16, 16, 0.98));
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 24px;
         transition:
           transform 0.3s ease,
           border-color 0.3s ease,
@@ -510,37 +850,42 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        position: relative;
         overflow: hidden;
       }
-
-      .project-card:hover {
-        transform: translateY(-8px);
-        border-color: var(--primary-glow);
-        box-shadow: 0 10px 20px -5px rgba(62, 207, 142, 0.3);
+      .project-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--primary-glow));
       }
-
+      .project-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(62, 207, 142, 0.28);
+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+      }
       .card-inner {
         display: flex;
         flex-direction: column;
+        gap: 1rem;
         height: 100%;
+        padding: 1.5rem;
       }
-
       .project-top {
         display: flex;
         justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 1rem;
+        align-items: center;
       }
       .folder-ico {
-        font-size: 2rem;
+        font-size: 1.8rem;
         color: var(--primary-glow);
-        opacity: 0.8;
+        opacity: 0.85;
       }
-
       .project-links a {
         color: var(--text-main);
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         margin-left: 10px;
         transition: 0.3s;
         opacity: 0.7;
@@ -549,27 +894,197 @@
         color: var(--primary-glow);
         opacity: 1;
       }
-
-      .project-card h4 {
-        font-size: 1.4rem;
-        margin-bottom: 0.8rem;
-        font-weight: 600;
-        color: var(--text-main);
+      .project-preview {
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.02);
+        padding: 0.9rem;
       }
-      .project-desc {
-        font-size: 0.9rem;
-        color: var(--text-muted);
+      .preview-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         margin-bottom: 0.8rem;
-        line-height: 1.6;
-        flex-grow: 1;
+      }
+      .preview-caption {
+        font-size: 0.72rem;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+      }
+      .preview-dots {
+        display: inline-flex;
+        gap: 5px;
+      }
+      .preview-dots span {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.16);
+      }
+      .preview-canvas {
+        border-radius: 14px;
+        padding: 0.9rem;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(10, 10, 10, 0.06));
+      }
+      .preview-canvas--book {
+        display: grid;
+        gap: 0.8rem;
+      }
+      .mini-search {
+        padding: 0.65rem 0.8rem;
+        border-radius: 12px;
+        background: rgba(10, 10, 10, 0.45);
+        color: var(--text-muted);
+        font-size: 0.76rem;
+        font-family: var(--font-mono);
+      }
+      .mini-network {
+        position: relative;
+        min-height: 92px;
+        border-radius: 14px;
+        background: rgba(62, 207, 142, 0.05);
+        overflow: hidden;
+      }
+      .mini-network span {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--primary-glow);
+        box-shadow: 0 0 12px rgba(62, 207, 142, 0.3);
+      }
+      .mini-network span:nth-child(1) {
+        left: 14%;
+        top: 22%;
+      }
+      .mini-network span:nth-child(2) {
+        left: 44%;
+        top: 44%;
+        width: 12px;
+        height: 12px;
+      }
+      .mini-network span:nth-child(3) {
+        right: 18%;
+        top: 20%;
+      }
+      .mini-network span:nth-child(4) {
+        left: 26%;
+        bottom: 18%;
+      }
+      .mini-network span:nth-child(5) {
+        right: 20%;
+        bottom: 18%;
+      }
+      .mini-network::before,
+      .mini-network::after {
+        content: "";
+        position: absolute;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(62, 207, 142, 0.48), rgba(62, 207, 142, 0.04));
+      }
+      .mini-network::before {
+        left: 20%;
+        top: 32%;
+        width: 120px;
+        transform: rotate(18deg);
+      }
+      .mini-network::after {
+        right: 16%;
+        bottom: 31%;
+        width: 100px;
+        transform: rotate(-20deg);
+      }
+      .mini-reco {
+        display: grid;
+        gap: 0.55rem;
+      }
+      .mini-reco div {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.6rem 0.75rem;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .mini-reco strong {
+        font-size: 0.8rem;
+      }
+      .mini-reco span {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+      }
+      .preview-canvas--search {
+        display: grid;
+        gap: 0.8rem;
+      }
+      .terminal-line {
+        padding: 0.7rem 0.8rem;
+        border-radius: 12px;
+        background: rgba(10, 10, 10, 0.5);
+        color: var(--primary-glow);
+        font-size: 0.76rem;
+        font-family: var(--font-mono);
+      }
+      .search-results-mini {
+        display: grid;
+        gap: 0.55rem;
+      }
+      .search-results-mini div {
+        padding: 0.65rem 0.75rem;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .search-results-mini strong {
+        display: block;
+        font-size: 0.8rem;
+        margin-bottom: 0.2rem;
+      }
+      .search-results-mini span {
+        color: var(--text-muted);
+        font-size: 0.7rem;
+        font-family: var(--font-mono);
+      }
+      .project-card h4 {
+        font-size: 1.45rem;
+        margin-bottom: 0.2rem;
+        font-weight: 700;
+        color: var(--text-main);
       }
       .project-proof {
         font-family: var(--font-mono);
         font-size: 0.78rem;
         color: var(--primary-glow);
-        margin-bottom: 1.2rem;
       }
-
+      .project-desc {
+        font-size: 0.92rem;
+        color: var(--text-muted);
+        line-height: 1.75;
+      }
+      .project-summary {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+      }
+      .summary-card {
+        padding: 0.8rem;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .summary-card span {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-size: 0.68rem;
+        font-family: var(--font-mono);
+        color: var(--text-muted);
+        text-transform: uppercase;
+      }
+      .summary-card strong {
+        font-size: 0.85rem;
+        color: var(--text-main);
+        line-height: 1.45;
+      }
       .tech-stack {
         display: flex;
         flex-wrap: wrap;
@@ -590,24 +1105,17 @@
           0 4px 12px rgba(62, 207, 142, 0.12);
         transition: all 0.25s ease;
       }
-      .tech-badge:hover {
-        background: rgba(62, 207, 142, 0.18);
-        border-color: rgba(62, 207, 142, 0.45);
-        transform: translateY(-1px);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
-          0 6px 16px rgba(62, 207, 142, 0.2);
-      }
 
       /* --- CONTACT --- */
       .contact-box {
-        background: var(--bg-card);
+        background: linear-gradient(180deg, rgba(31, 31, 31, 0.92), rgba(15, 15, 15, 0.98));
         border: 1px solid var(--glass-border);
-        border-radius: 12px;
+        border-radius: 24px;
         padding: 3rem;
         text-align: center;
-        max-width: 700px;
+        max-width: 760px;
         margin: 0 auto;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 18px 34px rgba(0, 0, 0, 0.24);
       }
       .input-row {
         display: grid;
@@ -618,11 +1126,11 @@
       input,
       textarea {
         width: 100%;
-        background: #121212;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 12px;
+        background: rgba(18, 18, 18, 0.94);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 14px 16px;
         color: var(--text-main);
-        border-radius: 6px;
+        border-radius: 14px;
         font-family: var(--font-sans);
         transition: 0.3s;
       }
@@ -630,7 +1138,7 @@
       textarea:focus {
         outline: none;
         border-color: var(--primary-glow);
-        box-shadow: 0 0 0 2px rgba(62, 207, 142, 0.2);
+        box-shadow: 0 0 0 3px rgba(62, 207, 142, 0.12);
       }
       textarea {
         margin-bottom: 1.5rem;
@@ -639,7 +1147,7 @@
 
       /* --- FOOTER --- */
       footer {
-        padding: 2rem;
+        padding: 2.5rem 2rem;
         text-align: center;
         color: var(--text-muted);
         font-size: 0.9rem;
@@ -656,29 +1164,85 @@
         transform: translateY(0);
       }
 
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+          padding-top: 7rem;
+        }
+        .hero-visual {
+          min-height: 440px;
+        }
+        .hero-panel--book {
+          position: relative;
+          top: auto;
+          right: auto;
+          width: 100%;
+        }
+        .hero-panel--search {
+          position: absolute;
+          left: auto;
+          right: 0;
+          bottom: 0;
+        }
+        .skills-wrapper,
+        .bento-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
       @media (max-width: 768px) {
+        .hero {
+          padding: 6.5rem 6% 2rem;
+        }
         .hero-name {
           font-size: 3rem;
         }
+        .hero-subtitle {
+          max-width: none;
+          font-size: 1.8rem;
+        }
+        .section-padding {
+          padding: 4.5rem 6%;
+        }
+        .section-padding::before {
+          left: 6%;
+          right: 6%;
+        }
         .about-layout {
           grid-template-columns: 1fr;
+          padding: 1rem;
         }
         .tab-menu {
           flex-direction: row;
-          border-left: none;
-          border-bottom: 2px solid var(--glass-border);
           overflow-x: auto;
         }
         .tab-btn {
-          border-left: none;
-          border-bottom: 2px solid transparent;
+          white-space: nowrap;
         }
-        .tab-btn.active {
-          border-bottom-color: var(--primary-glow);
-          background: none;
-        }
+        .project-summary,
         .input-row {
           grid-template-columns: 1fr;
+        }
+        .hero-panel--search {
+          position: relative;
+          right: auto;
+          width: 100%;
+          margin-top: 1rem;
+        }
+        #projects .container {
+          padding: 1.35rem;
         }
 
         /* Mobile Nav */
@@ -689,7 +1253,7 @@
           position: fixed;
           top: 0;
           right: -100%;
-          width: 70%;
+          width: 72%;
           height: 100vh;
           background: rgba(23, 23, 23, 0.98);
           backdrop-filter: blur(15px);
@@ -713,6 +1277,7 @@
   </head>
   <body>
     <canvas id="network-canvas"></canvas>
+    <div class="scroll-progress" id="scroll-progress"></div>
 
     <div class="audio-control" id="audio-btn">
       <i class="ph ph-light ph-music-note"></i>
@@ -764,27 +1329,60 @@
 
     <section class="hero">
       <div class="hero-content">
-        <p class="mono text-accent fade-up">Hi, my name is</p>
+        <p class="mono text-accent fade-up">Focused, practical, recruiter-ready</p>
         <h1 class="hero-name fade-up" style="transition-delay: 100ms">
           Alip Kamate.
         </h1>
         <h2 class="hero-subtitle fade-up" style="transition-delay: 200ms">
-          Data Scientist focused on recommendation systems and local search.
+          Data Scientist building recommendation systems and local search tools.
         </h2>
         <p class="hero-desc fade-up" style="transition-delay: 300ms">
           Open to internships and junior roles in data science, machine
-          learning, and applied AI. I build practical recommendation and search
-          systems with a focus on usable products, clear reasoning, and strong
-          implementation fundamentals.
+          learning, and applied AI. I like building small but thoughtful systems
+          that go from raw data to something a real user can actually use.
         </p>
-        <a
-          href="./assets/Resume.pdf"
-          download="Alip_Kamate_Resume.pdf"
-          class="btn-primary fade-up"
-          style="transition-delay: 400ms"
-        >
-          Download Resume <i class="ph ph-light ph-download-simple"></i>
-        </a>
+        <div class="signal-strip fade-up" style="transition-delay: 350ms">
+          <div class="signal-chip">
+            <i class="ph ph-light ph-rocket-launch"></i>
+            <div>
+              <strong>Open to</strong>
+              <span>Internships</span>
+            </div>
+          </div>
+          <div class="signal-chip">
+            <i class="ph ph-light ph-books"></i>
+            <div>
+              <strong>Focus</strong>
+              <span>Recommendation Systems</span>
+            </div>
+          </div>
+          <div class="signal-chip">
+            <i class="ph ph-light ph-binoculars"></i>
+            <div>
+              <strong>Current Build</strong>
+              <span>Local Search</span>
+            </div>
+          </div>
+          <div class="signal-chip">
+            <i class="ph ph-light ph-map-pin"></i>
+            <div>
+              <strong>Based in</strong>
+              <span>India</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-actions fade-up" style="transition-delay: 400ms">
+          <a
+            href="./assets/Resume.pdf"
+            download="Alip_Kamate_Resume.pdf"
+            class="btn-primary"
+          >
+            Download Resume <i class="ph ph-light ph-download-simple"></i>
+          </a>
+          <a href="#projects" class="btn-secondary">
+            View Projects <i class="ph ph-light ph-arrow-down"></i>
+          </a>
+        </div>
         <div class="hero-shortcuts">
           <a class="shortcut-link fade-up" style="transition-delay: 450ms" href="resume.html">
             <i class="ph ph-light ph-file-text"></i> Resume
@@ -816,6 +1414,81 @@
           </a>
         </div>
       </div>
+      <div class="hero-visual fade-up" style="transition-delay: 220ms">
+        <article class="hero-panel hero-panel--book">
+          <div class="panel-accent"></div>
+          <div class="panel-header">
+            <div>
+              <div class="panel-title">Shelf Sage</div>
+              <div class="panel-label">book graph / recommendation map</div>
+            </div>
+            <div class="panel-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="panel-surface">
+            <div class="book-network">
+              <span class="book-link book-link--one"></span>
+              <span class="book-link book-link--two"></span>
+              <span class="book-link book-link--three"></span>
+              <span class="book-link book-link--four"></span>
+              <div class="book-node book-node--center">Dune</div>
+              <div class="book-node book-node--one">Sci-Fi</div>
+              <div class="book-node book-node--two">Foundation</div>
+              <div class="book-node book-node--three">Worldbuilding</div>
+              <div class="book-node book-node--four">Ender's Game</div>
+            </div>
+            <div class="recommend-list">
+              <div class="recommend-card">
+                <div>
+                  <strong>The Left Hand of Darkness</strong>
+                  <span>high thematic match</span>
+                </div>
+                <span>0.92</span>
+              </div>
+              <div class="recommend-card">
+                <div>
+                  <strong>Hyperion</strong>
+                  <span>description similarity</span>
+                </div>
+                <span>0.88</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="hero-panel hero-panel--search">
+          <div class="panel-accent"></div>
+          <div class="panel-header">
+            <div>
+              <div class="panel-title">Scout</div>
+              <div class="panel-label">offline document search / reading flow</div>
+            </div>
+            <div class="panel-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="panel-surface">
+            <div class="search-bar-visual">$ scout "retrieval ranking"</div>
+            <div class="search-result-list">
+              <div class="search-result">
+                <strong>notes/recommendation-system.md</strong>
+                <p>TF-IDF weighting and cosine ranking notes</p>
+                <span>rank #1</span>
+              </div>
+              <div class="search-result">
+                <strong>docs/search-design.txt</strong>
+                <p>local indexing workflow for quiet study sessions</p>
+                <span>rank #2</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section id="about" class="section-padding">
@@ -823,6 +1496,12 @@
         <h2 class="section-title fade-up">
           <span class="section-number">01.</span>About Me
         </h2>
+        <p class="section-intro fade-up">
+          I care about systems that feel understandable from both sides:
+          strong enough in the backend to solve a real problem, and simple
+          enough in the frontend that a recruiter, user, or teammate can see
+          the value quickly.
+        </p>
 
         <div class="about-layout fade-up">
           <div class="tab-menu">
@@ -841,10 +1520,10 @@
             <div id="story" class="tab-content active">
               <h4>My Journey</h4>
               <p>
-                I started my education in the BCA program at Kolhapur
-                University. During my second year, I faced challenging financial
-                conditions that required me to take a drop. However, I didn't
-                let that time go to waste.
+                I started my education in the BCA program at Shivaji
+                University, Kolhapur. During my second year, I faced
+                challenging financial conditions that required me to take a
+                drop. However, I didn't let that time go to waste.
               </p>
               <p>
                 During that gap, I immersed myself in exploring web technologies
@@ -862,7 +1541,7 @@
 
             <div id="education" class="tab-content">
               <h4>Bachelor of Computer Applications (BCA)</h4>
-              <span>Kolhapur University | Currently Pursuing</span>
+              <span>Shivaji University, Kolhapur | Currently Pursuing</span>
               <p>Relevant Coursework:</p>
               <ul>
                 <li>Machine Learning & AI</li>
@@ -891,75 +1570,85 @@
     <section id="skills" class="section-padding">
       <div class="container">
         <h2 class="section-title fade-up">
-          <span class="section-number">02.</span>Technical Arsenal
+          <span class="section-number">02.</span>Capabilities
         </h2>
-
+        <p class="section-intro fade-up">
+          Instead of listing everything as isolated tools, these are the work
+          areas I actually build in: recommendation, search, data shaping, and
+          lightweight interfaces for machine learning products.
+        </p>
         <div class="skills-wrapper">
-          <div class="skill-category fade-up">
-            <h3><i class="ph ph-light ph-code"></i> Languages & Core</h3>
-            <div class="skill-item" data-level="9">
-              <div class="skill-header">
-                <span>Python</span> <span class="mono text-accent">90%</span>
-              </div>
-              <div class="cube-track"></div>
+          <article class="skill-category fade-up">
+            <h3><i class="ph ph-light ph-books"></i> Recommendation Systems</h3>
+            <p class="skill-copy">
+              Building content-based pipelines that connect raw catalog data to
+              useful recommendation output.
+            </p>
+            <ul class="skill-points">
+              <li>Metadata cleaning and text feature preparation</li>
+              <li>TF-IDF vectorization and similarity retrieval</li>
+              <li>Recommendation output designed for real browsing</li>
+            </ul>
+            <div class="skill-badges">
+              <span>TF-IDF</span>
+              <span>Scikit-Learn</span>
+              <span>Scrapy</span>
             </div>
-            <div class="skill-item" data-level="8">
-              <div class="skill-header">
-                <span>SQL</span> <span class="mono text-accent">85%</span>
-              </div>
-              <div class="cube-track"></div>
-            </div>
-            <div class="skill-item" data-level="6">
-              <div class="skill-header">
-                <span>R</span> <span class="mono text-accent">60%</span>
-              </div>
-              <div class="cube-track"></div>
-            </div>
-          </div>
+          </article>
 
-          <div class="skill-category fade-up" style="transition-delay: 200ms">
-            <h3><i class="ph ph-light ph-brain"></i> Machine Learning & AI</h3>
-            <div class="skill-item" data-level="8">
-              <div class="skill-header">
-                <span>TensorFlow / Keras</span>
-                <span class="mono text-accent">85%</span>
-              </div>
-              <div class="cube-track"></div>
+          <article class="skill-category fade-up" style="transition-delay: 120ms">
+            <h3><i class="ph ph-light ph-binoculars"></i> Search & Retrieval</h3>
+            <p class="skill-copy">
+              Designing local-first search workflows for document indexing,
+              ranking, and reading without cloud dependency.
+            </p>
+            <ul class="skill-points">
+              <li>Local document ingestion and searchable indexing</li>
+              <li>Fast keyword retrieval with contextual result summaries</li>
+              <li>Offline-friendly workflows for quiet study sessions</li>
+            </ul>
+            <div class="skill-badges">
+              <span>FastAPI</span>
+              <span>SQLite</span>
+              <span>Search Indexing</span>
             </div>
-            <div class="skill-item" data-level="7">
-              <div class="skill-header">
-                <span>PyTorch</span> <span class="mono text-accent">75%</span>
-              </div>
-              <div class="cube-track"></div>
-            </div>
-            <div class="skill-item" data-level="9">
-              <div class="skill-header">
-                <span>Scikit-Learn</span>
-                <span class="mono text-accent">90%</span>
-              </div>
-              <div class="cube-track"></div>
-            </div>
-          </div>
+          </article>
 
-          <div class="skill-category fade-up" style="transition-delay: 400ms">
-            <h3>
-              <i class="ph ph-light ph-chart-bar"></i> Data & Visualization
-            </h3>
-            <div class="skill-item" data-level="9">
-              <div class="skill-header">
-                <span>Pandas & NumPy</span>
-                <span class="mono text-accent">95%</span>
-              </div>
-              <div class="cube-track"></div>
+          <article class="skill-category fade-up" style="transition-delay: 240ms">
+            <h3><i class="ph ph-light ph-database"></i> Data Processing</h3>
+            <p class="skill-copy">
+              Turning messy raw inputs into structured datasets that models and
+              product interfaces can rely on.
+            </p>
+            <ul class="skill-points">
+              <li>Cleaning raw text and metadata into consistent tables</li>
+              <li>Feature extraction for ranking and recommendation logic</li>
+              <li>Lightweight analysis with SQL, Pandas, and NumPy</li>
+            </ul>
+            <div class="skill-badges">
+              <span>Python</span>
+              <span>Pandas</span>
+              <span>SQL</span>
             </div>
-            <div class="skill-item" data-level="8">
-              <div class="skill-header">
-                <span>Matplotlib / Seaborn</span>
-                <span class="mono text-accent">80%</span>
-              </div>
-              <div class="cube-track"></div>
+          </article>
+
+          <article class="skill-category fade-up" style="transition-delay: 360ms">
+            <h3><i class="ph ph-light ph-layout"></i> Frontend for ML Tools</h3>
+            <p class="skill-copy">
+              Giving ML and search workflows a readable interface so the output
+              feels like a product rather than only a notebook result.
+            </p>
+            <ul class="skill-points">
+              <li>Simple exploration flows for recommendations and results</li>
+              <li>Readable UI around ranking output and document context</li>
+              <li>Portfolio-grade presentation with product thinking</li>
+            </ul>
+            <div class="skill-badges">
+              <span>SvelteKit</span>
+              <span>UI Flow</span>
+              <span>Product Thinking</span>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -970,6 +1659,11 @@
         <h2 class="section-title fade-up">
           <span class="section-number">03.</span>Featured Projects
         </h2>
+        <p class="section-intro fade-up">
+          Two projects, both with real code and write-ups: one around
+          recommendation from raw book data, and one around local search built
+          for focused offline learning.
+        </p>
 
         <div class="bento-grid">
           <div class="project-card fade-up">
@@ -988,7 +1682,38 @@
                   ></a>
                 </div>
               </div>
+              <div class="project-preview">
+                <div class="preview-top">
+                  <span class="preview-caption">mock recommendation view</span>
+                  <div class="preview-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+                <div class="preview-canvas preview-canvas--book">
+                  <div class="mini-search">Search title: "Dune"</div>
+                  <div class="mini-network">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <div class="mini-reco">
+                    <div>
+                      <strong>Foundation</strong>
+                      <span>0.91</span>
+                    </div>
+                    <div>
+                      <strong>Hyperion</strong>
+                      <span>0.87</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <h4>Book Recommendation System</h4>
+              <p class="project-proof">Built with Scrapy + TF-IDF + SvelteKit</p>
               <p class="project-desc">
                 Built a recommendation engine by scraping complete book data
                 from a book website using <b>Scrapy</b>, then transforming and
@@ -996,7 +1721,20 @@
                 <b>TF-IDF</b>-based model and presented recommendations on the
                 frontend using <b>SvelteKit</b>.
               </p>
-              <p class="project-proof">Built with Scrapy + TF-IDF + SvelteKit</p>
+              <div class="project-summary">
+                <div class="summary-card">
+                  <span>Problem</span>
+                  <strong>Raw book data is messy and hard to explore well.</strong>
+                </div>
+                <div class="summary-card">
+                  <span>Approach</span>
+                  <strong>Scrape, clean, vectorize, then retrieve by similarity.</strong>
+                </div>
+                <div class="summary-card">
+                  <span>Stack</span>
+                  <strong>Python, Scrapy, TF-IDF, SvelteKit.</strong>
+                </div>
+              </div>
               <div class="tech-stack">
                 <span class="tech-badge">Python</span>
                 <span class="tech-badge">Scrapy</span>
@@ -1026,7 +1764,37 @@
                   ></a>
                 </div>
               </div>
+              <div class="project-preview">
+                <div class="preview-top">
+                  <span class="preview-caption">mock local search console</span>
+                  <div class="preview-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+                <div class="preview-canvas preview-canvas--search">
+                  <div class="terminal-line">$ scout "offline recommendation notes"</div>
+                  <div class="search-results-mini">
+                    <div>
+                      <strong>notes/recsys.md</strong>
+                      <span>content match / rank 1</span>
+                    </div>
+                    <div>
+                      <strong>docs/indexing-flow.txt</strong>
+                      <span>local search design / rank 2</span>
+                    </div>
+                    <div>
+                      <strong>journal/study-session.md</strong>
+                      <span>offline workflow / rank 3</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <h4>Local Document Search Engine</h4>
+              <p class="project-proof">
+                Local-first search for offline study and document retrieval
+              </p>
               <p class="project-desc">
                 Built a local-first search engine for offline study sessions
                 where I work away from the rush of the internet and take time
@@ -1034,9 +1802,20 @@
                 for quick searching and reading so I can learn concepts more
                 deeply and implement them with better understanding.
               </p>
-              <p class="project-proof">
-                Local-first search for offline study and document retrieval
-              </p>
+              <div class="project-summary">
+                <div class="summary-card">
+                  <span>Problem</span>
+                  <strong>Finding the right local note or doc takes too long.</strong>
+                </div>
+                <div class="summary-card">
+                  <span>Approach</span>
+                  <strong>Index files locally and return ranked, readable results.</strong>
+                </div>
+                <div class="summary-card">
+                  <span>Stack</span>
+                  <strong>Python, FastAPI, SQLite, local retrieval.</strong>
+                </div>
+              </div>
               <div class="tech-stack">
                 <span class="tech-badge">Python</span>
                 <span class="tech-badge">FastAPI</span>
@@ -1101,6 +1880,10 @@
       // --- MOBILE MENU TOGGLE ---
       const navLinks = document.getElementById("nav-links");
       const menuIcon = document.getElementById("menu-icon");
+      const progressBar = document.getElementById("scroll-progress");
+      const sectionNavLinks = Array.from(
+        document.querySelectorAll('.nav-links a[href^="#"]'),
+      );
       let isMenuOpen = false;
 
       function toggleMenu() {
@@ -1115,6 +1898,33 @@
           menuIcon.classList.add("ph-list");
         }
       }
+
+      function updateScrollProgress() {
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = total > 0 ? window.scrollY / total : 0;
+        progressBar.style.transform = `scaleX(${progress})`;
+      }
+
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            sectionNavLinks.forEach((link) => link.classList.remove("active"));
+            const activeLink = document.querySelector(
+              `.nav-links a[href="#${entry.target.id}"]`,
+            );
+            if (activeLink) activeLink.classList.add("active");
+          });
+        },
+        {
+          rootMargin: "-35% 0px -45% 0px",
+          threshold: 0,
+        },
+      );
+
+      document
+        .querySelectorAll("section[id]")
+        .forEach((section) => sectionObserver.observe(section));
 
       // --- 1. AUDIO AUTOPLAY & VISUALIZER ---
       const audioBtn = document.getElementById("audio-btn");
@@ -1234,41 +2044,11 @@
       }
 
       window.addEventListener("resize", resizeCanvas);
+      window.addEventListener("scroll", updateScrollProgress, { passive: true });
       animateTiles(0);
+      updateScrollProgress();
 
-      // --- 3. CUBICAL SKILLS ENGINE ---
-      document.querySelectorAll(".skill-item").forEach((item) => {
-        const track = item.querySelector(".cube-track");
-        const level = parseInt(item.getAttribute("data-level"));
-        for (let i = 1; i <= 10; i++) {
-          const cube = document.createElement("div");
-          cube.classList.add("cube");
-          if (i <= level) cube.classList.add("should-fill");
-          track.appendChild(cube);
-        }
-      });
-      const skillObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const cubes = entry.target.querySelectorAll(".cube.should-fill");
-              cubes.forEach((cube, index) => {
-                setTimeout(() => {
-                  cube.classList.add("active");
-                  setTimeout(() => cube.classList.add("settled"), 300);
-                }, index * 100);
-              });
-              skillObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.5 },
-      );
-      document
-        .querySelectorAll(".skill-item")
-        .forEach((el) => skillObserver.observe(el));
-
-      // --- 4. TABS ---
+      // --- 3. TABS ---
       window.openTab = function (evt, tabName) {
         const tabContent = document.getElementsByClassName("tab-content");
         for (let i = 0; i < tabContent.length; i++) {
@@ -1282,7 +2062,7 @@
         evt.currentTarget.classList.add("active");
       };
 
-      // --- 5. FADE ---
+      // --- 4. FADE ---
       const fadeObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -1295,7 +2075,7 @@
         .querySelectorAll(".fade-up")
         .forEach((el) => fadeObserver.observe(el));
 
-      // --- 6. EMAIL ---
+      // --- 5. EMAIL ---
       function sendMailObfuscated(e) {
         e.preventDefault();
         const name = document.getElementById("name").value;

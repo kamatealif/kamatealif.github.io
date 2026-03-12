@@ -238,32 +238,55 @@
       }
       .project-layout {
         display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 2.5rem;
+        grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.9fr);
+        gap: 1.4rem;
       }
-      .project-copy p {
+      .project-copy {
+        display: grid;
+        gap: 1rem;
+      }
+      .case-card,
+      .sidebar-card {
+        padding: 1.35rem;
+        border-radius: 20px;
+        border: 1px solid var(--glass-border);
+        background: linear-gradient(180deg, rgba(31, 31, 31, 0.72), rgba(17, 17, 17, 0.94));
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+      }
+      .case-card h3,
+      .sidebar-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 0.85rem;
+      }
+      .case-card p {
         color: var(--text-muted);
-        margin-bottom: 1rem;
+        margin-bottom: 0.9rem;
+        line-height: 1.8;
       }
-      .project-copy ul {
+      .case-card ul,
+      .sidebar-list {
         list-style: none;
-        margin-top: 1rem;
+        display: grid;
+        gap: 0.65rem;
       }
-      .project-copy li {
+      .case-card li,
+      .sidebar-list li {
         position: relative;
-        padding-left: 20px;
-        margin-bottom: 10px;
+        padding-left: 18px;
         color: var(--text-muted);
+        line-height: 1.65;
       }
-      .project-copy li::before {
+      .case-card li::before,
+      .sidebar-list li::before {
         content: "▹";
         position: absolute;
         left: 0;
         color: var(--primary-glow);
       }
-      .project-sidebar h3 {
-        font-size: 1rem;
-        margin-bottom: 1rem;
+      .project-sidebar {
+        display: grid;
+        align-content: start;
+        gap: 1rem;
       }
       .tech-stack {
         display: flex;
@@ -282,6 +305,19 @@
         -webkit-backdrop-filter: blur(8px);
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06),
           0 4px 12px rgba(62, 207, 142, 0.12);
+      }
+      .project-meta-card {
+        display: grid;
+        gap: 0.75rem;
+      }
+      .project-meta-card strong {
+        color: var(--text-main);
+      }
+      .project-meta-card p,
+      .sidebar-card p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        line-height: 1.7;
       }
 
       .btn-primary {
@@ -434,87 +470,101 @@
 
         <section class="project-layout fade-up">
           <article class="project-copy">
-            <p>
-              This project is an end-to-end book recommendation system built to
-              turn raw catalog data into a usable recommendation experience. The
-              main idea is simple: if a user likes one book, the system should
-              help them quickly discover other books with similar content and
-              themes.
-            </p>
-            <p>
-              The pipeline starts with collecting book information from the
-              source website using a scraper. That data includes titles,
-              authors, descriptions, genres, and other metadata. After
-              collection, the dataset is cleaned and organized so the search and
-              recommendation steps can work on structured information instead of
-              noisy raw text.
-            </p>
-            <p>
-              To generate recommendations, I use <strong>TF-IDF</strong> to turn
-              book descriptions and related text fields into numerical
-              representations. Once the books are represented in vector form,
-              similarity search can retrieve titles that are contextually close
-              to a selected book. This makes the project content-based, which is
-              useful when working directly with book metadata rather than user
-              behavior data.
-            </p>
-            <p>
-              The final step is presenting the results through a clean
-              <strong>SvelteKit</strong> interface so recommendations are easy
-              to browse instead of staying stuck inside a notebook or backend
-              script. The project is not just about the model itself, but about
-              building the full flow from data collection to user-facing
-              exploration.
-            </p>
+            <section class="case-card">
+              <h3>Problem</h3>
+              <p>
+                Book discovery becomes frustrating when a catalog is large but
+                the browsing experience is weak. I wanted a system that could
+                take one book and surface other relevant titles based on actual
+                content instead of random popularity.
+              </p>
+            </section>
 
-            <h3 style="margin-top: 2rem; margin-bottom: 1rem">
-              What the project is doing
-            </h3>
-            <ul>
-              <li>Scraping book metadata from the source website.</li>
-              <li>
-                Cleaning and organizing the dataset for reliable downstream use.
-              </li>
-              <li>
-                Converting text features into vectors with TF-IDF.
-              </li>
-              <li>
-                Finding similar books through content-based similarity search.
-              </li>
-              <li>
-                Presenting recommendations in a frontend that is easy to
-                explore.
-              </li>
-            </ul>
+            <section class="case-card">
+              <h3>Why I built it</h3>
+              <p>
+                I wanted to understand recommendation systems end to end, not
+                only as a model inside a notebook. That meant collecting the
+                raw data myself, shaping it into a usable dataset, building the
+                retrieval logic, and then presenting the output in a frontend
+                that feels like a real product.
+              </p>
+            </section>
 
-            <h3 style="margin-top: 2rem; margin-bottom: 1rem">
-              Why this approach
-            </h3>
-            <p>
-              I chose a content-based recommendation approach because it works
-              well even when user interaction history is limited. With strong
-              metadata and description text, the system can still provide useful
-              recommendations by comparing what books are about instead of
-              depending on large user-rating datasets.
-            </p>
-            <p>
-              This project helped me understand how recommendation systems are
-              built from real-world data problems: scraping, cleaning, feature
-              construction, vectorization, retrieval, and then presenting the
-              result in a way that actually feels useful.
-            </p>
+            <section class="case-card">
+              <h3>How it works</h3>
+              <ul>
+                <li>Scrape titles, authors, descriptions, and other metadata.</li>
+                <li>Clean the dataset so the important text fields are usable.</li>
+                <li>Transform descriptions into vectors with TF-IDF.</li>
+                <li>Retrieve similar books through content-based similarity search.</li>
+                <li>Show the recommendations through a SvelteKit interface.</li>
+              </ul>
+            </section>
+
+            <section class="case-card">
+              <h3>Key decisions</h3>
+              <ul>
+                <li>Used content-based retrieval because rich metadata was available.</li>
+                <li>Chose TF-IDF as a strong baseline for text similarity.</li>
+                <li>Kept the frontend lightweight so the recommendation flow stays clear.</li>
+                <li>Designed the project as a full pipeline, not only a model demo.</li>
+              </ul>
+            </section>
+
+            <section class="case-card">
+              <h3>What I learned</h3>
+              <p>
+                This project helped me understand recommendation work as a data
+                systems problem: scraping, cleaning, feature construction,
+                vectorization, retrieval, and presentation all matter. A useful
+                recommender depends as much on clean data and sensible product
+                flow as it does on the model itself.
+              </p>
+            </section>
+
+            <section class="case-card">
+              <h3>What I'd improve next</h3>
+              <ul>
+                <li>Refine feature weighting across description, genre, and author fields.</li>
+                <li>Add better filtering and comparison inside the frontend.</li>
+                <li>Test stronger retrieval methods on top of the current baseline.</li>
+                <li>Introduce evaluation notes to compare recommendation quality over time.</li>
+              </ul>
+            </section>
           </article>
 
           <aside class="project-sidebar">
-            <h3>Tech Stack</h3>
-            <div class="tech-stack">
-              <span class="tech-badge">Python</span>
-              <span class="tech-badge">Scrapy</span>
-              <span class="tech-badge">Pandas</span>
-              <span class="tech-badge">Scikit-Learn</span>
-              <span class="tech-badge">TF-IDF</span>
-              <span class="tech-badge">SvelteKit</span>
-              <span class="tech-badge">Content-Based Retrieval</span>
+            <div class="sidebar-card">
+              <h3>Tech Stack</h3>
+              <div class="tech-stack">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">Scrapy</span>
+                <span class="tech-badge">Pandas</span>
+                <span class="tech-badge">Scikit-Learn</span>
+                <span class="tech-badge">TF-IDF</span>
+                <span class="tech-badge">SvelteKit</span>
+                <span class="tech-badge">Content-Based Retrieval</span>
+              </div>
+            </div>
+
+            <div class="sidebar-card project-meta-card">
+              <h3>Project Snapshot</h3>
+              <ul class="sidebar-list">
+                <li><strong>Data source:</strong> scraped public book catalog</li>
+                <li><strong>Retrieval model:</strong> TF-IDF similarity search</li>
+                <li><strong>Main goal:</strong> faster book discovery from content</li>
+                <li><strong>User layer:</strong> SvelteKit browsing interface</li>
+              </ul>
+            </div>
+
+            <div class="sidebar-card">
+              <h3>Why it matters</h3>
+              <p>
+                This project shows how I think about recommendation systems as
+                complete products, from raw data collection to the final user
+                interaction layer.
+              </p>
             </div>
 
             <a
@@ -522,26 +572,11 @@
               class="btn-primary"
               target="_blank"
               rel="noreferrer"
-              style="margin-top: 1.5rem"
             >
               <i class="ph ph-light ph-github-logo"></i> View Repository
             </a>
 
-            <h3 style="margin-top: 2rem">Project Context</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem">
-              This project represents my interest in recommendation systems that
-              are practical, understandable, and complete from backend logic to
-              frontend experience.
-            </p>
-
-            <h3 style="margin-top: 2rem">Current improvements</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem">
-              The next refinements are improving feature weighting, enriching
-              metadata quality, and making the user interface better for search,
-              browsing, and comparing suggested books.
-            </p>
-
-            <a href="/#projects" class="btn-primary" style="margin-top: 1.5rem">
+            <a href="/#projects" class="btn-primary">
               <i class="ph ph-light ph-arrow-left"></i> Back to Portfolio
             </a>
           </aside>
