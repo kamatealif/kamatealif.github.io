@@ -537,15 +537,24 @@
         }
       }
       /* --- FINAL LIGHT SURFACE OVERRIDE --- */
+      body {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(17, 24, 28, 0.04) 0%,
+            rgba(17, 24, 28, 0.02) 100%
+          ),
+          var(--bg-main);
+      }
       .navbar {
         background: rgba(248, 249, 250, 0.92);
       }
       .audio-control,
       .sidebar-card {
-        background: rgba(248, 249, 250, 0.98);
+        background: rgba(248, 249, 250, 1);
         color: var(--text-main);
         border: none;
-        box-shadow: 0 12px 28px rgba(17, 24, 28, 0.06);
+        box-shadow: 0 14px 30px rgba(17, 24, 28, 0.07);
       }
       .project-meta span,
       .tech-badge {

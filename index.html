@@ -878,8 +878,9 @@
       }
       .bento-grid {
         display: grid;
-        gap: 1.5rem;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        align-items: stretch;
       }
       .project-card {
         position: relative;
@@ -898,6 +899,12 @@
         flex-direction: column;
         justify-content: space-between;
         overflow: hidden;
+      }
+      .project-card--book {
+        grid-column: span 7;
+      }
+      .project-card--search {
+        grid-column: span 5;
       }
       .project-card::before {
         content: "";
@@ -924,11 +931,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-      }
-      .folder-ico {
-        font-size: 1.8rem;
-        color: var(--primary-glow);
-        opacity: 0.85;
       }
       .project-links a {
         color: var(--text-main);
@@ -1106,6 +1108,19 @@
         font-weight: 700;
         color: var(--text-main);
       }
+      .project-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.72rem;
+        font-family: var(--font-mono);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--primary);
+      }
+      .project-kicker i {
+        font-size: 0.95rem;
+      }
       .project-proof {
         font-family: var(--font-mono);
         font-size: 0.78rem;
@@ -1116,29 +1131,72 @@
         color: var(--text-muted);
         line-height: 1.75;
       }
-      .project-summary {
+      .project-mini {
+        position: relative;
+        grid-column: span 12;
+        border-radius: 24px;
+        padding: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+        height: 100%;
+        background: rgba(248, 249, 250, 0.98);
+        box-shadow: 0 14px 30px rgba(17, 24, 28, 0.06);
+      }
+      .project-mini--metrics {
+        grid-column: span 4;
+      }
+      .project-mini--focus {
+        grid-column: span 8;
+      }
+      .project-mini-title {
+        font-size: 1.05rem;
+        line-height: 1.35;
+        color: var(--text-main);
+      }
+      .project-mini-copy {
+        font-size: 0.9rem;
+        line-height: 1.65;
+        color: var(--text-muted);
+      }
+      .project-mini-stats {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 0.75rem;
       }
-      .summary-card {
-        padding: 0.8rem;
-        border-radius: 14px;
-        background: rgba(248, 249, 250, 0.03);
-        border: 1px solid rgba(248, 249, 250, 0.04);
+      .project-mini-stat {
+        padding: 0.85rem 0.9rem;
+        border-radius: 18px;
+        background: rgba(17, 24, 28, 0.05);
+        display: grid;
+        gap: 0.2rem;
       }
-      .summary-card span {
-        display: block;
-        margin-bottom: 0.35rem;
-        font-size: 0.68rem;
-        font-family: var(--font-mono);
-        color: var(--text-muted);
-        text-transform: uppercase;
-      }
-      .summary-card strong {
-        font-size: 0.85rem;
+      .project-mini-stat strong {
+        font-size: 1.1rem;
         color: var(--text-main);
-        line-height: 1.45;
+      }
+      .project-mini-stat span {
+        font-size: 0.76rem;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+      }
+      .project-mini-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        margin-top: auto;
+      }
+      .project-mini-tags span {
+        padding: 0.35rem 0.65rem;
+        border-radius: 999px;
+        background: rgba(52, 178, 123, 0.12);
+        color: var(--primary);
+        font-size: 0.73rem;
+        font-family: var(--font-mono);
+      }
+      .project-mini:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 36px rgba(17, 24, 28, 0.08);
       }
       .tech-stack {
         display: flex;
@@ -1225,7 +1283,6 @@
       #projects .container,
       .project-card,
       .project-preview,
-      .summary-card,
       .contact-box,
       .signal-chip,
       .shortcut-link,
@@ -1255,8 +1312,6 @@
       .skill-points li,
       .project-card h4,
       .project-desc,
-      .summary-card span,
-      .summary-card strong,
       .preview-caption,
       .recommend-card span,
       .search-result p,
@@ -1275,7 +1330,6 @@
       .shortcut-link i,
       .skill-category h3 i,
       .project-links a:hover,
-      .folder-ico,
       .tab-content span,
       .tab-content li::before,
       .skill-points li::before {
@@ -1299,7 +1353,6 @@
       #projects .container,
       .project-card,
       .project-preview,
-      .summary-card,
       .contact-box,
       input,
       textarea {
@@ -1471,7 +1524,6 @@
         .tab-btn {
           white-space: nowrap;
         }
-        .project-summary,
         .input-row {
           grid-template-columns: 1fr;
         }
@@ -1531,7 +1583,6 @@
         box-shadow: 0 16px 36px rgba(17, 24, 28, 0.08);
       }
       .project-preview,
-      .summary-card,
       .panel-surface,
       .recommend-card,
       .search-result,
@@ -1615,8 +1666,6 @@
       .contact-box p {
         color: var(--text-main);
       }
-      .summary-card span,
-      .summary-card strong,
       .mini-reco strong,
       .mini-reco span,
       .search-results-mini strong,
@@ -1649,7 +1698,6 @@
       .audio-control.playing {
         box-shadow: none;
       }
-      .summary-card,
       .project-preview,
       .project-meta span,
       .recommend-card,
@@ -1687,11 +1735,28 @@
           width: 100%;
           margin: 0;
         }
+        .bento-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .project-card--book,
+        .project-card--search,
+        .project-mini--focus {
+          grid-column: 1 / -1;
+        }
+        .project-mini--metrics {
+          grid-column: span 1;
+        }
       }
 
       @media (max-width: 900px) {
-        .project-summary {
+        .bento-grid {
           grid-template-columns: 1fr;
+        }
+        .project-card--book,
+        .project-card--search,
+        .project-mini--metrics,
+        .project-mini--focus {
+          grid-column: 1 / -1;
         }
         .signal-strip {
           display: grid;
@@ -1739,6 +1804,15 @@
         }
       }
       /* --- FINAL LIGHT SURFACE OVERRIDE --- */
+      body {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(17, 24, 28, 0.04) 0%,
+            rgba(17, 24, 28, 0.02) 100%
+          ),
+          var(--bg-main);
+      }
       .navbar {
         background: rgba(248, 249, 250, 0.92);
         box-shadow: 0 1px 0 rgba(17, 24, 28, 0.06);
@@ -1747,9 +1821,9 @@
       .about-layout,
       .skill-category,
       .project-card,
+      .project-mini,
       .contact-box,
       .project-preview,
-      .summary-card,
       .panel-surface,
       .recommend-card,
       .search-result,
@@ -1767,15 +1841,16 @@
       .audio-control,
       input,
       textarea {
-        background: rgba(248, 249, 250, 0.98);
+        background: rgba(248, 249, 250, 1);
         color: var(--text-main);
         border: none;
-        box-shadow: 0 12px 28px rgba(17, 24, 28, 0.06);
+        box-shadow: 0 14px 30px rgba(17, 24, 28, 0.07);
       }
       .skill-badges span,
       .tech-badge,
       .project-meta span,
-      .book-node {
+      .book-node,
+      .project-mini-tags span {
         background: rgba(52, 178, 123, 0.12);
         color: var(--primary);
         border: none;
@@ -2229,10 +2304,12 @@
         </p>
 
         <div class="bento-grid">
-          <div class="project-card fade-up">
+          <article class="project-card project-card--book fade-up">
             <div class="card-inner">
               <div class="project-top">
-                <i class="ph ph-light ph-folder-open folder-ico"></i>
+                <span class="project-kicker"
+                  ><i class="ph ph-light ph-star-four"></i> Featured Build</span
+                >
                 <div class="project-links">
                   <a
                     href="https://github.com/kamatealif/shelf-sage"
@@ -2275,50 +2352,32 @@
                   </div>
                 </div>
               </div>
-              <h4>Book Recommendation System</h4>
-              <p class="project-proof">
-                Built with Scrapy + TF-IDF + SvelteKit
-              </p>
-              <p class="project-desc">
-                Built a recommendation engine by scraping complete book data
-                from a book website using <b>Scrapy</b>, then transforming and
-                preparing the dataset with <b>Pandas</b>. Trained a
-                <b>TF-IDF</b>-based model and presented recommendations on the
-                frontend using <b>SvelteKit</b>.
-              </p>
-              <div class="project-summary">
-                <div class="summary-card">
-                  <span>Problem</span>
-                  <strong
-                    >Raw book data is messy and hard to explore well.</strong
-                  >
-                </div>
-                <div class="summary-card">
-                  <span>Approach</span>
-                  <strong
-                    >Scrape, clean, vectorize, then retrieve by
-                    similarity.</strong
-                  >
-                </div>
-                <div class="summary-card">
-                  <span>Stack</span>
-                  <strong>Python, Scrapy, TF-IDF, SvelteKit.</strong>
-                </div>
+              <div>
+                <h4>Book Recommendation System</h4>
+                <p class="project-proof">Scrapy + TF-IDF + SvelteKit</p>
               </div>
+              <p class="project-desc">
+                A small end-to-end recommender that goes from scraped book data
+                to a clean interface for browsing similar titles.
+              </p>
               <div class="tech-stack">
                 <span class="tech-badge">Python</span>
                 <span class="tech-badge">Scrapy</span>
-                <span class="tech-badge">Pandas</span>
                 <span class="tech-badge">TF-IDF</span>
                 <span class="tech-badge">SvelteKit</span>
               </div>
             </div>
-          </div>
+          </article>
 
-          <div class="project-card fade-up" style="transition-delay: 200ms">
+          <article
+            class="project-card project-card--search fade-up"
+            style="transition-delay: 120ms"
+          >
             <div class="card-inner">
               <div class="project-top">
-                <i class="ph ph-light ph-folder-open folder-ico"></i>
+                <span class="project-kicker"
+                  ><i class="ph ph-light ph-star-four"></i> Featured Build</span
+                >
                 <div class="project-links">
                   <a
                     href="https://github.com/kamatealif/scout"
@@ -2360,45 +2419,71 @@
                   </div>
                 </div>
               </div>
-              <h4>Local Document Search Engine</h4>
-              <p class="project-proof">
-                Local-first search for offline study and document retrieval
-              </p>
-              <p class="project-desc">
-                Built a local-first search engine for offline study sessions
-                where I work away from the rush of the internet and take time to
-                think through problems properly. It indexes local documents for
-                quick searching and reading so I can learn concepts more deeply
-                and implement them with better understanding.
-              </p>
-              <div class="project-summary">
-                <div class="summary-card">
-                  <span>Problem</span>
-                  <strong
-                    >Finding the right local note or doc takes too long.</strong
-                  >
-                </div>
-                <div class="summary-card">
-                  <span>Approach</span>
-                  <strong
-                    >Index files locally and return ranked, readable
-                    results.</strong
-                  >
-                </div>
-                <div class="summary-card">
-                  <span>Stack</span>
-                  <strong>Python, FastAPI, SQLite, local retrieval.</strong>
-                </div>
+              <div>
+                <h4>Local Document Search Engine</h4>
+                <p class="project-proof">
+                  Local-first search for offline study and reading
+                </p>
               </div>
+              <p class="project-desc">
+                A local search tool built for quiet offline study sessions, so
+                notes and documents stay searchable without relying on the web.
+              </p>
               <div class="tech-stack">
                 <span class="tech-badge">Python</span>
                 <span class="tech-badge">FastAPI</span>
                 <span class="tech-badge">SQLite</span>
-                <span class="tech-badge">Text Extraction</span>
-                <span class="tech-badge">Search Indexing</span>
+                <span class="tech-badge">Search</span>
               </div>
             </div>
-          </div>
+          </article>
+
+          <article
+            class="project-mini project-mini--metrics fade-up"
+            style="transition-delay: 200ms"
+          >
+            <span class="project-kicker"
+              ><i class="ph ph-light ph-grid-four"></i> Snapshot</span
+            >
+            <h5 class="project-mini-title">Small set, real work</h5>
+            <div class="project-mini-stats">
+              <div class="project-mini-stat">
+                <strong>2</strong>
+                <span>real projects</span>
+              </div>
+              <div class="project-mini-stat">
+                <strong>2</strong>
+                <span>detail pages</span>
+              </div>
+            </div>
+            <p class="project-mini-copy">
+              Focused on quality over quantity: both projects have code,
+              context, and a clear use case.
+            </p>
+          </article>
+
+          <article
+            class="project-mini project-mini--focus fade-up"
+            style="transition-delay: 260ms"
+          >
+            <span class="project-kicker"
+              ><i class="ph ph-light ph-target"></i> Build Focus</span
+            >
+            <h5 class="project-mini-title">
+              Recommendation, retrieval, and product-style interfaces
+            </h5>
+            <p class="project-mini-copy">
+              The common thread across these builds is simple: take messy
+              inputs, turn them into something searchable or recommendable, and
+              present the result in a way that feels usable.
+            </p>
+            <div class="project-mini-tags">
+              <span>Recommendation Systems</span>
+              <span>Local Search</span>
+              <span>Data Processing</span>
+              <span>Frontend for ML</span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
