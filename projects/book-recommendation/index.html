@@ -427,67 +427,118 @@
             <span class="section-number">PRJ.</span>Book Recommendation Engine
           </h2>
           <div class="project-meta">
-            <span class="mono">End‑to‑end ML project</span>
-            <span class="mono">Content‑based recommendations with TF‑IDF</span>
+            <span class="mono">Scraping, preprocessing, and similarity search</span>
+            <span class="mono">Content-based recommendations from raw catalog data</span>
           </div>
         </header>
 
         <section class="project-layout fade-up">
           <article class="project-copy">
             <p>
-              This book recommendation system is built completely from scratch:
-              from scraping raw book data, to processing and vectorizing it, and
-              finally serving recommendations through a modern web interface.
+              This project is an end-to-end book recommendation system built to
+              turn raw catalog data into a usable recommendation experience. The
+              main idea is simple: if a user likes one book, the system should
+              help them quickly discover other books with similar content and
+              themes.
             </p>
             <p>
-              The pipeline starts by scraping book information from the source
-              (titles, authors, descriptions, genres and other metadata). The
-              text data is then cleaned, normalized and transformed into
-              numerical vectors using <strong>TF‑IDF</strong>, so the model can
-              understand the similarity between different books.
+              The pipeline starts with collecting book information from the
+              source website using a scraper. That data includes titles,
+              authors, descriptions, genres, and other metadata. After
+              collection, the dataset is cleaned and organized so the search and
+              recommendation steps can work on structured information instead of
+              noisy raw text.
             </p>
             <p>
-              On top of this vector space, the system retrieves the most similar
-              books for any given title or query, returning personalized
-              suggestions instantly. The entire flow&mdash;from scraping, data
-              processing and vector creation to the front‑end experience&mdash;is
-              designed and implemented by me.
+              To generate recommendations, I use <strong>TF-IDF</strong> to turn
+              book descriptions and related text fields into numerical
+              representations. Once the books are represented in vector form,
+              similarity search can retrieve titles that are contextually close
+              to a selected book. This makes the project content-based, which is
+              useful when working directly with book metadata rather than user
+              behavior data.
+            </p>
+            <p>
+              The final step is presenting the results through a clean
+              <strong>SvelteKit</strong> interface so recommendations are easy
+              to browse instead of staying stuck inside a notebook or backend
+              script. The project is not just about the model itself, but about
+              building the full flow from data collection to user-facing
+              exploration.
             </p>
 
-            <h3 style="margin-top: 2rem; margin-bottom: 1rem">Highlights</h3>
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem">
+              What the project is doing
+            </h3>
             <ul>
-              <li>Custom web scraper to collect and refresh the book catalog.</li>
+              <li>Scraping book metadata from the source website.</li>
               <li>
-                Clean preprocessing pipeline to handle messy real‑world text
-                data.
+                Cleaning and organizing the dataset for reliable downstream use.
               </li>
               <li>
-                TF‑IDF based similarity search for fast, content‑based
-                recommendations.
+                Converting text features into vectors with TF-IDF.
               </li>
               <li>
-                Interactive Svelte front end for exploring and filtering
-                suggested books.
+                Finding similar books through content-based similarity search.
+              </li>
+              <li>
+                Presenting recommendations in a frontend that is easy to
+                explore.
               </li>
             </ul>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem">
+              Why this approach
+            </h3>
+            <p>
+              I chose a content-based recommendation approach because it works
+              well even when user interaction history is limited. With strong
+              metadata and description text, the system can still provide useful
+              recommendations by comparing what books are about instead of
+              depending on large user-rating datasets.
+            </p>
+            <p>
+              This project helped me understand how recommendation systems are
+              built from real-world data problems: scraping, cleaning, feature
+              construction, vectorization, retrieval, and then presenting the
+              result in a way that actually feels useful.
+            </p>
           </article>
 
           <aside class="project-sidebar">
             <h3>Tech Stack</h3>
             <div class="tech-stack">
               <span class="tech-badge">Python</span>
+              <span class="tech-badge">Scrapy</span>
               <span class="tech-badge">Pandas</span>
-              <span class="tech-badge">Scikit‑Learn</span>
-              <span class="tech-badge">TF‑IDF</span>
-              <span class="tech-badge">Svelte</span>
-              <span class="tech-badge">Web Scraping</span>
+              <span class="tech-badge">Scikit-Learn</span>
+              <span class="tech-badge">TF-IDF</span>
+              <span class="tech-badge">SvelteKit</span>
+              <span class="tech-badge">Content-Based Retrieval</span>
             </div>
 
-            <h3 style="margin-top: 2rem">Next Steps</h3>
+            <a
+              href="https://github.com/kamatealif/shelf-sage"
+              class="btn-primary"
+              target="_blank"
+              rel="noreferrer"
+              style="margin-top: 1.5rem"
+            >
+              <i class="ph ph-light ph-github-logo"></i> View Repository
+            </a>
+
+            <h3 style="margin-top: 2rem">Project Context</h3>
             <p style="color: var(--text-muted); font-size: 0.9rem">
-              I will add more detailed sections here later, including model
-              evaluation, scalability considerations, and screenshots / GIFs of
-              the Svelte interface as the project evolves.
+              This project represents my interest in recommendation systems that
+              are practical, understandable, and complete from backend logic to
+              frontend experience.
+            </p>
+
+            <h3 style="margin-top: 2rem">Current improvements</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem">
+              The next refinements are improving feature weighting, enriching
+              metadata quality, and making the user interface better for search,
+              browsing, and comparing suggested books.
             </p>
 
             <a href="/#projects" class="btn-primary" style="margin-top: 1.5rem">
