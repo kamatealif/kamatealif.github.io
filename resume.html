@@ -168,6 +168,36 @@
         color: var(--text-muted);
         line-height: 1.5;
       }
+      .profile-shortcuts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: 1.2rem;
+      }
+      .shortcut-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.5rem 0.85rem;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        text-decoration: none;
+        color: var(--text-muted);
+        background: rgba(62, 207, 142, 0.1);
+        border: 1px solid rgba(62, 207, 142, 0.24);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        transition: all 0.25s ease;
+      }
+      .shortcut-link:hover {
+        color: var(--text-main);
+        border-color: rgba(62, 207, 142, 0.45);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 18px rgba(62, 207, 142, 0.16);
+      }
+      .shortcut-link i {
+        color: var(--primary-glow);
+      }
 
       /* Sidebar Sections */
       .sb-section-title {
@@ -533,6 +563,34 @@
             building thoughtful tools that turn raw data and documents into
             usable systems.
           </div>
+          <div class="profile-shortcuts">
+            <a
+              href="./assets/Resume.pdf"
+              download="Alip_Kamate_Resume.pdf"
+              class="shortcut-link"
+            >
+              <i class="ph ph-light ph-file-text"></i> Resume PDF
+            </a>
+            <a
+              href="https://github.com/kamatealif/"
+              target="_blank"
+              rel="noreferrer"
+              class="shortcut-link"
+            >
+              <i class="ph ph-light ph-github-logo"></i> GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/alip-kamate-722917261/"
+              target="_blank"
+              rel="noreferrer"
+              class="shortcut-link"
+            >
+              <i class="ph ph-light ph-linkedin-logo"></i> LinkedIn
+            </a>
+            <a href="mailto:kamatealip1@gmail.com" class="shortcut-link">
+              <i class="ph ph-light ph-envelope-simple"></i> Email
+            </a>
+          </div>
         </div>
 
         <!-- Contact -->
@@ -544,6 +602,15 @@
             <a href="mailto:kamatealip1@gmail.com" class="contact-item">
               <i class="ph ph-light ph-envelope-simple"></i>
               kamatealip1@gmail.com
+            </a>
+            <a
+              href="https://github.com/kamatealif/"
+              target="_blank"
+              rel="noreferrer"
+              class="contact-item"
+            >
+              <i class="ph ph-light ph-github-logo"></i>
+              github.com/kamatealif
             </a>
             <span class="contact-item">
               <i class="ph ph-light ph-phone"></i> +91 7387705851
@@ -560,6 +627,8 @@
             </a>
             <a
               href="https://www.linkedin.com/in/alip-kamate-722917261/"
+              target="_blank"
+              rel="noreferrer"
               class="contact-item"
             >
               <i class="ph ph-light ph-linkedin-logo"></i>

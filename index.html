@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alif Kamate | Data Scientist</title>
+    <title>Alip Kamate | Data Scientist</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -247,6 +247,38 @@
         margin-bottom: 2.5rem;
         line-height: 1.7;
       }
+      .hero-shortcuts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-top: 1.2rem;
+      }
+      .shortcut-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.55rem 0.95rem;
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-muted);
+        background: rgba(62, 207, 142, 0.1);
+        border: 1px solid rgba(62, 207, 142, 0.22);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        transition: all 0.3s ease;
+      }
+      .shortcut-link:hover {
+        color: var(--text-main);
+        border-color: rgba(62, 207, 142, 0.45);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px rgba(62, 207, 142, 0.16);
+      }
+      .shortcut-link i {
+        color: var(--primary-glow);
+        font-size: 1rem;
+      }
 
       /* Glossy Button */
       .btn-primary {
@@ -462,11 +494,7 @@
 
       @media (min-width: 900px) {
         .bento-grid {
-          grid-template-columns: repeat(3, 1fr);
-          grid-auto-rows: minmax(340px, auto);
-        }
-        .span-2 {
-          grid-column: span 2;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
 
@@ -531,9 +559,15 @@
       .project-desc {
         font-size: 0.9rem;
         color: var(--text-muted);
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.8rem;
         line-height: 1.6;
         flex-grow: 1;
+      }
+      .project-proof {
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        color: var(--primary-glow);
+        margin-bottom: 1.2rem;
       }
 
       .tech-stack {
@@ -699,12 +733,12 @@
         </li>
         <li>
           <a href="#skills" onclick="toggleMenu()"
-            ><span class="text-accent mono">02.</span> Stats</a
+            ><span class="text-accent mono">02.</span> Skills</a
           >
         </li>
         <li>
           <a href="#projects" onclick="toggleMenu()"
-            ><span class="text-accent mono">03.</span> Work</a
+            ><span class="text-accent mono">03.</span> Projects</a
           >
         </li>
         <li>
@@ -718,7 +752,7 @@
             class="btn-primary nav-hire-btn"
             style="padding: 0.4rem 1rem; font-size: 0.8rem"
             onclick="toggleMenu()"
-            >Hire Me</a
+            >Contact</a
           >
         </li>
       </ul>
@@ -732,26 +766,55 @@
       <div class="hero-content">
         <p class="mono text-accent fade-up">Hi, my name is</p>
         <h1 class="hero-name fade-up" style="transition-delay: 100ms">
-          Alif Kamate.
+          Alip Kamate.
         </h1>
         <h2 class="hero-subtitle fade-up" style="transition-delay: 200ms">
-          I build
-          <span id="typing-text" style="color: var(--primary-glow)"></span>
+          Data Scientist focused on recommendation systems and local search.
         </h2>
         <p class="hero-desc fade-up" style="transition-delay: 300ms">
-          I am a Data Scientist & AI Enthusiast passionate about building
-          predictive models and AI solutions. I bridge the gap between complex
-          data and actionable business insights using Deep Learning and Computer
-          Vision.
+          Open to internships and junior roles in data science, machine
+          learning, and applied AI. I build practical recommendation and search
+          systems with a focus on usable products, clear reasoning, and strong
+          implementation fundamentals.
         </p>
         <a
           href="./assets/Resume.pdf"
-          download="Alif_Kamate_Resume.pdf"
+          download="Alip_Kamate_Resume.pdf"
           class="btn-primary fade-up"
           style="transition-delay: 400ms"
         >
           Download Resume <i class="ph ph-light ph-download-simple"></i>
         </a>
+        <div class="hero-shortcuts">
+          <a class="shortcut-link fade-up" style="transition-delay: 450ms" href="resume.html">
+            <i class="ph ph-light ph-file-text"></i> Resume
+          </a>
+          <a
+            class="shortcut-link fade-up"
+            style="transition-delay: 500ms"
+            href="https://github.com/kamatealif/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i class="ph ph-light ph-github-logo"></i> GitHub
+          </a>
+          <a
+            class="shortcut-link fade-up"
+            style="transition-delay: 550ms"
+            href="https://www.linkedin.com/in/alip-kamate-722917261/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i class="ph ph-light ph-linkedin-logo"></i> LinkedIn
+          </a>
+          <a
+            class="shortcut-link fade-up"
+            style="transition-delay: 600ms"
+            href="mailto:kamatealip1@gmail.com"
+          >
+            <i class="ph ph-light ph-envelope-simple"></i> Email
+          </a>
+        </div>
       </div>
     </section>
 
@@ -909,8 +972,7 @@
         </h2>
 
         <div class="bento-grid">
-          <!-- Card 1: Span 2 (Left) -->
-          <div class="project-card span-2 fade-up">
+          <div class="project-card fade-up">
             <div class="card-inner">
               <div class="project-top">
                 <i class="ph ph-light ph-folder-open folder-ico"></i>
@@ -934,6 +996,7 @@
                 <b>TF-IDF</b>-based model and presented recommendations on the
                 frontend using <b>SvelteKit</b>.
               </p>
+              <p class="project-proof">Built with Scrapy + TF-IDF + SvelteKit</p>
               <div class="tech-stack">
                 <span class="tech-badge">Python</span>
                 <span class="tech-badge">Scrapy</span>
@@ -944,57 +1007,9 @@
             </div>
           </div>
 
-          <!-- Card 2: Single (Right Top) -->
-          <div class="project-card fade-up" style="transition-delay: 200ms">
-            <div class="card-inner">
-              <div class="project-top">
-                <i class="ph ph-light ph-folder-open folder-ico"></i>
-                <div class="project-links">
-                  <a href="#"><i class="ph ph-light ph-github-logo"></i></a>
-                </div>
-              </div>
-              <h4>Medical Image Classifier</h4>
-              <p class="project-desc">
-                A CNN-based deep learning model to detect anomalies in X-ray
-                images with 94% accuracy. Built using <b>PyTorch</b> and
-                deployed as a REST API.
-              </p>
-              <div class="tech-stack">
-                <span class="tech-badge">PyTorch</span>
-                <span class="tech-badge">CNN</span>
-                <span class="tech-badge">FastAPI</span>
-                <span class="tech-badge">Docker</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 3: Single (Left Bottom) -->
-          <div class="project-card fade-up" style="transition-delay: 300ms">
-            <div class="card-inner">
-              <div class="project-top">
-                <i class="ph ph-light ph-folder-open folder-ico"></i>
-                <div class="project-links">
-                  <a href="#"><i class="ph ph-light ph-github-logo"></i></a>
-                </div>
-              </div>
-              <h4>NLP Sentiment Dashboard</h4>
-              <p class="project-desc">
-                Analyzes social media sentiment for brand monitoring using
-                <b>Hugging Face Transformers</b> and visualizes trends over
-                time.
-              </p>
-              <div class="tech-stack">
-                <span class="tech-badge">NLP</span>
-                <span class="tech-badge">Transformers</span>
-                <span class="tech-badge">Dash</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 4: Span 2 (Right Bottom) -->
           <div
-            class="project-card span-2 fade-up"
-            style="transition-delay: 400ms"
+            class="project-card fade-up"
+            style="transition-delay: 200ms"
           >
             <div class="card-inner">
               <div class="project-top">
@@ -1018,6 +1033,9 @@
                 to think through problems properly. It indexes local documents
                 for quick searching and reading so I can learn concepts more
                 deeply and implement them with better understanding.
+              </p>
+              <p class="project-proof">
+                Local-first search for offline study and document retrieval
               </p>
               <div class="tech-stack">
                 <span class="tech-badge">Python</span>
@@ -1064,7 +1082,7 @@
     </section>
 
     <footer>
-      <p class="mono">Designed & Built by Alif Kamate</p>
+      <p class="mono">Designed & Built by Alip Kamate</p>
       <div style="margin-top: 10px; font-size: 1.2rem">
         <a
           href="https://github.com/kamatealif/"
@@ -1218,40 +1236,7 @@
       window.addEventListener("resize", resizeCanvas);
       animateTiles(0);
 
-      // --- 3. TYPING ANIMATION ---
-      const textElement = document.getElementById("typing-text");
-      const phrases = [
-        "Machine Learning Models",
-        "Deep Learning Solutions",
-        "AI Architectures",
-      ];
-      let phraseIdx = 0,
-        charIdx = 0,
-        isDeleting = false;
-
-      function type() {
-        const currentPhrase = phrases[phraseIdx];
-        if (isDeleting) {
-          textElement.textContent = currentPhrase.substring(0, charIdx - 1);
-          charIdx--;
-        } else {
-          textElement.textContent = currentPhrase.substring(0, charIdx + 1);
-          charIdx++;
-        }
-        if (!isDeleting && charIdx === currentPhrase.length) {
-          isDeleting = true;
-          setTimeout(type, 2000);
-        } else if (isDeleting && charIdx === 0) {
-          isDeleting = false;
-          phraseIdx = (phraseIdx + 1) % phrases.length;
-          setTimeout(type, 500);
-        } else {
-          setTimeout(type, isDeleting ? 50 : 100);
-        }
-      }
-      type();
-
-      // --- 4. CUBICAL SKILLS ENGINE ---
+      // --- 3. CUBICAL SKILLS ENGINE ---
       document.querySelectorAll(".skill-item").forEach((item) => {
         const track = item.querySelector(".cube-track");
         const level = parseInt(item.getAttribute("data-level"));
@@ -1283,7 +1268,7 @@
         .querySelectorAll(".skill-item")
         .forEach((el) => skillObserver.observe(el));
 
-      // --- 5. TABS ---
+      // --- 4. TABS ---
       window.openTab = function (evt, tabName) {
         const tabContent = document.getElementsByClassName("tab-content");
         for (let i = 0; i < tabContent.length; i++) {
@@ -1297,7 +1282,7 @@
         evt.currentTarget.classList.add("active");
       };
 
-      // --- 6. FADE ---
+      // --- 5. FADE ---
       const fadeObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -1310,7 +1295,7 @@
         .querySelectorAll(".fade-up")
         .forEach((el) => fadeObserver.observe(el));
 
-      // --- 7. EMAIL ---
+      // --- 6. EMAIL ---
       function sendMailObfuscated(e) {
         e.preventDefault();
         const name = document.getElementById("name").value;
