@@ -424,6 +424,10 @@ margin-top: 0.45rem;
         color: var(--muted);
 }
 
+body.page-home .skill-card .pill-row {
+margin-top: 0.3rem;
+}
+
 body.page-home .projects-grid {
 grid-template-columns: repeat(12, minmax(0, 1fr));
         grid-auto-rows: 1fr;
@@ -2792,20 +2796,26 @@ body.page-home,
 body.page-resume,
 body.page-book-project,
 body.page-search-project {
---ref-bg: #f5f3ef;
-  --ref-surface: rgba(255, 255, 255, 0.94);
+--ref-bg: #fafafa;
+  --ref-surface: rgba(255, 255, 255, 0.96);
   --ref-surface-strong: #ffffff;
-  --ref-text: #202021;
-  --ref-muted: #797874;
-  --ref-border: rgba(32, 32, 33, 0.12);
-  --ref-border-strong: rgba(32, 32, 33, 0.18);
-  --ref-primary: #232324;
-  --ref-primary-deep: #171718;
-  --ref-primary-soft: rgba(35, 35, 36, 0.08);
-  --ref-accent: #18b7ae;
-  --ref-accent-deep: #0f8c85;
-  --ref-accent-soft: rgba(24, 183, 174, 0.12);
-  --ref-shadow: 0 14px 34px rgba(32, 32, 33, 0.06);
+  --ref-text: #121212;
+  --ref-muted: #626262;
+  --ref-border: #dcdcdc;
+  --ref-border-strong: #d0d0d0;
+  --ref-primary: #1c1c1c;
+  --ref-primary-deep: #121212;
+  --ref-primary-soft: rgba(28, 28, 28, 0.06);
+  --ref-secondary: #f0f0f0;
+  --ref-muted-surface: #f0f0f0;
+  --ref-accent-surface: #f0f0f0;
+  --ref-chart-1: #4fd6ca;
+  --ref-chart-2: #19b7ad;
+  --ref-chart-3: #109790;
+  --ref-chart-4: #0c7a74;
+  --ref-chart-5: #0a6560;
+  --ref-accent-ink: var(--ref-chart-3);
+  --ref-shadow: 0 14px 34px rgba(18, 18, 18, 0.05);
   --ref-radius: 24px;
   --ref-gap: 1rem;
   --ref-gap-lg: 1.5rem;
@@ -2817,8 +2827,8 @@ body.page-home {
   --surface-strong: var(--ref-surface-strong);
   --text: var(--ref-text);
   --muted: var(--ref-muted);
-  --accent: var(--ref-accent);
-  --accent-soft: var(--ref-accent-soft);
+  --accent: var(--ref-accent-ink);
+  --accent-soft: var(--ref-accent-surface);
   --line: var(--ref-border);
   --line-strong: var(--ref-border-strong);
   --shadow: var(--ref-shadow);
@@ -2832,15 +2842,15 @@ body.page-search-project {
   --bg-surface: var(--ref-surface);
   --glass-bg: var(--ref-surface-strong);
   --bg-elevated: var(--ref-primary);
-  --primary: var(--ref-accent);
-  --primary-deep: var(--ref-accent-deep);
-  --primary-glow: var(--ref-accent);
+  --primary: var(--ref-accent-ink);
+  --primary-deep: var(--ref-chart-4);
+  --primary-glow: var(--ref-accent-ink);
   --text-main: var(--ref-text);
-  --text-muted: rgba(121, 120, 116, 0.9);
+  --text-muted: rgba(18, 18, 18, 0.56);
   --glass-border: var(--ref-border);
   --glass-strong: var(--ref-border-strong);
   --shadow-soft: var(--ref-shadow);
-  --shadow-strong: 0 18px 42px rgba(32, 32, 33, 0.08);
+  --shadow-strong: 0 18px 42px rgba(18, 18, 18, 0.07);
 }
 
 body.page-home,
@@ -2848,16 +2858,16 @@ body.page-resume,
 body.page-book-project,
 body.page-search-project {
 background:
-    radial-gradient(circle at 16% 0%, rgba(24, 183, 174, 0.08), transparent 20%),
-    radial-gradient(circle at 82% 12%, rgba(255, 255, 255, 0.78), transparent 28%),
-    linear-gradient(180deg, #fbfaf7 0%, var(--ref-bg) 100%);
+    radial-gradient(circle at 18% 0%, rgba(79, 214, 202, 0.05), transparent 18%),
+    radial-gradient(circle at 84% 10%, rgba(255, 255, 255, 0.92), transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, var(--ref-bg) 100%);
   color: var(--ref-text);
 }
 
 body.page-home::before {
 background:
-    radial-gradient(circle at top left, rgba(24, 183, 174, 0.06), transparent 34%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.05));
+    radial-gradient(circle at top left, rgba(79, 214, 202, 0.045), transparent 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.04));
   background-size: 100% 100%, 100% 100%;
 }
 
@@ -3021,10 +3031,10 @@ body.page-home .btn-secondary,
 body.page-resume .shortcut-link,
 body.page-book-project .audio-control,
 body.page-search-project .audio-control {
-background: #f6f5f2;
+background: var(--ref-secondary);
   color: var(--ref-text);
   border: 1px solid var(--ref-border);
-  box-shadow: 0 6px 16px rgba(32, 32, 33, 0.04);
+  box-shadow: 0 6px 16px rgba(18, 18, 18, 0.04);
 }
 
 body.page-home .pill,
@@ -3036,9 +3046,9 @@ body.page-book-project .project-meta span,
 body.page-book-project .tech-badge,
 body.page-search-project .project-meta span,
 body.page-search-project .tech-badge {
-background: var(--ref-accent-soft);
-  color: var(--ref-accent-deep);
-  border-color: rgba(24, 183, 174, 0.18);
+background: var(--ref-accent-surface);
+  color: var(--ref-primary);
+  border-color: var(--ref-border);
   box-shadow: none;
 }
 
@@ -3066,10 +3076,10 @@ color: var(--ref-primary);
 body.page-resume .audio-control.playing,
 body.page-book-project .audio-control.playing,
 body.page-search-project .audio-control.playing {
-background: var(--ref-accent-soft);
-  color: var(--ref-accent);
-  border-color: rgba(24, 183, 174, 0.2);
-  box-shadow: 0 10px 22px rgba(24, 183, 174, 0.1);
+background: var(--ref-secondary);
+  color: var(--ref-accent-ink);
+  border-color: rgba(16, 151, 144, 0.18);
+  box-shadow: 0 10px 22px rgba(16, 151, 144, 0.08);
 }
 
 body.page-home .hero-grid,
@@ -3170,7 +3180,7 @@ background: var(--ref-border-strong);
 }
 
 body.page-resume .job-item::after {
-background: var(--ref-accent);
+background: var(--ref-accent-ink);
 }
 
 body.page-resume .profile-header h1,
@@ -3208,12 +3218,12 @@ body.page-search-project .text-accent,
 body.page-search-project .section-number,
 body.page-search-project .case-card h3,
 body.page-search-project .sidebar-card h3 {
-color: var(--ref-accent);
+color: var(--ref-accent-ink);
 }
 
 body.page-book-project .section-title::after,
 body.page-search-project .section-title::after {
-background: var(--ref-accent);
+background: var(--ref-accent-ink);
 }
 
 body.page-resume .scroll-progress {
