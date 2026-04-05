@@ -1,17 +1,30 @@
 /* Shared stylesheet extracted from inline page styles. */
 
+/* Shared utility classes replacing former inline styles. */
+body.page-resume .edu-note {
+font-size: 0.8rem;
+color: var(--text-main);
+margin-top: 4px;
+}
+
+body.page-book-project .nav-cta-compact,
+body.page-search-project .nav-cta-compact {
+padding: 0.4rem 1rem;
+font-size: 0.8rem;
+}
+
 /* index.html */
 body.page-home {
---bg: #ededf0;
-        --surface: rgba(255, 255, 255, 0.86);
+--bg: #f2eee8;
+        --surface: rgba(255, 255, 255, 0.88);
         --surface-strong: #ffffff;
-        --text: #19191d;
-        --muted: #5f616a;
-        --accent: #fd366e;
-        --accent-soft: rgba(253, 54, 110, 0.1);
-        --line: rgba(25, 25, 29, 0.08);
-        --line-strong: rgba(25, 25, 29, 0.14);
-        --shadow: 0 24px 60px rgba(25, 25, 29, 0.08);
+        --text: #2e2923;
+        --muted: #7a7368;
+        --accent: #0ab24a;
+        --accent-soft: rgba(10, 178, 74, 0.1);
+        --line: rgba(46, 41, 35, 0.08);
+        --line-strong: rgba(46, 41, 35, 0.13);
+        --shadow: 0 24px 60px rgba(46, 41, 35, 0.08);
         --radius: 20px;
         --nav-height: 88px;
         --font-body: "Instrument Sans", sans-serif;
@@ -36,10 +49,10 @@ min-height: 100vh;
         background:
           radial-gradient(
             circle at top right,
-            rgba(253, 54, 110, 0.08),
+            rgba(10, 178, 74, 0.08),
             transparent 22%
           ),
-          linear-gradient(180deg, #f7f7f8 0%, var(--bg) 100%);
+          linear-gradient(180deg, #faf8f4 0%, var(--bg) 100%);
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
 }
@@ -51,7 +64,7 @@ content: "";
         pointer-events: none;
         background:
           linear-gradient(rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.14)),
-          linear-gradient(90deg, transparent 49%, rgba(25, 25, 29, 0.015) 50%, transparent 51%);
+          linear-gradient(90deg, transparent 49%, rgba(46, 41, 35, 0.012) 50%, transparent 51%);
         background-size: 100% 100%, 18px 18px;
         opacity: 0.55;
         z-index: -1;
@@ -140,9 +153,9 @@ color: var(--text);
 body.page-home .nav-cta {
 padding: 0.72rem 1.05rem;
         border-radius: var(--radius);
-        background: linear-gradient(180deg, #ff5f8d 0%, #fd366e 100%);
+        background: linear-gradient(180deg, #12c754 0%, #0a933d 100%);
         color: #fff;
-        box-shadow: 0 14px 26px rgba(253, 54, 110, 0.2);
+        box-shadow: 0 14px 26px rgba(10, 147, 61, 0.22);
 }
 
 body.page-home .hamburger {
@@ -224,7 +237,7 @@ display: inline-flex;
         gap: 0.55rem;
         padding: 0.48rem 0.8rem;
         font-size: 0.82rem;
-        border: 1px solid rgba(253, 54, 110, 0.12);
+        border: 1px solid rgba(10, 178, 74, 0.14);
         border-radius: var(--radius);
         background: var(--accent-soft);
         color: var(--text);
@@ -247,9 +260,9 @@ display: inline-flex;
 
 body.page-home .btn-primary,
 body.page-home .project-button {
-background: linear-gradient(180deg, #ff5f8d 0%, #fd366e 100%);
+        background: linear-gradient(180deg, #12c754 0%, #0a933d 100%);
         color: #fff;
-        box-shadow: 0 14px 26px rgba(253, 54, 110, 0.22);
+        box-shadow: 0 14px 26px rgba(10, 147, 61, 0.22);
 }
 
 body.page-home .btn-secondary {
@@ -323,9 +336,9 @@ display: block;
 body.page-home .stamp {
 width: fit-content;
         padding: 0.65rem 0.95rem;
-        border: 1px solid rgba(253, 54, 110, 0.24);
+        border: 1px solid rgba(10, 178, 74, 0.24);
         border-radius: var(--radius);
-        background: rgba(253, 54, 110, 0.08);
+        background: rgba(10, 178, 74, 0.08);
         font-family: var(--font-mono);
         font-size: 0.74rem;
         letter-spacing: 0.14em;
@@ -508,8 +521,8 @@ min-height: 150px;
 body.page-home input:focus,
 body.page-home textarea:focus {
 outline: none;
-        border-color: rgba(253, 54, 110, 0.34);
-        box-shadow: 0 0 0 4px rgba(253, 54, 110, 0.08);
+        border-color: rgba(10, 178, 74, 0.34);
+        box-shadow: 0 0 0 4px rgba(10, 178, 74, 0.08);
 }
 
 body.page-home .submit-btn {
@@ -671,19 +684,19 @@ transition: none !important;
 
 /* resume.html */
 body.page-resume {
---bg-main: #f8f9fa;
-        --bg-surface: rgba(248, 249, 250, 0.98);
-        --bg-elevated: #11181c;
-        --primary: #34b27b;
-        --primary-deep: #34b27b;
-        --primary-glow: #34b27b;
-        --text-main: #11181c;
-        --text-muted: rgba(17, 24, 28, 0.72);
-        --glass-border: rgba(17, 24, 28, 0.08);
-        --glass-strong: rgba(17, 24, 28, 0.12);
-        --glass-bg: rgba(248, 249, 250, 0.98);
-        --shadow-soft: 0 10px 24px rgba(17, 24, 28, 0.06);
-        --shadow-strong: 0 18px 44px rgba(17, 24, 28, 0.08);
+--bg-main: #f3efe9;
+        --bg-surface: rgba(255, 255, 255, 0.96);
+        --bg-elevated: #232821;
+        --primary: #0ab24a;
+        --primary-deep: #0a933d;
+        --primary-glow: #0ab24a;
+        --text-main: #2e2923;
+        --text-muted: rgba(94, 86, 76, 0.78);
+        --glass-border: rgba(46, 41, 35, 0.1);
+        --glass-strong: rgba(46, 41, 35, 0.14);
+        --glass-bg: rgba(255, 255, 255, 0.96);
+        --shadow-soft: 0 12px 28px rgba(46, 41, 35, 0.06);
+        --shadow-strong: 0 18px 44px rgba(46, 41, 35, 0.08);
         --font-mono: "Fira Code", monospace;
         --font-sans: "Inter", sans-serif;
 }
@@ -1494,29 +1507,29 @@ right: 1rem;
 
 body.page-resume {
 background:
-          linear-gradient(
-            180deg,
-            rgba(17, 24, 28, 0.04) 0%,
-            rgba(17, 24, 28, 0.02) 100%
+          radial-gradient(
+            circle at top right,
+            rgba(10, 178, 74, 0.06),
+            transparent 22%
           ),
-          var(--bg-main);
+          linear-gradient(180deg, #faf7f3 0%, var(--bg-main) 100%);
 }
 
 body.page-resume .resume-container,
 body.page-resume .sidebar {
-background: rgba(248, 249, 250, 1);
+background: rgba(255, 255, 255, 1);
 }
 
 body.page-resume .main-title {
-border-bottom: 1px solid rgba(17, 24, 28, 0.08);
+border-bottom: 1px solid rgba(46, 41, 35, 0.08);
 }
 
 body.page-resume .audio-control,
 body.page-resume .shortcut-link {
-background: rgba(248, 249, 250, 1);
+background: rgba(255, 255, 255, 1);
         color: var(--text-main);
         border: none;
-        box-shadow: 0 14px 30px rgba(17, 24, 28, 0.07);
+        box-shadow: 0 14px 30px rgba(46, 41, 35, 0.07);
 }
 
 body.page-resume .skill-pill,
@@ -1550,18 +1563,18 @@ box-shadow: none;
 
 /* projects/book-recommendation/index.html */
 body.page-book-project {
---bg-main: #f8f9fa;
-        --bg-surface: rgba(248, 249, 250, 0.98);
-        --bg-elevated: #11181c;
-        --primary: #34b27b;
-        --primary-deep: #34b27b;
-        --primary-glow: #34b27b;
-        --text-main: #11181c;
-        --text-muted: rgba(17, 24, 28, 0.72);
-        --glass-border: rgba(17, 24, 28, 0.08);
-        --glass-bg: rgba(248, 249, 250, 0.98);
-        --shadow-soft: 0 10px 24px rgba(17, 24, 28, 0.06);
-        --shadow-strong: 0 18px 44px rgba(17, 24, 28, 0.08);
+--bg-main: #f3efe9;
+        --bg-surface: rgba(255, 255, 255, 0.96);
+        --bg-elevated: #232821;
+        --primary: #0ab24a;
+        --primary-deep: #0a933d;
+        --primary-glow: #0ab24a;
+        --text-main: #2e2923;
+        --text-muted: rgba(94, 86, 76, 0.78);
+        --glass-border: rgba(46, 41, 35, 0.1);
+        --glass-bg: rgba(255, 255, 255, 0.96);
+        --shadow-soft: 0 12px 28px rgba(46, 41, 35, 0.06);
+        --shadow-strong: 0 18px 44px rgba(46, 41, 35, 0.08);
         --font-mono: "Fira Code", monospace;
         --font-sans: "Inter", sans-serif;
 }
@@ -2120,24 +2133,24 @@ margin-top: 4rem;
 
 body.page-book-project {
 background:
-          linear-gradient(
-            180deg,
-            rgba(17, 24, 28, 0.04) 0%,
-            rgba(17, 24, 28, 0.02) 100%
+          radial-gradient(
+            circle at top right,
+            rgba(10, 178, 74, 0.06),
+            transparent 22%
           ),
-          var(--bg-main);
+          linear-gradient(180deg, #faf7f3 0%, var(--bg-main) 100%);
 }
 
 body.page-book-project .navbar {
-background: rgba(248, 249, 250, 0.92);
+background: rgba(255, 255, 255, 0.92);
 }
 
 body.page-book-project .audio-control,
 body.page-book-project .sidebar-card {
-background: rgba(248, 249, 250, 1);
+background: rgba(255, 255, 255, 1);
         color: var(--text-main);
         border: none;
-        box-shadow: 0 14px 30px rgba(17, 24, 28, 0.07);
+        box-shadow: 0 14px 30px rgba(46, 41, 35, 0.07);
 }
 
 body.page-book-project .project-meta span,
@@ -2166,18 +2179,18 @@ background: rgba(248, 249, 250, 0.98);
 
 /* projects/local-document-search/index.html */
 body.page-search-project {
---bg-main: #f8f9fa;
-        --bg-surface: rgba(248, 249, 250, 0.98);
-        --bg-elevated: #11181c;
-        --primary: #34b27b;
-        --primary-deep: #34b27b;
-        --primary-glow: #34b27b;
-        --text-main: #11181c;
-        --text-muted: rgba(17, 24, 28, 0.72);
-        --glass-border: rgba(17, 24, 28, 0.08);
-        --glass-bg: rgba(248, 249, 250, 0.98);
-        --shadow-soft: 0 10px 24px rgba(17, 24, 28, 0.06);
-        --shadow-strong: 0 18px 44px rgba(17, 24, 28, 0.08);
+--bg-main: #f3efe9;
+        --bg-surface: rgba(255, 255, 255, 0.96);
+        --bg-elevated: #232821;
+        --primary: #0ab24a;
+        --primary-deep: #0a933d;
+        --primary-glow: #0ab24a;
+        --text-main: #2e2923;
+        --text-muted: rgba(94, 86, 76, 0.78);
+        --glass-border: rgba(46, 41, 35, 0.1);
+        --glass-bg: rgba(255, 255, 255, 0.96);
+        --shadow-soft: 0 12px 28px rgba(46, 41, 35, 0.06);
+        --shadow-strong: 0 18px 44px rgba(46, 41, 35, 0.08);
         --font-mono: "Fira Code", monospace;
         --font-sans: "Inter", sans-serif;
 }
@@ -2731,24 +2744,24 @@ margin-top: 4rem;
 
 body.page-search-project {
 background:
-          linear-gradient(
-            180deg,
-            rgba(17, 24, 28, 0.04) 0%,
-            rgba(17, 24, 28, 0.02) 100%
+          radial-gradient(
+            circle at top right,
+            rgba(10, 178, 74, 0.06),
+            transparent 22%
           ),
-          var(--bg-main);
+          linear-gradient(180deg, #faf7f3 0%, var(--bg-main) 100%);
 }
 
 body.page-search-project .navbar {
-background: rgba(248, 249, 250, 0.92);
+background: rgba(255, 255, 255, 0.92);
 }
 
 body.page-search-project .audio-control,
 body.page-search-project .sidebar-card {
-background: rgba(248, 249, 250, 1);
+background: rgba(255, 255, 255, 1);
         color: var(--text-main);
         border: none;
-        box-shadow: 0 14px 30px rgba(17, 24, 28, 0.07);
+        box-shadow: 0 14px 30px rgba(46, 41, 35, 0.07);
 }
 
 body.page-search-project .project-meta span,
