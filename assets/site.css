@@ -3072,6 +3072,58 @@ background: var(--ref-secondary);
   box-shadow: 0 6px 16px rgba(18, 18, 18, 0.04);
 }
 
+body.page-home .badge,
+body.page-resume .badge,
+body.page-book-project .badge,
+body.page-search-project .badge {
+display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  flex-shrink: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  gap: 0.4rem;
+  padding: 0.45rem 0.78rem !important;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+background: var(--ref-secondary);
+  color: var(--ref-text);
+  border-color: var(--ref-border);
+  border-radius: 999px !important;
+  box-shadow: none;
+}
+
+body.page-home .badge--default,
+body.page-resume .badge--default,
+body.page-book-project .badge--default,
+body.page-search-project .badge--default {
+background: var(--ref-primary);
+  color: #ffffff;
+  border-color: var(--ref-primary);
+}
+
+body.page-home .badge--secondary,
+body.page-resume .badge--secondary,
+body.page-book-project .badge--secondary,
+body.page-search-project .badge--secondary {
+background: var(--ref-secondary);
+  color: var(--ref-text);
+  border-color: var(--ref-border);
+}
+
+body.page-home .badge--outline,
+body.page-resume .badge--outline,
+body.page-book-project .badge--outline,
+body.page-search-project .badge--outline {
+background: transparent;
+  color: var(--ref-text);
+  border-color: var(--ref-border-strong);
+}
+
 body.page-home .pill,
 body.page-home .stamp,
 body.page-resume .skill-pill,
@@ -3085,6 +3137,41 @@ background: var(--ref-accent-surface);
   color: var(--ref-primary);
   border-color: var(--ref-border);
   box-shadow: none;
+}
+
+body.page-resume .badge.skill-pill,
+body.page-resume .badge.tech-item,
+body.page-book-project .badge.tech-badge,
+body.page-search-project .badge.tech-badge {
+background: var(--ref-secondary);
+  color: var(--ref-text);
+  border-color: var(--ref-border);
+  box-shadow: none;
+  transform: none;
+}
+
+body.page-resume .badge.job-type,
+body.page-book-project .project-meta .badge,
+body.page-search-project .project-meta .badge {
+background: transparent;
+  color: var(--ref-text);
+  border-color: var(--ref-border-strong);
+  box-shadow: none;
+  transform: none;
+}
+
+body.page-resume .badge.skill-pill:hover,
+body.page-resume .badge.tech-item:hover,
+body.page-resume .badge.job-type:hover,
+body.page-book-project .badge.tech-badge:hover,
+body.page-book-project .project-meta .badge:hover,
+body.page-search-project .badge.tech-badge:hover,
+body.page-search-project .project-meta .badge:hover {
+background: var(--ref-secondary);
+  color: var(--ref-text);
+  border-color: var(--ref-border);
+  box-shadow: none;
+  transform: none;
 }
 
 body.page-home .btn-primary:hover,
@@ -3179,6 +3266,7 @@ padding-top: 0.85rem;
 
 body.page-home .footer-shell,
 body.page-home .hero-actions,
+body.page-home .badge-row,
 body.page-home .pill-row,
 body.page-home .contact-links,
 body.page-resume .profile-shortcuts,
