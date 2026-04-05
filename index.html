@@ -452,6 +452,7 @@
         display: flex;
         flex-direction: column;
         grid-column: span 6;
+        gap: 1rem;
       }
 
       .project-card--small {
@@ -471,21 +472,22 @@
       }
 
       .project-card p {
-        margin-top: 0.7rem;
+        margin-top: 0;
         max-width: 42ch;
         color: var(--muted);
       }
 
       .project-card .pill-row {
-        margin-top: 1rem;
+        margin-top: 0;
       }
 
       .project-card .project-button {
-        margin-top: auto;
+        margin-top: 0;
+        align-self: flex-start;
       }
 
       .project-card--small .pill-row {
-        margin-top: 1rem;
+        margin-top: 0;
       }
 
       .project-card--small p {
@@ -816,7 +818,7 @@
             <div>
               <h2 class="section-title">Skills</h2>
               <p class="section-copy">
-                The main areas I build in most often.
+                Core data science skills I use most.
               </p>
             </div>
           </div>
@@ -824,45 +826,45 @@
           <div class="skills-grid">
             <article class="card skill-card">
               <span class="mini-label">01</span>
-              <h3>Recommendation Systems</h3>
-              <p>Content-based recommendation from messy catalog data.</p>
+              <h3>Python & Data Analysis</h3>
+              <p>Working with datasets, notebooks, scripts, and analysis workflows.</p>
               <div class="pill-row">
-                <span class="pill">TF-IDF</span>
-                <span class="pill">Scikit-Learn</span>
-                <span class="pill">Scrapy</span>
+                <span class="pill">Python</span>
+                <span class="pill">Pandas</span>
+                <span class="pill">NumPy</span>
               </div>
             </article>
 
             <article class="card skill-card">
               <span class="mini-label">02</span>
-              <h3>Search & Retrieval</h3>
-              <p>Local-first search for notes, documents, and study flows.</p>
+              <h3>Machine Learning</h3>
+              <p>Building baseline models, feature pipelines, and practical prediction systems.</p>
               <div class="pill-row">
-                <span class="pill">FastAPI</span>
-                <span class="pill">SQLite</span>
-                <span class="pill">Indexing</span>
+                <span class="pill">Scikit-Learn</span>
+                <span class="pill">Regression</span>
+                <span class="pill">Classification</span>
               </div>
             </article>
 
             <article class="card skill-card">
               <span class="mini-label">03</span>
-              <h3>Data Processing</h3>
-              <p>Cleaning raw inputs into structured data that models can use.</p>
+              <h3>SQL & Data Handling</h3>
+              <p>Querying, joining, aggregating, and shaping data for analysis and modeling.</p>
               <div class="pill-row">
-                <span class="pill">Python</span>
-                <span class="pill">Pandas</span>
                 <span class="pill">SQL</span>
+                <span class="pill">SQLite</span>
+                <span class="pill">Data Cleaning</span>
               </div>
             </article>
 
             <article class="card skill-card">
               <span class="mini-label">04</span>
-              <h3>Frontend for ML</h3>
-              <p>Simple UI that makes search and recommendation output readable.</p>
+              <h3>Statistics & Evaluation</h3>
+              <p>Using metrics, validation, and statistical thinking to judge model quality.</p>
               <div class="pill-row">
-                <span class="pill">SvelteKit</span>
-                <span class="pill">UI Flow</span>
-                <span class="pill">Product Thinking</span>
+                <span class="pill">EDA</span>
+                <span class="pill">Model Evaluation</span>
+                <span class="pill">Statistics</span>
               </div>
             </article>
           </div>
