@@ -220,6 +220,7 @@ margin-top: 1rem;
 
 body.page-home .hero-actions,
 body.page-home .stack-list,
+body.page-home .badge-row,
 body.page-home .pill-row,
 body.page-home .contact-links {
 display: flex;
@@ -231,15 +232,46 @@ body.page-home .hero-actions {
 margin-top: 1.6rem;
 }
 
+body.page-home .badge,
 body.page-home .pill {
 display: inline-flex;
         align-items: center;
-        gap: 0.55rem;
-        padding: 0.48rem 0.8rem;
-        font-size: 0.82rem;
-        border: 1px solid rgba(10, 178, 74, 0.14);
-        border-radius: var(--radius);
-        background: var(--accent-soft);
+        justify-content: center;
+        width: fit-content;
+        flex-shrink: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        gap: 0.4rem;
+        padding: 0.45rem 0.78rem;
+        font-size: 0.78rem;
+        font-weight: 600;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--surface-strong);
+        color: var(--text);
+        transition:
+          background-color 0.2s ease,
+          border-color 0.2s ease,
+          color 0.2s ease;
+}
+
+body.page-home .badge--default {
+background: var(--text);
+        border-color: var(--text);
+        color: #ffffff;
+}
+
+body.page-home .badge--secondary {
+background: rgba(240, 240, 240, 0.96);
+        border-color: rgba(18, 18, 18, 0.08);
+        color: var(--text);
+}
+
+body.page-home .badge--outline {
+background: transparent;
+        border-color: var(--line-strong);
         color: var(--text);
 }
 
@@ -424,6 +456,7 @@ margin-top: 0.45rem;
         color: var(--muted);
 }
 
+body.page-home .skill-card .badge-row,
 body.page-home .skill-card .pill-row {
 margin-top: 0.3rem;
 }
@@ -462,6 +495,7 @@ margin-top: 0;
         color: var(--muted);
 }
 
+body.page-home .project-card .badge-row,
 body.page-home .project-card .pill-row {
 margin-top: 0;
 }
@@ -471,6 +505,7 @@ margin-top: 0;
         align-self: flex-start;
 }
 
+body.page-home .project-card--small .badge-row,
 body.page-home .project-card--small .pill-row {
 margin-top: 0;
 }
