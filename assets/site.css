@@ -1209,107 +1209,161 @@ body.page-resume .shortcut-link,
 body.page-resume .skill-pill,
 body.page-resume .job-type,
 body.page-resume .tech-item {
-  background: var(--bg-main);
-  border-color: var(--glass-border);
+  background: transparent;
+  border-color: transparent;
   box-shadow: none;
 }
 
-body.page-resume .scroll-progress {
-  background: var(--primary);
-  box-shadow: none;
-}
-
-body.page-resume .audio-control {
-  background: var(--bg-elevated);
-  color: var(--bg-main);
-  border-color: var(--bg-elevated);
-  box-shadow: none;
-}
-
-body.page-resume .audio-control:hover,
-body.page-resume .audio-control.playing {
-  color: var(--bg-main);
-  border-color: var(--primary);
-  box-shadow: none;
-}
-
-body.page-resume .resume-container::before {
-  background: var(--primary);
+body.page-resume .resume-container {
+  max-width: 900px;
+  margin: 4rem auto;
+  grid-template-columns: 280px 1fr;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 24px 60px rgba(31, 31, 33, 0.08);
 }
 
 body.page-resume .sidebar {
-  background: var(--bg-elevated);
-  border-right-color: var(--bg-elevated);
+  background: #f7f2ec;
+  border-right: 1px solid #e6dfd6;
+  padding: 2.5rem 2rem;
 }
 
-body.page-resume .profile-header h1,
-body.page-resume .profile-summary,
-body.page-resume .sb-section-title,
-body.page-resume .contact-item,
-body.page-resume .edu-school,
-body.page-resume .edu-date {
-  color: var(--bg-main);
+body.page-resume .main-content {
+  padding: 2.5rem 2.5rem 3rem;
+  background: #ffffff;
 }
 
-body.page-resume .profile-header h2,
-body.page-resume .sb-section-title i,
-body.page-resume .shortcut-link i,
-body.page-resume .contact-item i,
-body.page-resume .edu-degree,
-body.page-resume .main-title i {
-  color: var(--primary);
+body.page-resume .profile-header h1 {
+  font-size: 2.4rem;
+  margin-bottom: 0.25rem;
+  color: #1f1d19;
+}
+
+body.page-resume .profile-header h2 {
+  color: #0a8b3d;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+body.page-resume .profile-summary {
+  color: #5f5a50;
+  font-size: 0.94rem;
+}
+
+body.page-resume .profile-shortcuts {
+  gap: 0.5rem;
+  margin-top: 1.15rem;
 }
 
 body.page-resume .shortcut-link {
-  background: var(--bg-elevated);
-  color: var(--bg-main);
-  border: 1px solid var(--bg-main);
+  background: #0a8b3d;
+  color: #ffffff;
+  border: none;
+  box-shadow: none;
+  font-size: 0.8rem;
 }
 
-body.page-resume .shortcut-link:hover,
+body.page-resume .shortcut-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(10, 139, 61, 0.18);
+}
+
+body.page-resume .sb-section-title {
+  margin-bottom: 1rem;
+  color: #7d766a;
+  letter-spacing: 1.5px;
+}
+
+body.page-resume .contact-list,
+body.page-resume .skill-cloud {
+  gap: 0.75rem;
+}
+
+body.page-resume .contact-item {
+  color: #5f5a50;
+}
+
 body.page-resume .contact-item:hover {
-  color: var(--primary);
-  box-shadow: none;
+  color: #0a8b3d;
 }
 
-body.page-resume .main-content,
-body.page-resume .main-section {
-  color: var(--text-main);
+body.page-resume .edu-item {
+  margin-bottom: 1.4rem;
 }
 
-body.page-resume .main-title,
-body.page-resume .job-role,
-body.page-resume .job-desc,
-body.page-resume .tech-row,
-body.page-resume .edu-school {
-  color: var(--text-main);
-}
-
-body.page-resume .job-item::before {
-  background: var(--bg-elevated);
-}
-
-body.page-resume .job-item::after {
-  background: var(--primary);
-  box-shadow: none;
+body.page-resume .edu-degree {
+  color: #0a8b3d;
 }
 
 body.page-resume .skill-pill,
-body.page-resume .job-type,
-body.page-resume .tech-item {
-  color: var(--text-main);
-  border: 1px solid var(--glass-border);
+body.page-resume .tech-item,
+body.page-resume .job-type {
+  background: #f4f1eb;
+  color: #5f5a50;
+  border: 1px solid #e6dfd6;
+}
+
+body.page-resume .main-section {
+  margin-bottom: 2rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+body.page-resume .main-title {
+  font-size: 1.1rem;
+  margin-bottom: 1.4rem;
+  border-bottom: 1px solid #e6dfd6;
+  padding-bottom: 0.75rem;
+  color: #1f1d19;
+}
+
+body.page-resume .job-item {
+  margin-bottom: 2rem;
+  padding-left: 0;
+}
+
+body.page-resume .job-item::before,
+body.page-resume .job-item::after {
+  display: none;
+}
+
+body.page-resume .job-header {
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+body.page-resume .job-role {
+  font-size: 1.05rem;
+  color: #1f1d19;
+}
+
+body.page-resume .job-desc {
+  color: #5f5a50;
+  margin-bottom: 1rem;
+}
+
+body.page-resume .tech-row {
+  gap: 0.5rem;
 }
 
 body.page-resume .btn-action {
-  background: var(--primary);
-  color: var(--bg-main);
-  border-color: var(--primary);
-  box-shadow: none;
+  background: #0a8b3d;
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 12px 24px rgba(10, 139, 61, 0.16);
 }
 
 body.page-resume .btn-action:hover {
-  box-shadow: none;
+  box-shadow: 0 16px 28px rgba(10, 139, 61, 0.2);
+}
+
+body.page-resume .audio-control,
+body.page-resume .scroll-progress,
+body.page-resume #network-canvas {
+  display: none;
 }
 
 @media print {
