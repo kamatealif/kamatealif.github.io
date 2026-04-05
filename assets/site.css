@@ -1366,6 +1366,104 @@ body.page-resume #network-canvas {
   display: none;
 }
 
+body.page-home .hero-panel,
+body.page-home .card,
+body.page-home .project-card,
+body.page-home .contact-card,
+body.page-home .skill-card,
+body.page-home .hero-copy,
+body.page-resume .resume-container,
+body.page-resume .sidebar,
+body.page-resume .main-content,
+body.page-resume .profile-header,
+body.page-resume .job-item,
+body.page-book-project .project-header,
+body.page-book-project .case-card,
+body.page-book-project .sidebar-card,
+body.page-book-project .project-meta-card,
+body.page-search-project .project-header,
+body.page-search-project .case-card,
+body.page-search-project .sidebar-card,
+body.page-search-project .project-meta-card {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: fadeInUp 0.72s ease-out both;
+}
+
+body.page-home .btn-primary:hover,
+body.page-home .btn-secondary:hover,
+body.page-home .project-button:hover,
+body.page-resume .shortcut-link:hover,
+body.page-book-project .btn-primary:hover,
+body.page-search-project .btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+body.page-home .badge:hover,
+body.page-home .pill:hover,
+body.page-resume .badge:hover,
+body.page-resume .skill-pill:hover,
+body.page-resume .tech-item:hover,
+body.page-book-project .tech-badge:hover,
+body.page-search-project .tech-badge:hover {
+  transform: translateY(-2px);
+}
+
+body.page-home .hero-title,
+body.page-home .section-title,
+body.page-home .main-title,
+body.page-home .project-card h1,
+body.page-book-project .section-title,
+body.page-search-project .section-title,
+body.page-resume .job-role,
+body.page-resume .sb-section-title {
+  animation: fadeInUp 0.9s ease-out both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.page-home .hero-panel,
+  body.page-home .card,
+  body.page-home .project-card,
+  body.page-home .contact-card,
+  body.page-home .skill-card,
+  body.page-home .hero-copy,
+  body.page-resume .resume-container,
+  body.page-resume .sidebar,
+  body.page-resume .main-content,
+  body.page-resume .profile-header,
+  body.page-resume .job-item,
+  body.page-book-project .project-header,
+  body.page-book-project .case-card,
+  body.page-book-project .sidebar-card,
+  body.page-book-project .project-meta-card,
+  body.page-search-project .project-header,
+  body.page-search-project .case-card,
+  body.page-search-project .sidebar-card,
+  body.page-search-project .project-meta-card,
+  body.page-home .hero-title,
+  body.page-home .section-title,
+  body.page-home .main-title,
+  body.page-home .project-card h1,
+  body.page-book-project .section-title,
+  body.page-search-project .section-title,
+  body.page-resume .job-role,
+  body.page-resume .sb-section-title {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 @media print {
   body.page-resume {
     background: white;
