@@ -77,9 +77,15 @@
         </li>
       </ul>
 
-      <div class="hamburger" onclick="toggleMenu()">
+      <button
+        class="hamburger"
+        id="hamburger"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+      >
         <i class="ph ph-light ph-list" id="menu-icon"></i>
-      </div>
+      </button>
     </nav>
 
     <main class="section-padding">
@@ -214,15 +220,39 @@
     </main>
 
     <script>
+      const body = document.body;
       const navLinks = document.getElementById("nav-links");
+      const hamburger = document.getElementById("hamburger");
       const menuIcon = document.getElementById("menu-icon");
-      function toggleMenu() {
-        navLinks.classList.toggle("active");
+      function toggleMenu(forceState) {
+        const shouldOpen =
+          typeof forceState === "boolean"
+            ? forceState
+            : !navLinks.classList.contains("active");
+
+        navLinks.classList.toggle("active", shouldOpen);
+        body.classList.toggle("menu-open", shouldOpen);
+
+        if (hamburger) {
+          hamburger.setAttribute("aria-expanded", String(shouldOpen));
+        }
+
         if (menuIcon) {
-          menuIcon.classList.toggle("ph-list");
-          menuIcon.classList.toggle("ph-x");
+          menuIcon.className = shouldOpen
+            ? "ph ph-light ph-x"
+            : "ph ph-light ph-list";
         }
       }
+
+      hamburger.addEventListener("click", () => toggleMenu());
+
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => toggleMenu(false));
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 900) toggleMenu(false);
+      });
 
       const audioBtn = document.getElementById("audio-btn");
       const audio = document.getElementById("bg-music");
