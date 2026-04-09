@@ -4,13 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Resume | Alip Kamate</title>
+    <meta
+      name="description"
+      content="Resume of Alip Kamate, focused on data science, machine learning, recommendation systems, and search-oriented product builds."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <link
@@ -34,353 +37,265 @@
     <link rel="stylesheet" href="./assets/site.css" />
   </head>
   <body class="page-resume">
-    <canvas id="network-canvas"></canvas>
-    <div class="scroll-progress" id="scroll-progress"></div>
+    <a class="cv-back" href="index.html" aria-label="Back to portfolio">
+      <i class="ph ph-arrow-left"></i>
+    </a>
 
-    <!-- LOFI AUDIO CONTROL -->
-    <div class="audio-control" id="audio-btn">
-      <i class="ph ph-light ph-music-note"></i>
-      <span>Lofi Mode</span>
-      <audio id="bg-music" loop crossorigin="anonymous">
-        <source src="./assets/lofi.mp3" type="audio/mpeg" />
-      </audio>
-    </div>
-
-    <div class="resume-container">
-      <!-- LEFT SIDEBAR -->
-      <aside class="sidebar">
-        <div class="profile-header">
-          <h1>Alip Kamate</h1>
-          <h2>Data Scientist</h2>
-          <div class="profile-summary">
-            Data Scientist focused on recommendation systems, local search
-            workflows, and practical machine learning projects. Interested in
-            building thoughtful tools that turn raw data and documents into
-            usable systems.
+    <main class="cv-page">
+      <section class="cv-sheet">
+        <header class="cv-banner">
+          <div class="cv-avatar-wrap">
+            <div class="cv-avatar-photo" aria-label="Initials avatar for Alip Kamate">
+              <svg viewBox="0 0 180 180" role="img" aria-hidden="true">
+                <defs>
+                  <linearGradient id="cvAvatarBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f6fbfa" />
+                    <stop offset="100%" stop-color="#dcefeb" />
+                  </linearGradient>
+                  <linearGradient id="cvAvatarAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#109790" />
+                    <stop offset="100%" stop-color="#0a6560" />
+                  </linearGradient>
+                </defs>
+                <circle cx="90" cy="90" r="86" fill="url(#cvAvatarBg)" />
+                <circle cx="90" cy="70" r="28" fill="#16332f" opacity="0.92" />
+                <path
+                  d="M42 142c7-24 28-39 48-39s41 15 48 39"
+                  fill="#16332f"
+                  opacity="0.92"
+                />
+                <circle cx="126" cy="50" r="18" fill="url(#cvAvatarAccent)" opacity="0.18" />
+                <text
+                  x="90"
+                  y="162"
+                  text-anchor="middle"
+                  font-family="Inter, sans-serif"
+                  font-size="26"
+                  font-weight="800"
+                  fill="#109790"
+                >
+                  AK
+                </text>
+              </svg>
+            </div>
           </div>
-          <div class="profile-shortcuts">
-            <a
-              href="./assets/Resume.pdf"
-              download="Alip_Kamate_Resume.pdf"
-              class="shortcut-link badge badge-primary"
-            >
-              <i class="ph ph-light ph-file-text"></i> Resume PDF
-            </a>
-            <a
-              href="https://github.com/kamatealif/"
-              target="_blank"
-              rel="noreferrer"
-              class="shortcut-link badge badge-primary"
-            >
-              <i class="ph ph-light ph-github-logo"></i> GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/alip-kamate-722917261/"
-              target="_blank"
-              rel="noreferrer"
-              class="shortcut-link badge badge-primary"
-            >
-              <i class="ph ph-light ph-linkedin-logo"></i> LinkedIn
-            </a>
-            <a
-              href="mailto:kamatealip1@gmail.com"
-              class="shortcut-link badge badge-primary"
-            >
-              <i class="ph ph-light ph-envelope-simple"></i> Email
-            </a>
+
+          <div class="cv-banner-copy">
+            <p class="cv-banner-kicker">Resume</p>
+            <h1>Alip Kamate</h1>
+            <p class="cv-banner-role">
+              Data Science • Machine Learning • Search & Recommendations
+            </p>
+          </div>
+
+          <a
+            href="./assets/kamatealip_ds_2026.pdf"
+            download="kamatealip_ds_2026.pdf"
+            class="cv-banner-link"
+          >
+            <i class="ph ph-file-arrow-down"></i>
+            Download PDF
+          </a>
+        </header>
+
+        <div class="cv-layout">
+          <aside class="cv-sidebar">
+            <section class="cv-side-section">
+              <h2 class="cv-side-title">Contact</h2>
+              <ul class="cv-contact-list">
+                <li>
+                  <a href="mailto:kamatealip1@gmail.com">
+                    <i class="ph ph-envelope-simple"></i>
+                    <span>kamatealip1@gmail.com</span>
+                  </a>
+                </li>
+                <li>
+                  <span>
+                    <i class="ph ph-phone"></i>
+                    <span>+91 7387705851</span>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <i class="ph ph-map-pin"></i>
+                    <span>Jath, Sangli, Maharashtra</span>
+                  </span>
+                </li>
+                <li>
+                  <a href="https://kamatealif.github.io/" target="_blank" rel="noreferrer">
+                    <i class="ph ph-globe"></i>
+                    <span>kamatealif.github.io</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/kamatealif/" target="_blank" rel="noreferrer">
+                    <i class="ph ph-github-logo"></i>
+                    <span>github.com/kamatealif</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/alip-kamate-722917261/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <i class="ph ph-linkedin-logo"></i>
+                    <span>linkedin.com/in/alip-kamate-722917261</span>
+                  </a>
+                </li>
+              </ul>
+            </section>
+
+            <section class="cv-side-section">
+              <h2 class="cv-side-title">Skills</h2>
+              <ul class="cv-bullet-list">
+                <li>Python</li>
+                <li>SQL</li>
+                <li>Pandas & NumPy</li>
+                <li>Scikit-Learn</li>
+                <li>FastAPI</li>
+                <li>SQLite</li>
+                <li>TF-IDF</li>
+                <li>Git & GitHub</li>
+              </ul>
+            </section>
+
+            <section class="cv-side-section">
+              <h2 class="cv-side-title">Focus Areas</h2>
+              <ul class="cv-bullet-list">
+                <li>Recommendation systems</li>
+                <li>Search and retrieval workflows</li>
+                <li>Data cleaning and feature preparation</li>
+                <li>Product-minded ML interfaces</li>
+                <li>APIs and lightweight delivery</li>
+              </ul>
+            </section>
+          </aside>
+
+          <div class="cv-main">
+            <section class="cv-section">
+              <div class="cv-section-head">
+                <span class="cv-section-icon">
+                  <i class="ph ph-user-circle"></i>
+                </span>
+                <h2>Profile</h2>
+              </div>
+              <p class="cv-summary">
+                BCA student focused on practical data science, recommendation
+                systems, local search workflows, and machine learning projects
+                that are easy to explain and easy to use. Open to fresher and
+                entry-level roles where I can keep building, learning, and
+                shipping real work.
+              </p>
+            </section>
+
+            <section class="cv-section">
+              <div class="cv-section-head">
+                <span class="cv-section-icon">
+                  <i class="ph ph-briefcase"></i>
+                </span>
+                <h2>Project Experience</h2>
+              </div>
+
+              <div class="cv-timeline">
+                <article class="cv-entry">
+                  <div class="cv-entry-head">
+                    <div>
+                      <h3>Book Recommendation Engine</h3>
+                      <p class="cv-entry-subtitle">Personal project • Live case study</p>
+                    </div>
+                    <span class="cv-entry-tag">Recommendation</span>
+                  </div>
+                  <ul class="cv-entry-list">
+                    <li>Collected and prepared book metadata from scraped catalog data.</li>
+                    <li>Built a TF-IDF similarity pipeline to generate relevant title recommendations.</li>
+                    <li>Presented the output through a clean browsing experience with product-style thinking.</li>
+                  </ul>
+                </article>
+
+                <article class="cv-entry">
+                  <div class="cv-entry-head">
+                    <div>
+                      <h3>Local Document Search Engine</h3>
+                      <p class="cv-entry-subtitle">Personal project • Live case study</p>
+                    </div>
+                    <span class="cv-entry-tag">Search & Retrieval</span>
+                  </div>
+                  <ul class="cv-entry-list">
+                    <li>Designed an offline-first search workflow for personal notes and local documents.</li>
+                    <li>Indexed files for faster lookup and simpler transition from query to reading.</li>
+                    <li>Focused on local retrieval, structured storage, and a more usable study experience.</li>
+                  </ul>
+                </article>
+              </div>
+            </section>
+
+            <section class="cv-section">
+              <div class="cv-section-head">
+                <span class="cv-section-icon">
+                  <i class="ph ph-lightbulb"></i>
+                </span>
+                <h2>Currently Building</h2>
+              </div>
+
+              <div class="cv-current-grid">
+                <article class="cv-current-card">
+                  <h3>Movie Recommendation System</h3>
+                  <p>
+                    Exploring genre, cast, mood, and content similarity for
+                    stronger movie suggestions.
+                  </p>
+                </article>
+
+                <article class="cv-current-card">
+                  <h3>AI-Based Cloud Architecture Scaler</h3>
+                  <p>
+                    Studying workload signals and decision support for smarter
+                    cloud scaling recommendations.
+                  </p>
+                </article>
+
+                <article class="cv-current-card">
+                  <h3>Anomaly Detection for Cloud Architecture</h3>
+                  <p>
+                    Building a monitoring-focused workflow for spotting unusual
+                    cloud behavior earlier.
+                  </p>
+                </article>
+              </div>
+            </section>
+
+            <section class="cv-section">
+              <div class="cv-section-head">
+                <span class="cv-section-icon">
+                  <i class="ph ph-graduation-cap"></i>
+                </span>
+                <h2>Education</h2>
+              </div>
+
+              <div class="cv-education-list">
+                <article class="cv-education-item">
+                  <div>
+                    <h3>Bachelor of Computer Applications (BCA)</h3>
+                    <p>Shivaji University, Kolhapur</p>
+                    <span>Currently pursuing</span>
+                  </div>
+                  <strong>2021 - Present</strong>
+                </article>
+
+                <article class="cv-education-item">
+                  <div>
+                    <h3>HSC (Science)</h3>
+                    <p>Raje Ramrao College</p>
+                    <span>Secured 80.84%</span>
+                  </div>
+                  <strong>2020</strong>
+                </article>
+              </div>
+            </section>
           </div>
         </div>
-
-        <!-- Contact -->
-        <div>
-          <div class="sb-section-title">
-            <i class="ph ph-light ph-address-book"></i> Contact
-          </div>
-          <div class="contact-list">
-            <a href="mailto:kamatealip1@gmail.com" class="contact-item">
-              <i class="ph ph-light ph-envelope-simple"></i>
-              kamatealip1@gmail.com
-            </a>
-            <a
-              href="https://github.com/kamatealif/"
-              target="_blank"
-              rel="noreferrer"
-              class="contact-item"
-            >
-              <i class="ph ph-light ph-github-logo"></i>
-              github.com/kamatealif
-            </a>
-            <span class="contact-item">
-              <i class="ph ph-light ph-phone"></i> +91 7387705851
-            </span>
-            <span class="contact-item">
-              <i class="ph ph-light ph-map-pin"></i> Jath, Sangli, MH
-            </span>
-            <a
-              href="https://kamatealif.github.io/"
-              target="_blank"
-              class="contact-item"
-            >
-              <i class="ph ph-light ph-globe"></i> kamatealif.github.io
-            </a>
-            <a
-              href="https://www.linkedin.com/in/alip-kamate-722917261/"
-              target="_blank"
-              rel="noreferrer"
-              class="contact-item"
-            >
-              <i class="ph ph-light ph-linkedin-logo"></i>
-              linkedin.com/in/alip-kamate
-            </a>
-          </div>
-        </div>
-
-        <!-- Education -->
-        <div>
-          <div class="sb-section-title">
-            <i class="ph ph-light ph-graduation-cap"></i> Education
-          </div>
-
-          <div class="edu-item">
-            <div class="edu-school">Shivaji University</div>
-            <span class="edu-degree"
-              >Bachelor of Computer Applications (BCA) | Currently
-              Pursuing</span
-            >
-            <div class="edu-date">May 2021 - Present</div>
-          </div>
-
-          <div class="edu-item">
-            <div class="edu-school">Raje Ramrao College</div>
-            <span class="edu-degree">HSC (Science)</span>
-            <div class="edu-date">2020</div>
-            <div class="edu-note">Secured 80.84%</div>
-          </div>
-        </div>
-
-        <!-- Skills -->
-        <div>
-          <div class="sb-section-title">
-            <i class="ph ph-light ph-code"></i> Skills
-          </div>
-          <div class="skill-cloud">
-            <span class="badge badge--secondary skill-pill">Python</span>
-            <span class="badge badge--secondary skill-pill">Scrapy</span>
-            <span class="badge badge--secondary skill-pill">SvelteKit</span>
-            <span class="badge badge--secondary skill-pill">Scikit-Learn</span>
-            <span class="badge badge--secondary skill-pill">SQL</span>
-            <span class="badge badge--secondary skill-pill">Pandas</span>
-            <span class="badge badge--secondary skill-pill">TF-IDF</span>
-            <span class="badge badge--secondary skill-pill">NumPy</span>
-            <span class="badge badge--secondary skill-pill">FastAPI</span>
-            <span class="badge badge--secondary skill-pill">SQLite</span>
-            <span class="badge badge--secondary skill-pill"
-              >Search Indexing</span
-            >
-            <span class="badge badge--secondary skill-pill">Git</span>
-          </div>
-        </div>
-      </aside>
-
-      <!-- RIGHT MAIN CONTENT -->
-      <main class="main-content">
-        <!-- Experience -->
-        <section class="main-section">
-          <h3 class="main-title">
-            <i class="ph ph-light ph-briefcase"></i> Project Experience
-          </h3>
-
-          <!-- Project 1 -->
-          <div class="job-item">
-            <div class="job-header">
-              <div class="job-role">Book Recommendation Engine</div>
-              <span class="badge badge--outline job-type"
-                >Recommendation System</span
-              >
-            </div>
-            <div class="job-desc">
-              Developed a recommendation engine for books by collecting title
-              metadata, cleaning and transforming the dataset, and generating
-              similarity-based suggestions for faster content discovery. Focused
-              on making recommendations relevant, readable, and easy to explore
-              through a clean user-facing interface.
-            </div>
-            <div class="tech-row">
-              <span class="badge badge--secondary tech-item">Python</span>
-              <span class="badge badge--secondary tech-item">Scrapy</span>
-              <span class="badge badge--secondary tech-item">Pandas</span>
-              <span class="badge badge--secondary tech-item">TF-IDF</span>
-              <span class="badge badge--secondary tech-item">SvelteKit</span>
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="job-item">
-            <div class="job-header">
-              <div class="job-role">Local Document Search Engine</div>
-              <span class="badge badge--outline job-type"
-                >Search & Retrieval</span
-              >
-            </div>
-            <div class="job-desc">
-              Built a local-first search engine for offline study sessions so I
-              could step away from the internet and think through problems more
-              deeply. Indexed local documents for fast searching and reading,
-              making it easier to learn from my own notes and implement ideas
-              with stronger understanding.
-            </div>
-            <div class="tech-row">
-              <span class="badge badge--secondary tech-item">Python</span>
-              <span class="badge badge--secondary tech-item">FastAPI</span>
-              <span class="badge badge--secondary tech-item">SQLite</span>
-              <span class="badge badge--secondary tech-item"
-                >Text Extraction</span
-              >
-              <span class="badge badge--secondary tech-item"
-                >Search Indexing</span
-              >
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
-
-    <!-- FLOATING ACTIONS -->
-    <div class="actions">
-      <a href="index.html" class="btn-action" title="Back to Portfolio">
-        <i class="ph ph-light ph-arrow-left"></i>
-      </a>
-    </div>
-
-    <script>
-      // --- AUDIO PLAYER LOGIC ---
-      const audioBtn = document.getElementById("audio-btn");
-      const audio = document.getElementById("bg-music");
-      const progressBar = document.getElementById("scroll-progress");
-      let isPlaying = false;
-
-      // Setup Audio Context for Visualizer
-      let audioContext, analyser, source, dataArray;
-
-      function setupAudioContext() {
-        if (audioContext) return;
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        analyser = audioContext.createAnalyser();
-        source = audioContext.createMediaElementSource(audio);
-        source.connect(analyser);
-        analyser.connect(audioContext.destination);
-        analyser.fftSize = 64;
-        dataArray = new Uint8Array(analyser.frequencyBinCount);
-      }
-
-      function updateUIPlaying() {
-        audioBtn.classList.add("playing");
-        audioBtn.querySelector("i").className = "ph ph-light ph-disc";
-        audioBtn.querySelector("span").textContent = "Vibing...";
-        isPlaying = true;
-        setupAudioContext();
-      }
-
-      window.addEventListener("load", () => {
-        audio.volume = 0.3;
-        const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          playPromise
-            .then((_) => {
-              updateUIPlaying();
-            })
-            .catch(() => {
-              document.addEventListener(
-                "click",
-                () => {
-                  if (!isPlaying) {
-                    audio.play();
-                    updateUIPlaying();
-                  }
-                },
-                { once: true },
-              );
-            });
-        }
-      });
-
-      audioBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        if (isPlaying) {
-          audio.pause();
-          audioBtn.classList.remove("playing");
-          audioBtn.querySelector("i").className = "ph ph-light ph-music-note";
-          audioBtn.querySelector("span").textContent = "Lofi Mode";
-        } else {
-          audio.play();
-          updateUIPlaying();
-        }
-        isPlaying = !isPlaying;
-      });
-
-      // --- SUBTLE MOVING TILE BORDERS ---
-      const canvas = document.getElementById("network-canvas");
-      const ctx = canvas.getContext("2d");
-      const tileSize = 48;
-      let offsetX = 0;
-      let offsetY = 0;
-
-      function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-      resizeCanvas();
-
-      function getAudioIntensity() {
-        if (!analyser || !isPlaying || !dataArray) return 0;
-        analyser.getByteFrequencyData(dataArray);
-        const avg = dataArray.reduce((a, b) => a + b, 0) / dataArray.length;
-        return avg / 255;
-      }
-
-      function animateTiles(timestamp) {
-        const intensity = getAudioIntensity();
-        const speed = 0.08 + intensity * 0.18;
-        offsetX = (offsetX + speed) % tileSize;
-        offsetY = (offsetY + speed * 0.45) % tileSize;
-
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        const pulse = (Math.sin(timestamp * 0.0005) + 1) * 0.5;
-        const alpha = 0.04 + pulse * 0.02 + intensity * 0.02;
-        ctx.lineWidth = 1;
-        ctx.strokeStyle = `rgba(52, 178, 123, ${alpha.toFixed(3)})`;
-
-        for (let x = -tileSize; x < canvas.width + tileSize; x += tileSize) {
-          const px = x + offsetX;
-          ctx.beginPath();
-          ctx.moveTo(px, 0);
-          ctx.lineTo(px, canvas.height);
-          ctx.stroke();
-        }
-        for (let y = -tileSize; y < canvas.height + tileSize; y += tileSize) {
-          const py = y + offsetY;
-          ctx.beginPath();
-          ctx.moveTo(0, py);
-          ctx.lineTo(canvas.width, py);
-          ctx.stroke();
-        }
-
-        requestAnimationFrame(animateTiles);
-      }
-
-      window.addEventListener("resize", resizeCanvas);
-      window.addEventListener(
-        "scroll",
-        () => {
-          const total =
-            document.documentElement.scrollHeight - window.innerHeight;
-          const progress = total > 0 ? window.scrollY / total : 0;
-          progressBar.style.transform = `scaleX(${progress})`;
-        },
-        { passive: true },
-      );
-      animateTiles(0);
-      progressBar.style.transform = "scaleX(0)";
-    </script>
+      </section>
+    </main>
   </body>
 </html>
