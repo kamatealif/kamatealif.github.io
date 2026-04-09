@@ -58,7 +58,11 @@ body.page-home {
       rgba(12, 154, 88, 0.12),
       transparent 24%
     ),
-    radial-gradient(circle at left center, rgba(255, 255, 255, 0.7), transparent 30%),
+    radial-gradient(
+      circle at left center,
+      rgba(255, 255, 255, 0.7),
+      transparent 30%
+    ),
     linear-gradient(180deg, #fbf8f2 0%, var(--bg) 55%, var(--bg-deep) 100%);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -229,7 +233,7 @@ body.page-home .contact-card h3 {
 
 body.page-home .hero-title {
   font-size: clamp(3.15rem, 6vw, 5.3rem);
-  display: inline-block;
+  display: contents;
   width: fit-content;
   line-height: 0.95;
   max-width: min(100%, 8ch);
@@ -4354,7 +4358,6 @@ body.page-resume .cv-back:hover {
     border-right: none;
     border-bottom: 1px solid rgba(18, 18, 18, 0.08);
   }
-
 }
 
 @media (max-width: 640px) {
