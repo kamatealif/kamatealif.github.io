@@ -4016,10 +4016,12 @@ body.page-resume .cv-avatar-photo {
   box-shadow: 0 16px 32px rgba(18, 18, 18, 0.18);
 }
 
-body.page-resume .cv-avatar-photo svg {
+body.page-resume .cv-avatar-image {
   width: 100%;
   height: 100%;
   display: block;
+  object-fit: cover;
+  object-position: center;
 }
 
 body.page-resume .cv-banner-copy {
