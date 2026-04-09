@@ -4094,7 +4094,6 @@ body.page-resume .cv-main {
 
 body.page-resume .cv-side-section,
 body.page-resume .cv-section,
-body.page-resume .cv-current-card,
 body.page-resume .cv-education-item,
 body.page-resume .cv-entry {
   opacity: 0;
@@ -4257,7 +4256,6 @@ body.page-resume .cv-entry-head {
 }
 
 body.page-resume .cv-entry-head h3,
-body.page-resume .cv-current-card h3,
 body.page-resume .cv-education-item h3 {
   font-family: "Inter", sans-serif;
   font-size: 1.18rem;
@@ -4291,25 +4289,15 @@ body.page-resume .cv-entry-list {
   gap: 0.55rem;
 }
 
-body.page-resume .cv-current-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+body.page-resume .cv-education-item span,
+body.page-resume .cv-entry-list li {
+  color: rgba(18, 18, 18, 0.66);
 }
 
-body.page-resume .cv-current-card {
-  padding: 1rem 1rem 1.1rem;
-  border-radius: 20px;
-  background: rgba(16, 151, 144, 0.06);
-  border: 1px solid rgba(16, 151, 144, 0.12);
-}
-
-body.page-resume .cv-current-card p,
 body.page-resume .cv-education-item span {
   margin-top: 0.45rem;
   font-size: 0.92rem;
   line-height: 1.6;
-  color: rgba(18, 18, 18, 0.66);
 }
 
 body.page-resume .cv-education-list {
@@ -4335,8 +4323,7 @@ body.page-resume .cv-education-item strong {
 }
 
 body.page-resume .cv-banner-link:hover,
-body.page-resume .cv-back:hover,
-body.page-resume .cv-current-card:hover {
+body.page-resume .cv-back:hover {
   transform: translateY(-2px);
 }
 
@@ -4368,9 +4355,6 @@ body.page-resume .cv-current-card:hover {
     border-bottom: 1px solid rgba(18, 18, 18, 0.08);
   }
 
-  body.page-resume .cv-current-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 640px) {
